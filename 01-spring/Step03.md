@@ -1,0 +1,194 @@
+<!---
+Current Directory : /Users/ranga/Ranga/git/00.courses/master-spring-and-spring-boot/01-spring
+-->
+
+## Complete Code Example
+
+
+### /learn-spring-framework/pom.xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.0.0-RC1</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.in28minutes</groupId>
+	<artifactId>learn-spring-framework</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>learn-spring-framework</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+</project>
+```
+---
+
+### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/AppGamingBasicJava.java
+
+```java
+package com.in28minutes.learnspringframework;
+
+import com.in28minutes.learnspringframework.game.GameRunner;
+import com.in28minutes.learnspringframework.game.MarioGame;
+
+public class AppGamingBasicJava {
+
+	public static void main(String[] args) {
+		
+		var marioGame = new MarioGame();
+		var gameRunner = new GameRunner(marioGame);
+		gameRunner.run();
+
+	}
+
+}
+```
+---
+
+### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/LearnSpringFrameworkApplication.java
+
+```java
+package com.in28minutes.learnspringframework;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class LearnSpringFrameworkApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(LearnSpringFrameworkApplication.class, args);
+	}
+
+}
+```
+---
+
+### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/GameRunner.java
+
+```java
+package com.in28minutes.learnspringframework.game;
+
+public class GameRunner {
+	MarioGame game;
+	
+	public GameRunner(MarioGame game) {
+		this.game = game;
+	}
+
+	public void run() {
+		
+		System.out.println("Running game: " + game);
+		game.up();
+		game.down();
+		game.left();
+		game.right();
+		
+	}
+
+}
+```
+---
+
+### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/MarioGame.java
+
+```java
+package com.in28minutes.learnspringframework.game;
+
+public class MarioGame {
+	
+	public void up() {
+		System.out.println("Jump");
+	}
+
+	public void down() {
+		System.out.println("Go into a hole");
+	}
+	
+	public void left() {
+		System.out.println("Go back");
+	}
+
+	public void right() {
+		System.out.println("Accelerate");
+	}
+
+
+}
+```
+---
+
+### /learn-spring-framework/src/main/resources/application.properties
+
+```properties
+
+```
+---
+
+### /learn-spring-framework/src/test/java/com/in28minutes/learnspringframework/LearnSpringFrameworkApplicationTests.java
+
+```java
+package com.in28minutes.learnspringframework;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class LearnSpringFrameworkApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
+```
+---

@@ -1,0 +1,333 @@
+<!---
+Current Directory : /Users/ranga/Ranga/git/00.courses/master-spring-and-spring-boot/01-spring
+-->
+
+## Complete Code Example
+
+
+### /learn-spring-framework/pom.xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.0.0-RC1</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.in28minutes</groupId>
+	<artifactId>learn-spring-framework</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>learn-spring-framework</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+</project>
+```
+---
+
+### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/App01GamingBasicJava.java
+
+```java
+package com.in28minutes.learnspringframework;
+
+import com.in28minutes.learnspringframework.game.GameRunner;
+import com.in28minutes.learnspringframework.game.PacmanGame;
+
+public class App01GamingBasicJava {
+
+	public static void main(String[] args) {
+		
+		//var game = new MarioGame();
+		//var game = new SuperContraGame();
+		
+		var game = new PacmanGame(); //1: Object Creation
+		
+		var gameRunner = new GameRunner(game); 
+			//2: Object Creation + Wiring of Dependencies
+			// Game is a Dependency of GameRunner
+		
+		gameRunner.run();
+
+	}
+
+}
+```
+---
+
+### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/App02HelloWorldSpring.java
+
+```java
+package com.in28minutes.learnspringframework;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+public class App02HelloWorldSpring {
+
+	public static void main(String[] args) {
+
+		//1: Launch a Spring Context
+		var context = 
+			new AnnotationConfigApplicationContext(HelloWorldConfiguration.class);
+		
+		//2: Configure the things that we want Spring to manage - 
+		//HelloWorldConfiguration - @Configuration
+		//name - @Bean
+		
+		//3: Retrieving Beans managed by Spring
+		System.out.println(context.getBean("name"));
+		
+		System.out.println(context.getBean("age"));
+		
+		System.out.println(context.getBean("person"));
+		
+		System.out.println(context.getBean("address"));
+		
+	}
+
+}
+```
+---
+
+### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/HelloWorldConfiguration.java
+
+```java
+package com.in28minutes.learnspringframework;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+//Eliminate verbosity in creating Java Beans
+//Public accessor methods, constructor, 
+//equals, hashcode and toString are automatically created. 
+//Released in JDK 16.
+
+record Person (String name, int age) { };
+
+//Address - firstLine & city
+record Address(String firstLine, String city){ };
+
+@Configuration
+public class HelloWorldConfiguration {
+	
+	@Bean
+	public String name() {
+		return "Ranga";
+	}
+	
+	@Bean
+	public int age() {
+		return 15;
+	}
+	
+	@Bean
+	public Person person() {
+		return new Person("Ravi", 20);		
+	}
+	
+	@Bean
+	public Address address() {
+		return new Address("Baker Street", "London");		
+	}
+	
+
+}
+```
+---
+
+### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/GameRunner.java
+
+```java
+package com.in28minutes.learnspringframework.game;
+
+//PacmanGame
+public class GameRunner {
+	
+	private GamingConsole game;
+	
+	public GameRunner(GamingConsole game) {
+		this.game = game;
+	}
+
+	public void run() {
+		
+		System.out.println("Running game: " + game);
+		game.up();
+		game.down();
+		game.left();
+		game.right();
+		
+	}
+
+}
+```
+---
+
+### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/GamingConsole.java
+
+```java
+package com.in28minutes.learnspringframework.game;
+
+public interface GamingConsole {
+	void up();
+	void down();
+	void left();
+	void right();
+}
+```
+---
+
+### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/MarioGame.java
+
+```java
+package com.in28minutes.learnspringframework.game;
+
+public class MarioGame implements GamingConsole{
+	
+	public void up() {
+		System.out.println("Jump");
+	}
+
+	public void down() {
+		System.out.println("Go into a hole");
+	}
+	
+	public void left() {
+		System.out.println("Go back");
+	}
+
+	public void right() {
+		System.out.println("Accelerate");
+	}
+
+
+}
+```
+---
+
+### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/PacmanGame.java
+
+```java
+package com.in28minutes.learnspringframework.game;
+
+public class PacmanGame implements GamingConsole{
+	
+	public void up() {
+		System.out.println("up");
+	}
+
+	public void down() {
+		System.out.println("down");
+	}
+	
+	public void left() {
+		System.out.println("left");
+	}
+
+	public void right() {
+		System.out.println("right");
+	}
+
+
+}
+```
+---
+
+### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/SuperContraGame.java
+
+```java
+package com.in28minutes.learnspringframework.game;
+
+public class SuperContraGame implements GamingConsole{
+
+	public void up() {
+		System.out.println("up");
+	}
+
+	public void down() {
+		System.out.println("Sit down");
+	}
+	
+	public void left() {
+		System.out.println("Go back");
+	}
+
+	public void right() {
+		System.out.println("Shoot a bullet");
+	}
+
+}
+```
+---
+
+### /learn-spring-framework/src/main/resources/application.properties
+
+```properties
+
+```
+---
+
+### /learn-spring-framework/src/test/java/com/in28minutes/learnspringframework/LearnSpringFrameworkApplicationTests.java
+
+```java
+package com.in28minutes.learnspringframework;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class LearnSpringFrameworkApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
+```
+---
