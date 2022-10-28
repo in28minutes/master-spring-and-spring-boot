@@ -15,6 +15,7 @@ class ClassA {
 @Lazy
 class ClassB {
 	
+	@SuppressWarnings("unused")
 	private ClassA classA;
 	
 	public ClassB(ClassA classA) {
