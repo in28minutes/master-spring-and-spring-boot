@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 class YourBusinessClass {
-
+	
 	Dependency1 dependency1;
 
 	Dependency2 dependency2;

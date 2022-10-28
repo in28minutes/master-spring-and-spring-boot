@@ -1,0 +1,1034 @@
+<!---
+Current Directory : /Users/ranga/Ranga/git/00.courses/master-spring-and-spring-boot/01-spring
+-->
+
+## Complete Code Example
+
+
+### /learn-spring-framework-01/pom.xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.0.0-RC1</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.in28minutes</groupId>
+	<artifactId>learn-spring-framework-01</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>learn-spring-framework</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+</project>
+```
+---
+
+### /learn-spring-framework-01/src/main/java/com/in28minutes/learnspringframework/App01GamingBasicJava.java
+
+```java
+package com.in28minutes.learnspringframework;
+
+import com.in28minutes.learnspringframework.game.GameRunner;
+import com.in28minutes.learnspringframework.game.PacmanGame;
+
+public class App01GamingBasicJava {
+
+	public static void main(String[] args) {
+		
+		//var game = new MarioGame();
+		//var game = new SuperContraGame();
+		
+		var game = new PacmanGame(); //1: Object Creation
+		
+		var gameRunner = new GameRunner(game); 
+			//2: Object Creation + Wiring of Dependencies
+			// Game is a Dependency of GameRunner
+		
+		gameRunner.run();
+
+	}
+
+}
+```
+---
+
+### /learn-spring-framework-01/src/main/java/com/in28minutes/learnspringframework/App03GamingSpringBeans.java
+
+```java
+package com.in28minutes.learnspringframework;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.in28minutes.learnspringframework.game.GameRunner;
+import com.in28minutes.learnspringframework.game.GamingConsole;
+
+public class App03GamingSpringBeans {
+
+	public static void main(String[] args) {
+
+		try (var context = 
+				new AnnotationConfigApplicationContext
+					(GamingConfiguration.class)) {
+
+			context.getBean(GamingConsole.class).up();
+			
+			context.getBean(GameRunner.class).run();
+
+		}
+	}
+}
+```
+---
+
+### /learn-spring-framework-01/src/main/java/com/in28minutes/learnspringframework/GamingConfiguration.java
+
+```java
+package com.in28minutes.learnspringframework;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.in28minutes.learnspringframework.game.GameRunner;
+import com.in28minutes.learnspringframework.game.GamingConsole;
+import com.in28minutes.learnspringframework.game.PacmanGame;
+
+@Configuration
+public class GamingConfiguration {
+
+	@Bean
+	public GamingConsole game() {
+		var game = new PacmanGame();
+		return game;
+	}
+
+	@Bean
+	public GameRunner gameRunner(GamingConsole game) {
+		var gameRunner = new GameRunner(game);
+		return gameRunner;
+	}
+
+}
+```
+---
+
+### /learn-spring-framework-01/src/main/java/com/in28minutes/learnspringframework/game/GameRunner.java
+
+```java
+package com.in28minutes.learnspringframework.game;
+
+//PacmanGame
+public class GameRunner {
+	
+	private GamingConsole game;
+	
+	public GameRunner(GamingConsole game) {
+		this.game = game;
+	}
+
+	public void run() {
+		
+		System.out.println("Running game: " + game);
+		game.up();
+		game.down();
+		game.left();
+		game.right();
+		
+	}
+
+}
+```
+---
+
+### /learn-spring-framework-01/src/main/java/com/in28minutes/learnspringframework/game/GamingConsole.java
+
+```java
+package com.in28minutes.learnspringframework.game;
+
+public interface GamingConsole {
+	void up();
+	void down();
+	void left();
+	void right();
+}
+```
+---
+
+### /learn-spring-framework-01/src/main/java/com/in28minutes/learnspringframework/game/MarioGame.java
+
+```java
+package com.in28minutes.learnspringframework.game;
+
+public class MarioGame implements GamingConsole{
+	
+	public void up() {
+		System.out.println("Jump");
+	}
+
+	public void down() {
+		System.out.println("Go into a hole");
+	}
+	
+	public void left() {
+		System.out.println("Go back");
+	}
+
+	public void right() {
+		System.out.println("Accelerate");
+	}
+
+
+}
+```
+---
+
+### /learn-spring-framework-01/src/main/java/com/in28minutes/learnspringframework/game/PacmanGame.java
+
+```java
+package com.in28minutes.learnspringframework.game;
+
+public class PacmanGame implements GamingConsole{
+	
+	public void up() {
+		System.out.println("up");
+	}
+
+	public void down() {
+		System.out.println("down");
+	}
+	
+	public void left() {
+		System.out.println("left");
+	}
+
+	public void right() {
+		System.out.println("right");
+	}
+
+}
+```
+---
+
+### /learn-spring-framework-01/src/main/java/com/in28minutes/learnspringframework/game/SuperContraGame.java
+
+```java
+package com.in28minutes.learnspringframework.game;
+
+public class SuperContraGame implements GamingConsole{
+
+	public void up() {
+		System.out.println("up");
+	}
+
+	public void down() {
+		System.out.println("Sit down");
+	}
+	
+	public void left() {
+		System.out.println("Go back");
+	}
+
+	public void right() {
+		System.out.println("Shoot a bullet");
+	}
+
+}
+```
+---
+
+### /learn-spring-framework-01/src/main/java/com/in28minutes/learnspringframework/helloworld/App02HelloWorldSpring.java
+
+```java
+package com.in28minutes.learnspringframework.helloworld;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+public class App02HelloWorldSpring {
+
+	public static void main(String[] args) {
+
+		//1: Launch a Spring Context
+		try(var context = 
+				new AnnotationConfigApplicationContext
+						(HelloWorldConfiguration.class)) {
+			
+			//2: Configure the things that we want Spring to manage - 
+			//HelloWorldConfiguration - @Configuration
+			//name - @Bean
+			
+			//3: Retrieving Beans managed by Spring
+			System.out.println(context.getBean("name"));
+			
+			System.out.println(context.getBean("age"));
+			
+			System.out.println(context.getBean("person"));
+			
+			System.out.println(context.getBean("person2MethodCall"));
+			
+			System.out.println(context.getBean("person3Parameters"));
+			
+			System.out.println(context.getBean("address2"));
+			
+			System.out.println(context.getBean(Person.class));
+			
+			System.out.println(context.getBean(Address.class));
+			
+			System.out.println(context.getBean("person5Qualifier"));
+			
+			
+			//System.out.println
+//			Arrays.stream(context.getBeanDefinitionNames())
+//				.forEach(System.out::println);
+			
+		}
+		
+		
+		
+		
+	}
+
+}
+```
+---
+
+### /learn-spring-framework-01/src/main/java/com/in28minutes/learnspringframework/helloworld/HelloWorldConfiguration.java
+
+```java
+package com.in28minutes.learnspringframework.helloworld;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+
+//Eliminate verbosity in creating Java Beans
+//Public accessor methods, constructor, 
+//equals, hashcode and toString are automatically created. 
+//Released in JDK 16.
+
+record Person (String name, int age, Address address) { };
+
+//Address - firstLine & city
+record Address(String firstLine, String city){ };
+
+@Configuration
+public class HelloWorldConfiguration {
+	
+	@Bean
+	public String name() {
+		return "Ranga";
+	}
+	
+	@Bean
+	public int age() {
+		return 15;
+	}
+	
+	@Bean
+	public Person person() {
+		return new Person("Ravi", 20, new Address("Main Street", "Utrecht"));		
+	}
+
+	@Bean
+	public Person person2MethodCall() {
+		return new Person(name(), age(), address()); //name, age		
+	}
+
+	@Bean
+	public Person person3Parameters(String name, int age, Address address3) {
+		//name,age,address2
+		return new Person(name, age, address3); //name, age		
+	}
+
+	@Bean
+	@Primary
+	//No qualifying bean of type 'com.in28minutes.learnspringframework.Address' 
+	//available: expected single matching bean but found 2: address2,address3
+	public Person person4Parameters(String name, int age, Address address) {
+		//name,age,address2
+		return new Person(name, age, address); //name, age		
+	}
+
+	@Bean
+	public Person person5Qualifier(String name, int age, @Qualifier("address3qualifier") Address address) {
+		//name,age,address2
+		return new Person(name, age, address); //name, age		
+	}
+
+	
+	@Bean(name = "address2")
+	@Primary
+	public Address address() {
+		return new Address("Baker Street", "London");		
+	}
+
+	@Bean(name = "address3")
+	@Qualifier("address3qualifier")
+	public Address address3() {
+		return new Address("Motinagar", "Hyderabad");		
+	}
+
+}
+```
+---
+
+### /learn-spring-framework-01/src/main/resources/application.properties
+
+```properties
+
+```
+---
+
+### /learn-spring-framework-01/src/test/java/com/in28minutes/learnspringframework/LearnSpringFrameworkApplicationTests.java
+
+```java
+package com.in28minutes.learnspringframework;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class LearnSpringFrameworkApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
+```
+---
+
+### /learn-spring-framework-02/pom.xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.0.0-RC1</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.in28minutes</groupId>
+	<artifactId>learn-spring-framework-02</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>learn-spring-framework</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+</project>
+```
+---
+
+### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/a0/SimpleSpringContextLauncherApplication.java
+
+```java
+package com.in28minutes.learnspringframework.examples.a0;
+
+import java.util.Arrays;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ComponentScan
+public class SimpleSpringContextLauncherApplication {
+	
+	public static void main(String[] args) {
+
+		try (var context = 
+				new AnnotationConfigApplicationContext
+					(SimpleSpringContextLauncherApplication.class)) {
+			
+			Arrays.stream(context.getBeanDefinitionNames())
+				.forEach(System.out::println);
+
+		}
+	}
+}
+```
+---
+
+### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/a1/DepInjectionLauncherApplication.java
+
+```java
+package com.in28minutes.learnspringframework.examples.a1;
+
+import java.util.Arrays;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+
+@Component
+class YourBusinessClass {
+	
+	Dependency1 dependency1;
+
+	Dependency2 dependency2;
+
+	//@Autowired
+	public YourBusinessClass(Dependency1 dependency1, Dependency2 dependency2) {
+		super();
+		System.out.println("Constructor Injection - YourBusinessClass ");
+		this.dependency1 = dependency1;
+		this.dependency2 = dependency2;
+	}
+
+//	@Autowired
+//	public void setDependency1(Dependency1 dependency1) {
+//		System.out.println("Setter Injection - setDependency1 ");
+//		this.dependency1 = dependency1;
+//	}
+//
+//	@Autowired
+//	public void setDependency2(Dependency2 dependency2) {
+//		System.out.println("Setter Injection - setDependency2 ");
+//		this.dependency2 = dependency2;
+//	}
+
+	public String toString() {
+		return "Using " + dependency1 + " and " + dependency2;
+	}
+
+}
+
+@Component
+class Dependency1 {
+
+}
+
+@Component
+class Dependency2 {
+
+}
+
+@Configuration
+@ComponentScan
+public class DepInjectionLauncherApplication {
+
+	public static void main(String[] args) {
+
+		try (var context = new AnnotationConfigApplicationContext(DepInjectionLauncherApplication.class)) {
+
+			Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
+
+			System.out.println(context.getBean(YourBusinessClass.class));
+
+		}
+	}
+}
+```
+---
+
+### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/c1/BusinessCalculationService.java
+
+```java
+package com.in28minutes.learnspringframework.examples.c1;
+
+import java.util.Arrays;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class BusinessCalculationService {
+	
+	private DataService dataService;
+	
+	public BusinessCalculationService(DataService dataService) {
+		super();
+		this.dataService = dataService;
+	}
+
+	public int findMax() {
+		return Arrays.stream(dataService.retrieveData()).max().orElse(0);
+	}
+
+}
+```
+---
+
+### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/c1/DataService.java
+
+```java
+package com.in28minutes.learnspringframework.examples.c1;
+
+public interface DataService {
+	int[] retrieveData();
+}
+```
+---
+
+### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/c1/MongoDbDataService.java
+
+```java
+package com.in28minutes.learnspringframework.examples.c1;
+
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
+
+@Component
+@Primary
+public class MongoDbDataService implements DataService {
+
+	@Override
+	public int[] retrieveData() {
+		return new int[] { 11, 22, 33, 44, 55 };
+	}
+
+}
+```
+---
+
+### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/c1/MySqlDataService.java
+
+```java
+package com.in28minutes.learnspringframework.examples.c1;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class MySqlDataService implements DataService {
+
+	@Override
+	public int[] retrieveData() {
+		return new int[] { 1, 2, 3, 4, 5 };
+	}
+
+}
+```
+---
+
+### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/c1/RealWorldSpringContextLauncherApplication.java
+
+```java
+package com.in28minutes.learnspringframework.examples.c1;
+
+import java.util.Arrays;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ComponentScan
+public class RealWorldSpringContextLauncherApplication {
+	
+	public static void main(String[] args) {
+
+		try (var context = 
+				new AnnotationConfigApplicationContext
+					(RealWorldSpringContextLauncherApplication.class)) {
+			
+			Arrays.stream(context.getBeanDefinitionNames())
+				.forEach(System.out::println);
+			
+			
+		}
+	}
+}
+```
+---
+
+### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/d1/LazyInitializationLauncherApplication.java
+
+```java
+package com.in28minutes.learnspringframework.examples.d1;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
+
+@Component
+class ClassA {
+	
+}
+
+@Component
+@Lazy
+class ClassB {
+	
+	private ClassA classA;
+	
+	public ClassB(ClassA classA) {
+		//Logic
+		System.out.println("Some Initialization logic");
+		this.classA = classA;
+	}
+	
+	public void doSomething() {
+		System.out.println("Do Something");
+	}
+	
+}
+
+
+@Configuration
+@ComponentScan
+public class LazyInitializationLauncherApplication {
+	
+	public static void main(String[] args) {
+
+		try (var context = 
+				new AnnotationConfigApplicationContext
+					(LazyInitializationLauncherApplication.class)) {
+			
+			System.out.println("Initialization of context is completed");
+			
+			context.getBean(ClassB.class).doSomething();
+			
+
+		}
+	}
+}
+```
+---
+
+### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/e1/BeanScopesLauncherApplication.java
+
+```java
+package com.in28minutes.learnspringframework.examples.e1;
+
+import java.util.Arrays;
+
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+class NormalClass {
+	
+}
+
+
+@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+@Component
+class PrototypeClass {
+	
+}
+
+
+@Configuration
+@ComponentScan
+public class BeanScopesLauncherApplication {
+	
+	public static void main(String[] args) {
+
+		try (var context = 
+				new AnnotationConfigApplicationContext
+					(BeanScopesLauncherApplication.class)) {
+			
+			System.out.println(context.getBean(NormalClass.class));
+			System.out.println(context.getBean(NormalClass.class));
+			System.out.println(context.getBean(NormalClass.class));
+			System.out.println(context.getBean(NormalClass.class));
+			System.out.println(context.getBean(NormalClass.class));
+			System.out.println(context.getBean(NormalClass.class));
+			
+			System.out.println(context.getBean(PrototypeClass.class));
+			System.out.println(context.getBean(PrototypeClass.class));
+			System.out.println(context.getBean(PrototypeClass.class));
+			System.out.println(context.getBean(PrototypeClass.class));
+			
+
+		}
+	}
+}
+```
+---
+
+### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/game/GameRunner.java
+
+```java
+package com.in28minutes.learnspringframework.game;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
+public class GameRunner {
+	
+	private GamingConsole game;
+	
+	public GameRunner(@Qualifier("SuperContraGameQualifier") GamingConsole game) {
+		this.game = game;
+	}
+
+	public void run() {
+		
+		System.out.println("Running game: " + game);
+		game.up();
+		game.down();
+		game.left();
+		game.right();
+		
+	}
+
+}
+```
+---
+
+### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/game/GamingAppLauncherApplication.java
+
+```java
+package com.in28minutes.learnspringframework.game;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ComponentScan("com.in28minutes.learnspringframework.game")
+public class GamingAppLauncherApplication {
+	
+	public static void main(String[] args) {
+
+		try (var context = 
+				new AnnotationConfigApplicationContext
+					(GamingAppLauncherApplication.class)) {
+
+			context.getBean(GamingConsole.class).up();
+			
+			context.getBean(GameRunner.class).run();
+
+		}
+	}
+}
+```
+---
+
+### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/game/GamingConsole.java
+
+```java
+package com.in28minutes.learnspringframework.game;
+
+public interface GamingConsole {
+	void up();
+	void down();
+	void left();
+	void right();
+}
+```
+---
+
+### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/game/MarioGame.java
+
+```java
+package com.in28minutes.learnspringframework.game;
+
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
+
+@Component
+@Primary
+public class MarioGame implements GamingConsole{
+	
+	public void up() {
+		System.out.println("Jump");
+	}
+
+	public void down() {
+		System.out.println("Go into a hole");
+	}
+	
+	public void left() {
+		System.out.println("Go back");
+	}
+
+	public void right() {
+		System.out.println("Accelerate");
+	}
+
+
+}
+```
+---
+
+### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/game/PacmanGame.java
+
+```java
+package com.in28minutes.learnspringframework.game;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class PacmanGame implements GamingConsole{
+	
+	public void up() {
+		System.out.println("up");
+	}
+
+	public void down() {
+		System.out.println("down");
+	}
+	
+	public void left() {
+		System.out.println("left");
+	}
+
+	public void right() {
+		System.out.println("right");
+	}
+
+}
+```
+---
+
+### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/game/SuperContraGame.java
+
+```java
+package com.in28minutes.learnspringframework.game;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
+@Qualifier("SuperContraGameQualifier")
+public class SuperContraGame implements GamingConsole{
+
+	public void up() {
+		System.out.println("up");
+	}
+
+	public void down() {
+		System.out.println("Sit down");
+	}
+	
+	public void left() {
+		System.out.println("Go back");
+	}
+
+	public void right() {
+		System.out.println("Shoot a bullet");
+	}
+
+}
+```
+---
+
+### /learn-spring-framework-02/src/main/resources/application.properties
+
+```properties
+
+```
+---
+
+### /learn-spring-framework-02/src/test/java/com/in28minutes/learnspringframework/LearnSpringFrameworkApplicationTests.java
+
+```java
+package com.in28minutes.learnspringframework;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class LearnSpringFrameworkApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
+```
+---
