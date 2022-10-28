@@ -18,5 +18,4 @@ public class PacmanGame implements GamingConsole{
 		System.out.println("right");
 	}
 
-
 }
