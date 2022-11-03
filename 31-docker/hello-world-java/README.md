@@ -8,10 +8,8 @@
 
 ```
 FROM openjdk:18.0-slim
-WORKDIR /app
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-EXPOSE 8080
+COPY target/*.jar app.jar
+EXPOSE 5000
 ENTRYPOINT ["java","-jar","/app.jar"]
 ```
 
@@ -23,20 +21,20 @@ COPY . /home/app
 RUN mvn -f /home/app/pom.xml clean package
 
 FROM openjdk:18.0-slim
-VOLUME /tmp
-EXPOSE 8080
+EXPOSE 5000
 COPY --from=build /home/app/target/*.jar app.jar
 ENTRYPOINT [ "sh", "-c", "java -jar /app.jar" ]
+
 ```
 
 ## Dockerfile - 3 - Caching
+
 ```
 FROM maven:3.8.6-openjdk-18-slim AS build
 WORKDIR /home/app
 
 COPY ./pom.xml /home/app/pom.xml
-COPY ./src/main/java/com/example/demodocker/DemoDockerApplication.java /
-	/home/app/src/main/java/com/example/demodocker/DemoDockerApplication.java
+COPY ./src/main/java/com/in28minutes/rest/webservices/restfulwebservices/RestfulWebServicesApplication.java	/home/app/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/RestfulWebServicesApplication.java
 
 RUN mvn -f /home/app/pom.xml clean package
 
@@ -44,8 +42,7 @@ COPY . /home/app
 RUN mvn -f /home/app/pom.xml clean package
 
 FROM openjdk:18.0-slim
-VOLUME /tmp
-EXPOSE 8080
+EXPOSE 5000
 COPY --from=build /home/app/target/*.jar app.jar
 ENTRYPOINT [ "sh", "-c", "java -jar /app.jar" ]
 ```
