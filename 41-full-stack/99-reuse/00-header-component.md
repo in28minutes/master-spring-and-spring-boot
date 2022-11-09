@@ -9,13 +9,13 @@
                         <a className="navbar-brand ms-2 fs-2 fw-bold text-black" href="https://www.in28minutes.com">in28minutes</a>
                         <div className="collapse navbar-collapse">
                             <ul className="navbar-nav">
-                                <li><Link className="nav-link" to="/welcome/in28minutes">Home</Link></li>
-                                <li><Link className="nav-link" to="/todos">Todos</Link></li>
+                                <li className="nav-item"><Link className="nav-link" to="/welcome/in28minutes">Home</Link></li>
+                                <li className="nav-item"><Link className="nav-link" to="/todos">Todos</Link></li>
                             </ul>
                         </div>
                         <ul className="navbar-nav">
-                            <li><Link className="nav-link" to="/login">Login</Link></li>
-                            <li><Link className="nav-link" to="/logout">Logout</Link></li>
+                            <li className="nav-item"><Link className="nav-link" to="/login">Login</Link></li>
+                            <li className="nav-item"><Link className="nav-link" to="/logout">Logout</Link></li>
                         </ul>
                     </nav>
                 </div>
