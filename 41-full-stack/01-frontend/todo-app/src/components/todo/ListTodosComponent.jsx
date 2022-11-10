@@ -39,7 +39,7 @@ function ListTodosComponent() {
         .then(
 
             () => {
-                setMessage(`Delete of todo with id = ${id} successful`)
+                setMessage(`Delete of todos with id = ${id} successful`)
                 refreshTodos()
             }
             //1: Display message
@@ -51,6 +51,10 @@ function ListTodosComponent() {
     function updateTodo(id) {
         console.log('clicked ' + id)
         navigate(`/todo/${id}`)
+    }
+
+    function addNewTodo() {
+        navigate(`/todo/-1`)
     }
 
     return (
@@ -92,6 +96,7 @@ function ListTodosComponent() {
 
                 </table>
             </div>
+            <div className="btn btn-success m-5" onClick={addNewTodo}>Add New Todo</div>
         </div>
     )
 }
