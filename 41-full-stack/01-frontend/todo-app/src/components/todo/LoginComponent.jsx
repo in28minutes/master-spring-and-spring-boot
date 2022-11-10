@@ -22,8 +22,8 @@ function LoginComponent() {
         setPassword(event.target.value)
     }
 
-    function handleSubmit() {
-        if(authContext.login(username, password)){
+    async function handleSubmit() {
+        if(await authContext.login(username, password)){
             navigate(`/welcome/${username}`)
         } else {
             setShowErrorMessage(true)
