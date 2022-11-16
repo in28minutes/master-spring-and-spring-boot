@@ -11,10 +11,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.ProviderManager;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -44,9 +40,7 @@ public class JwtSecurityConfiguration {
 		
 		http.authorizeHttpRequests(
 						auth -> {
-							auth
-							.requestMatchers("/authenticate").permitAll()
-							.anyRequest().authenticated();
+							auth.anyRequest().authenticated();
 						});
 		
 		http.sessionManagement(
@@ -144,13 +138,6 @@ public class JwtSecurityConfiguration {
 	@Bean
 	public JwtEncoder jwtEncoder(JWKSource<SecurityContext> jwkSource) {
 		return new NimbusJwtEncoder(jwkSource);
-	}
-	
-	@Bean
-	public AuthenticationManager authenticationManager(UserDetailsService userDetailService) {
-		var provider = new DaoAuthenticationProvider();
-		provider.setUserDetailsService(userDetailService);
-		return new ProviderManager(provider);
 	}
 }
 
