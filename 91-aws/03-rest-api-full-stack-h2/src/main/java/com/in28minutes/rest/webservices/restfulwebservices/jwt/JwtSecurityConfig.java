@@ -52,7 +52,8 @@ public class JwtSecurityConfig {
                                 SessionCreationPolicy.STATELESS)) // (2)
                 .authorizeHttpRequests(
                         auth -> 
-                            auth.requestMatchers("/","/authenticate", "/actuator", "/actuator/*")
+                            auth.requestMatchers("/", //#CHANGE
+                            		"/authenticate", "/actuator", "/actuator/*")
                                 .permitAll()
                                 .requestMatchers("/h2-console/**")
                                 .permitAll()
