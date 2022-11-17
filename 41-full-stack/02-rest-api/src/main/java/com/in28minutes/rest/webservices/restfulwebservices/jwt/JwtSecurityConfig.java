@@ -54,6 +54,8 @@ public class JwtSecurityConfig {
                         auth -> 
                             auth.mvcMatchers("/authenticate", "/actuator", "/actuator/*")
                                 .permitAll()
+                                .antMatchers("/h2-console/**")
+                                .permitAll()
                                 .antMatchers(HttpMethod.OPTIONS,"/**")
                                 .permitAll()
                                 .anyRequest()
@@ -68,6 +70,9 @@ public class JwtSecurityConfig {
                                 new BearerTokenAccessDeniedHandler()))
                 .httpBasic(
                         Customizer.withDefaults()) // (5)
+                .headers(header -> {
+	                			header.frameOptions().sameOrigin();
+	                		})
                 .build();
     }
 
