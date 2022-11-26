@@ -62,7 +62,7 @@ By the end of the course, you will know everything you would need to become a gr
 - Step 13 - Exploring Java Bean vs POJO vs Spring Bean
 - Step 14 - Exploring Spring Framework Bean Auto Wiring - Primary and Qualifier Annotations
 - Step 15 - Using Spring Framework to Manage Beans for Java Gaming App
-- Step 16 - More Questions about JAva Spring Framework - What will we learn?
+- Step 16 - More Questions about Java Spring Framework - What will we learn?
 - Step 17 - Exploring Spring Framework With Java - Section 1 - Review
 
 ### Using Spring Framework to Create and Manage Your Java Objects
