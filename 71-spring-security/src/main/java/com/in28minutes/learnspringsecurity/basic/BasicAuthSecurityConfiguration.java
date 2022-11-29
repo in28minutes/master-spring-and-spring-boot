@@ -100,6 +100,4 @@ public class BasicAuthSecurityConfiguration {
 		return new BCryptPasswordEncoder();
 	}
 	
-
-	
 }
