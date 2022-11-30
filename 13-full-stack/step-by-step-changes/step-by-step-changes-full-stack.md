@@ -1,4 +1,6 @@
-## Step01.md
+# Section 01
+
+## Step15.md
 
 ##### /01-frontend/todo-app/src/App.css
 
@@ -190,9 +192,10 @@ root.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 ```
----
 
-## Step21.md
+# Section 02
+
+## Step07.md
 
 ### /01-frontend/todo-app/src/App.js Modified
 
@@ -316,7 +319,7 @@ Counter.defaultProps = {
 }
 ```
 
-## Step22.md
+## Step08.md
 
 ### /01-frontend/todo-app/src/App.js Modified
 New Lines
@@ -392,7 +395,8 @@ CounterButton.defaultProps = {
     by: 5
 }
 ```
-## Step23.md
+
+## Step09.md
 
 ### /01-frontend/todo-app/src/components/counter/Counter.jsx Modified
 New Lines
@@ -427,7 +431,8 @@ function CounterButton({by, incrementMethod, decrementMethod}) {
         decrementMethod(by)
     }
 ```
-## Step24.md
+
+## Step11.md
 
 ### /01-frontend/todo-app/src/components/counter/Counter.css Modified
 New Lines
@@ -499,7 +504,7 @@ CounterButton.defaultProps = {
 ```
 ---
 
-## Step25.md
+## Step12.md
 
 ### /01-frontend/todo-app/src/App.js Modified
 New Lines
@@ -530,7 +535,10 @@ export default function CounterButton({by, incrementMethod, decrementMethod}) {
 }
 
 ```
-## Step52.md
+
+# Section 03
+
+## Step02.md
 
 ### /01-frontend/todo-app/src/App.js Modified
 New Lines
@@ -589,7 +597,7 @@ function WelcomeComponent() {
 ```
 ---
 
-## Step54.md
+## Step04.md
 
 ### /01-frontend/todo-app/src/components/todo/TodoApp.css New
 
@@ -658,7 +666,7 @@ function ErrorMessageComponent() {
 <button type="button" name="login" onClick={handleSubmit}>login</button>
 ```
 
-## Step55.md
+## Step05.md
 
 ### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
 New Lines
@@ -667,7 +675,8 @@ New Lines
 {showErrorMessage && <div className="errorMessage">Authentication Failed. 
                                                 Please check your credentials.</div>}
 ```
-## Step56.md
+
+## Step06.md
 
 ### /01-frontend/todo-app/package.json Modified
 New Lines
@@ -690,7 +699,7 @@ import {BrowserRouter, Routes, Route, useNavigate} from 'react-router-dom'
 const navigate = useNavigate();
 navigate('/welcome')
 ```
-## Step57.md
+## Step07.md
 
 ### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
 New Lines
@@ -726,7 +735,8 @@ function ErrorComponent() {
 }
 
 ```
-## Step58.md
+
+## Step08.md
 
 ### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
 New Lines
@@ -741,14 +751,21 @@ function LoginComponent() {
         if(username==='in28minutes' && password==='dummy'){
             //OTHER CODE
             navigate(`/welcome/${username}`)
-    
+            //OTHER CODE
+        }
+        //OTHER CODE
+    }
+}
+
 function WelcomeComponent() {
   const {username } = useParams()
   console.log(username)
   <h1>Welcome {username}</h1>
+  //OTHER CODE
+}
 ```
 
-## Step59.md
+## Step09.md
 
 ### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
 New Lines
@@ -809,7 +826,7 @@ function ListTodosComponent() {
 }
 
 ```
-## Step60.md
+## Step10.md
 
 ### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
 New Lines
@@ -879,7 +896,7 @@ function ListTodosComponent() {
 }
 
 ```
-## Step61.md
+## Step11.md
 
 ### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
 New Lines
@@ -916,7 +933,7 @@ function LogoutComponent() {
 }
 
 ```
-## Step62.md
+## Step12.md
 
 ### /01-frontend/todo-app/package.json Modified
 New Lines
@@ -939,7 +956,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 ```
 ---
 
-## Step63.md
+## Step13.md
 
 ### /01-frontend/todo-app/src/components/todo/TodoApp.css Modified
 New Lines
@@ -975,7 +992,8 @@ New Lines
         Your Footer
 </footer>
 ```
-## Step64.md
+
+## Step14.md
 
 ### /01-frontend/todo-app/src/components/todo/ErrorComponent.jsx New
 
@@ -1221,7 +1239,7 @@ export default WelcomeComponent
 ```
 ---
 
-## Step66.md
+## Step16.md
 
 ### /01-frontend/todo-app/src/components/todo/FooterComponent.jsx Modified
 New Lines
@@ -1280,7 +1298,7 @@ export default function AuthProvider({ children }) {
 ```
 ---
 
-## Step67.md
+## Step17.md
 
 ### /01-frontend/todo-app/src/components/todo/HeaderComponent.jsx Modified
 New Lines
@@ -1355,7 +1373,7 @@ export default function AuthProvider({ children }) {
 ```
 ---
 
-## Step68.md
+## Step18.md
 
 ### /01-frontend/todo-app/src/components/todo/HeaderComponent.jsx Modified
 New Lines
@@ -1405,7 +1423,7 @@ New Lines
 
 ---
 
-## Step69.md
+## Step19.md
 
 ### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
 New Lines
@@ -1440,70 +1458,11 @@ function AuthenticatedRoute({children}) {
     </AuthenticatedRoute>
 } />
 ```
-## Step72.md
 
-### /01-frontend/todo-app/package.json Modified
-New Lines
-```
-    "axios": "^1.1.3",
-```
-### /01-frontend/todo-app/src/components/todo/WelcomeComponent.jsx Modified
-New Lines
-```
-import { useState } from 'react'
-import { retrieveHelloWorldBean } from './api/HelloWorldApiService'
+# Section 04
 
-function WelcomeComponent() {
+## Step02.md
 
-    const {username } = useParams()
-
-    const [message, setMessage] = useState(null)
-
-    function callHelloWorldRestApi(){
-        console.log('called')
-        
-
-        // axios.get('http://localhost:8080/hello-world')
-        //     .then( (response) => successfulResponse(response) )
-        //     .catch ( (error) => errorResponse(error) )
-        //     .finally ( () => console.log('cleanup') )
-
-        retrieveHelloWorldBean()
-            .then( (response) => successfulResponse(response) )
-            .catch ( (error) => errorResponse(error) )
-            .finally ( () => console.log('cleanup') )
-
-    }
-
-    function successfulResponse(response) {
-        console.log(response)
-        //setMessage(response.data)
-        setMessage(response.data.message)
-    }
-
-    function errorResponse(error) {
-        console.log(error)
-    }
-
-    <button className="btn btn-success m-5" onClick={callHelloWorldRestApi}>
-        Call Hello World</button>
-    
-    <div className="text-info">{message}</div>
-```
-
-### /01-frontend/todo-app/src/components/todo/api/HelloWorldApiService.js New
-
-```js
-import axios from 'axios'
-
-// export function retrieveHelloWorldBean(){
-//     return axios.get('http://localhost:8080/hello-world-bean')
-// }
-
-export const retrieveHelloWorldBean 
-    = () => axios.get('http://localhost:8080/hello-world-bean')
-```
----
 
 ### /02-rest-api/pom.xml New
 
@@ -1603,21 +1562,6 @@ public class RestfulWebServicesApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(RestfulWebServicesApplication.class, args);
-    }
-    
-    //http://localhost:3000/ to 8080
-    //Cross Origin Requests
-    //Allow all requests only from http://localhost:3000/
-    
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                    .allowedMethods("*")
-                    .allowedOrigins("http://localhost:3000");
-            }
-        };
     }
 
 }
@@ -1845,8 +1789,114 @@ class RestfulWebServicesApplicationTests {
 
 }
 ```
+
+
+## Step03.md
+
+### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/RestfulWebServicesApplication.java New
+
+```java
+package com.in28minutes.rest.webservices.restfulwebservices;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@SpringBootApplication
+public class RestfulWebServicesApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(RestfulWebServicesApplication.class, args);
+    }
+    
+    //http://localhost:3000/ to 8080
+    //Cross Origin Requests
+    //Allow all requests only from http://localhost:3000/
+    
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                    .allowedMethods("*")
+                    .allowedOrigins("http://localhost:3000");
+            }
+        };
+    }
+
+}
+```
+
+## Step05.md
+
+### /01-frontend/todo-app/package.json Modified
+New Lines
+```
+    "axios": "^1.1.3",
+```
+
+### /01-frontend/todo-app/src/components/todo/WelcomeComponent.jsx Modified
+New Lines
+```
+import { useState } from 'react'
+import { retrieveHelloWorldBean } from './api/HelloWorldApiService'
+
+function WelcomeComponent() {
+
+    const {username } = useParams()
+
+    const [message, setMessage] = useState(null)
+
+    function callHelloWorldRestApi(){
+        console.log('called')
+        
+
+        // axios.get('http://localhost:8080/hello-world')
+        //     .then( (response) => successfulResponse(response) )
+        //     .catch ( (error) => errorResponse(error) )
+        //     .finally ( () => console.log('cleanup') )
+
+        retrieveHelloWorldBean()
+            .then( (response) => successfulResponse(response) )
+            .catch ( (error) => errorResponse(error) )
+            .finally ( () => console.log('cleanup') )
+
+    }
+
+    function successfulResponse(response) {
+        console.log(response)
+        //setMessage(response.data)
+        setMessage(response.data.message)
+    }
+
+    function errorResponse(error) {
+        console.log(error)
+    }
+
+    <button className="btn btn-success m-5" onClick={callHelloWorldRestApi}>
+        Call Hello World</button>
+    
+    <div className="text-info">{message}</div>
+```
+
+### /01-frontend/todo-app/src/components/todo/api/HelloWorldApiService.js New
+
+```js
+import axios from 'axios'
+
+// export function retrieveHelloWorldBean(){
+//     return axios.get('http://localhost:8080/hello-world-bean')
+// }
+
+export const retrieveHelloWorldBean 
+    = () => axios.get('http://localhost:8080/hello-world-bean')
+```
 ---
-## Step73.md
+
+
+## Step06.md
 
 ### /01-frontend/todo-app/src/components/todo/WelcomeComponent.jsx Modified
 New Lines
@@ -1886,7 +1936,7 @@ export const retrieveHelloWorldPathVariable
 
 ---
 
-## Step74.md
+## Step09.md
 
 ### /01-frontend/todo-app/src/components/todo/ListTodosComponent.jsx Modified
 New Lines
@@ -1981,7 +2031,7 @@ public class TodoResource {
 ```
 ---
 
-## Step77-delete.md
+## Step10.md
 
 ### /01-frontend/todo-app/src/components/todo/ListTodosComponent.jsx Modified
 New Lines
@@ -2047,7 +2097,7 @@ export const deleteTodoApi
 
 ---
 
-## Step78-refactor.md
+## Step11.md
 
 ### /01-frontend/todo-app/src/components/todo/ListTodosComponent.jsx Modified
 New Lines
@@ -2094,7 +2144,7 @@ export default function AuthProvider({ children }) {
 ```
 ---
 
-## Step79-todo-1.md
+## Step12.md
 
 ### /01-frontend/todo-app/src/components/todo/ListTodosComponent.jsx Modified
 New Lines
@@ -2178,7 +2228,7 @@ export const retrieveTodoApi
 
 ---
 
-## Step82-create-update-backend-api.md
+## Step15.md
 
 TODO : Should we use moment?
 
@@ -2323,7 +2373,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 ```
 ---
 
-## Step83.md
+## Step16.md
 
 ### /01-frontend/todo-app/src/components/todo/TodoComponent.jsx Modified
 New Lines
@@ -2360,7 +2410,7 @@ export const updateTodoApi
 ```
 ---
 
-## Step84-end-new-todo.md
+## Step17.md
 
 ### /01-frontend/todo-app/src/components/todo/ListTodosComponent.jsx Modified
 New Lines
@@ -2433,7 +2483,7 @@ export const createTodoApi
     = (username,  todo) => apiClient.post(`/users/${username}/todos`, todo)
 ```
 
-## Step92.md
+## Step19.md
 
 ### /01-frontend/todo-app/src/components/todo/api/HelloWorldApiService.js Modified
 New Lines
@@ -2508,7 +2558,7 @@ spring.security.user.name=in28minutes
 spring.security.user.password=dummy
 ```
 
-## Step94.md
+## Step21.md
 
 ### /01-frontend/todo-app/src/components/todo/api/HelloWorldApiService.js Modified
 New Lines
@@ -2586,7 +2636,7 @@ public class HelloWorldController {
 ```
 ---
 
-## Step95.md
+## Step22.md
 
 ### /01-frontend/todo-app/src/components/todo/LoginComponent.jsx Modified
 New Lines
@@ -2641,7 +2691,7 @@ export default function AuthProvider({ children }) {
 ```
 ---
 
-## Step96.md
+## Step23.md
 
 ### /01-frontend/todo-app/src/components/todo/WelcomeComponent.jsx Modified
 New Lines
@@ -2666,7 +2716,7 @@ export const retrieveHelloWorldPathVariable
 ```
 ---
 
-## Step97.md
+## Step24.md
 
 ### /01-frontend/todo-app/src/components/todo/api/ApiClient.js New
 
@@ -2736,7 +2786,7 @@ export default function AuthProvider({ children }) {
 ```
 ---
 
-## Step98.md
+## Step25.md
 
 ### /02-rest-api/pom.xml Modified
 New Lines
@@ -3033,9 +3083,7 @@ public class JwtTokenService {
 }
 ```
 
----
-
-## Step99z.md
+## Step26.md
 
 ### /01-frontend/todo-app/src/components/todo/api/AuthenticationApiService.js New
 
