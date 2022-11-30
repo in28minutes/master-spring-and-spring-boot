@@ -1,8 +1,26 @@
 # Section 01
 
-## Step15.md
+## Building Java Full Stack Application with Spring Boot and React
 
-##### /01-frontend/todo-app/src/App.css
+### Step 15
+
+- Step 01 - Getting Started - Full Stack Spring Boot and React Application
+- Step 02 - Exploring What and Why of Full Stack Architectures
+- Step 03 - Understanding JavaScript and EcmaScript History
+- Step 04 - Installing Visual Studio Code
+- Step 05 - Installing nodejs and npm
+- Step 06 - Creating React App with Create React App
+- Step 07 - Exploring Important nodejs Commands - Create React App
+- Step 08 - Exploring Visual Studio Code and Create React App
+- Step 09 - Exploring Create React App Folder Structure
+- Step 10 - Getting started with React Components
+- Step 11 - Creating Your First React Component and more
+- Step 12 - Getting Started with State in React - useState hook
+- Step 13 - Exploring JSX - React Views
+- Step 14 - Following JavaScript Best Practices - Refactoring to Modules
+- Step 15 - Exploring JavaScript further
+
+#### /01-frontend/todo-app/src/App.css
 
 ```css
 .App {
@@ -13,7 +31,7 @@
 ```
 ---
 
-##### /01-frontend/todo-app/src/App.js
+#### /01-frontend/todo-app/src/App.js
 
 ```js
 import './App.css';
@@ -32,7 +50,7 @@ export default App;
 
 ---
 
-##### /01-frontend/todo-app/src/components/learning-examples/FirstComponent.jsx
+#### /01-frontend/todo-app/src/components/learning-examples/FirstComponent.jsx
 
 ```
 export default function FirstComponent() {
@@ -50,7 +68,7 @@ export function FifthComponent() {
 ```
 ---
 
-##### /01-frontend/todo-app/src/components/learning-examples/FourthComponent.jsx
+#### /01-frontend/todo-app/src/components/learning-examples/FourthComponent.jsx
 
 ```
 import {Component} from 'react'
@@ -68,7 +86,7 @@ export default class FourthComponent extends Component{
 ```
 ---
 
-##### /01-frontend/todo-app/src/components/learning-examples/LearningComponent.jsx
+#### /01-frontend/todo-app/src/components/learning-examples/LearningComponent.jsx
 
 ```
 import FirstComponent from './FirstComponent'
@@ -94,7 +112,7 @@ export default function LearningComponent() {
 ```
 ---
 
-##### /01-frontend/todo-app/src/components/learning-examples/LearningJavaScript.jsx
+#### /01-frontend/todo-app/src/components/learning-examples/LearningJavaScript.jsx
 
 ```
 const person = {
@@ -125,7 +143,7 @@ export default function LearningJavaScript(){
 ```
 ---
 
-##### /01-frontend/todo-app/src/components/learning-examples/SecondComponent.jsx
+#### /01-frontend/todo-app/src/components/learning-examples/SecondComponent.jsx
 
 ```
 export default function SecondComponent() {
@@ -136,7 +154,7 @@ export default function SecondComponent() {
 ```
 ---
 
-##### /01-frontend/todo-app/src/components/learning-examples/ThirdComponent.jsx
+#### /01-frontend/todo-app/src/components/learning-examples/ThirdComponent.jsx
 
 ```
 import {Component} from 'react'
@@ -151,7 +169,7 @@ export default class ThirdComponent extends Component{
 ```
 ---
 
-##### /01-frontend/todo-app/src/index.css
+#### /01-frontend/todo-app/src/index.css
 
 ```css
 body {
@@ -171,7 +189,7 @@ code {
 ```
 ---
 
-##### /01-frontend/todo-app/src/index.js
+#### /01-frontend/todo-app/src/index.js
 
 ```js
 import React from 'react';
@@ -195,9 +213,20 @@ reportWebVitals();
 
 # Section 02
 
-## Step07.md
+## Exploring React Components with Counter Example
 
-### /01-frontend/todo-app/src/App.js Modified
+### Step 07
+
+- Step 01 - Exploring React Components with Counter Example
+- Step 02 - Getting Started with React Application - Counter
+- Step 03 - Getting Started with React Application - Counter - 2
+- Step 04 - Exploring React State with useState hook - Adding state to Counter
+- Step 05 - Exploring React State - What is happening in Background?
+- Step 06 - Exploring React Props - Setting Counter increment value
+- Step 07 - Creating Multiple Counter Buttons
+
+
+#### /01-frontend/todo-app/src/App.js Modified
 
 ```js
 import './App.css';
@@ -239,7 +268,7 @@ export default App;
 ```
 ---
 
-### /01-frontend/todo-app/src/components/counter/Counter.css New
+#### /01-frontend/todo-app/src/components/counter/Counter.css New
 
 ```css
 /* const buttonStyle = {
@@ -273,7 +302,7 @@ export default App;
 ```
 ---
 
-### /01-frontend/todo-app/src/components/counter/Counter.jsx New
+#### /01-frontend/todo-app/src/components/counter/Counter.jsx New
 
 ```
 import { useState } from 'react'
@@ -319,17 +348,19 @@ Counter.defaultProps = {
 }
 ```
 
-## Step08.md
+### Step 08
 
-### /01-frontend/todo-app/src/App.js Modified
-New Lines
+- Step 08 - Moving React State Up - Setting up Counter and Counter Button
+
+#### /01-frontend/todo-app/src/App.js Modified
+
 ```
       <Counter/>
 ```
 ---
 
-### /01-frontend/todo-app/src/components/counter/Counter.css Modified
-New Lines
+#### /01-frontend/todo-app/src/components/counter/Counter.css Modified
+
 ```
 .counterButton {
     font-size:16px;
@@ -354,8 +385,8 @@ New Lines
     font-size: 150px;
 }
 ```
-### /01-frontend/todo-app/src/components/counter/Counter.jsx Modified
-New Lines
+#### /01-frontend/todo-app/src/components/counter/Counter.jsx Modified
+
 ```
 
 export default function Counter() {
@@ -396,10 +427,12 @@ CounterButton.defaultProps = {
 }
 ```
 
-## Step09.md
+### Step 09
 
-### /01-frontend/todo-app/src/components/counter/Counter.jsx Modified
-New Lines
+- Step 09 - Moving React State Up - Calling Parent Component Methods
+
+#### /01-frontend/todo-app/src/components/counter/Counter.jsx Modified
+
 ```
     function decrementCounterParentFunction(by) {
         setCount(count - by)
@@ -432,10 +465,13 @@ function CounterButton({by, incrementMethod, decrementMethod}) {
     }
 ```
 
-## Step11.md
+### Step 11
 
-### /01-frontend/todo-app/src/components/counter/Counter.css Modified
-New Lines
+- Step 10 - Exploring React Developer Tools
+- Step 11 - Adding Reset Button to Counter
+
+#### /01-frontend/todo-app/src/components/counter/Counter.css Modified
+
 ```
 button {
 }
@@ -444,8 +480,8 @@ button {
     background-color: #824f8c;
 }
 ```
-### /01-frontend/todo-app/src/components/counter/Counter.jsx Modified
-New Lines
+#### /01-frontend/todo-app/src/components/counter/Counter.jsx Modified
+
 ```
 import CounterButton from './CounterButton'
 
@@ -456,7 +492,7 @@ function resetCounter() {
 <button className="resetButton" onClick={resetCounter}>Reset</button>
 ```
 
-### /01-frontend/todo-app/src/components/counter/CounterButton.jsx New
+#### /01-frontend/todo-app/src/components/counter/CounterButton.jsx New
 
 ```
 import { useState } from 'react'
@@ -504,10 +540,12 @@ CounterButton.defaultProps = {
 ```
 ---
 
-## Step12.md
+### Step 12
 
-### /01-frontend/todo-app/src/App.js Modified
-New Lines
+- Step 12 - Refactoring React Counter Component
+
+#### /01-frontend/todo-app/src/App.js Modified
+
 ```
 // function PlayingWithProps( {property1, property2} ) {
 //   console.log(property1)
@@ -515,8 +553,8 @@ New Lines
 ```
 
 ---
-### /01-frontend/todo-app/src/components/counter/CounterButton.jsx Modified
-New Lines
+#### /01-frontend/todo-app/src/components/counter/CounterButton.jsx Modified
+
 ```
 export default function CounterButton({by, incrementMethod, decrementMethod}) {
     return (
@@ -538,10 +576,16 @@ export default function CounterButton({by, incrementMethod, decrementMethod}) {
 
 # Section 03
 
-## Step02.md
+## Building Java Todo Full Stack Application with Spring Boot and React
 
-### /01-frontend/todo-app/src/App.js Modified
-New Lines
+### Step 02
+
+- Step 01 - Getting Started with React Todo Management App
+- Step 02 - Getting Started with Login Component - Todo React App
+
+
+#### /01-frontend/todo-app/src/App.js Modified
+
 ```
 import TodoApp from './components/todo/TodoApp'
 
@@ -555,7 +599,7 @@ function App() {
 
 ```
 
-### /01-frontend/todo-app/src/components/todo/TodoApp.jsx New
+#### /01-frontend/todo-app/src/components/todo/TodoApp.jsx New
 
 ```
 export default function TodoApp() {
@@ -597,9 +641,12 @@ function WelcomeComponent() {
 ```
 ---
 
-## Step04.md
+### Step 04
 
-### /01-frontend/todo-app/src/components/todo/TodoApp.css New
+- Step 03 - Improving Login Component Further - Todo React App
+- Step 04 - Adding Hardcoded Authentication - Todo React App
+
+#### /01-frontend/todo-app/src/components/todo/TodoApp.css New
 
 ```css
 label, input, button {
@@ -609,8 +656,8 @@ label, input, button {
 ```
 ---
 
-### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
+
 ```
 import { useState } from 'react'
 import './TodoApp.css'
@@ -666,25 +713,30 @@ function ErrorMessageComponent() {
 <button type="button" name="login" onClick={handleSubmit}>login</button>
 ```
 
-## Step05.md
+### Step 05
 
-### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
-New Lines
+- Step 05 - Conditionally Displaying Messages in Login Component - Todo React App
+
+
+#### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
+
 ```
 {showSuccessMessage && <div className="successMessage">Authenticated Successfully</div>}
 {showErrorMessage && <div className="errorMessage">Authentication Failed. 
                                                 Please check your credentials.</div>}
 ```
 
-## Step06.md
+### Step 06
 
-### /01-frontend/todo-app/package.json Modified
-New Lines
+- Step 06 - Adding React Router Dom and Routing from Login to Welcome Component
+
+#### /01-frontend/todo-app/package.json Modified
+
 ```
     "react-router-dom": "^6.4.3",
 ```
-### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
+
 ```
 import {BrowserRouter, Routes, Route, useNavigate} from 'react-router-dom'
 <BrowserRouter>
@@ -699,10 +751,13 @@ import {BrowserRouter, Routes, Route, useNavigate} from 'react-router-dom'
 const navigate = useNavigate();
 navigate('/welcome')
 ```
-## Step07.md
+### Step 07
 
-### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
-New Lines
+- Step 07 - Adding Error Component to our React App
+
+
+#### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
+
 ```
 <Route path='*' element={<ErrorComponent /> }></Route>
 
@@ -736,10 +791,12 @@ function ErrorComponent() {
 
 ```
 
-## Step08.md
+### Step 08
 
-### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
-New Lines
+- Step 08 - Removing Hard Coding from Welcome Component
+
+#### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
+
 ```
 import {BrowserRouter, Routes, Route, useNavigate, useParams} from 'react-router-dom'
 
@@ -765,10 +822,13 @@ function WelcomeComponent() {
 }
 ```
 
-## Step09.md
+### Step 09
 
-### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
-New Lines
+- Step 09 - Getting Started with React List Todo Component
+
+
+#### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
+
 ```
 export default function TodoApp() {
     return (
@@ -826,10 +886,13 @@ function ListTodosComponent() {
 }
 
 ```
-## Step10.md
+### Step 10
 
-### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
-New Lines
+- Step 10 - Displaying More Todo Details in React List Todo Component
+
+
+#### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
+
 ```
 import {BrowserRouter, Routes, Route, useNavigate, useParams, Link} from 'react-router-dom'
 
@@ -896,10 +959,13 @@ function ListTodosComponent() {
 }
 
 ```
-## Step11.md
+### Step 11
 
-### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
-New Lines
+- Step 11 - Creating React Header, Footer and Logout Components
+
+
+#### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
+
 ```
 <HeaderComponent />            
 <Route path='/logout' element={<LogoutComponent /> } />                    
@@ -933,15 +999,18 @@ function LogoutComponent() {
 }
 
 ```
-## Step12.md
+### Step 12
 
-### /01-frontend/todo-app/package.json Modified
-New Lines
+- Step 12 - Adding Bootstrap to React Front End Application
+
+
+#### /01-frontend/todo-app/package.json Modified
+
 ```
     "bootstrap": "^5.2.2",
 ```
-### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
+
 ```
 function ListTodosComponent() {
 
@@ -949,17 +1018,20 @@ function ListTodosComponent() {
                 <table className="table">
 ```
 
-### /01-frontend/todo-app/src/index.js Modified
-New Lines
+#### /01-frontend/todo-app/src/index.js Modified
+
 ```
 import 'bootstrap/dist/css/bootstrap.min.css';
 ```
 ---
 
-## Step13.md
+### Step 13
 
-### /01-frontend/todo-app/src/components/todo/TodoApp.css Modified
-New Lines
+- Step 13 - Using Bootstrap to Style Todo React Front End Application
+
+
+#### /01-frontend/todo-app/src/components/todo/TodoApp.css Modified
+
 ```
 footer {
     bottom: 0;
@@ -967,8 +1039,8 @@ footer {
     width: 90%;
     height: 40px;
 ```
-### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
+
 ```
 <header className="border-bottom border-light border-5 mb-5 p-2">
     <div className="container">
@@ -993,9 +1065,12 @@ New Lines
 </footer>
 ```
 
-## Step14.md
+### Step 14
 
-### /01-frontend/todo-app/src/components/todo/ErrorComponent.jsx New
+- Step 14 - Refactoring React Components to Individual JavaScript Modules
+
+
+#### /01-frontend/todo-app/src/components/todo/ErrorComponent.jsx New
 
 ```
 function ErrorComponent() {
@@ -1013,7 +1088,7 @@ export default ErrorComponent
 ```
 ---
 
-### /01-frontend/todo-app/src/components/todo/FooterComponent.jsx New
+#### /01-frontend/todo-app/src/components/todo/FooterComponent.jsx New
 
 ```
 function FooterComponent() {
@@ -1030,7 +1105,7 @@ export default FooterComponent
 ```
 ---
 
-### /01-frontend/todo-app/src/components/todo/HeaderComponent.jsx New
+#### /01-frontend/todo-app/src/components/todo/HeaderComponent.jsx New
 
 ```
 import {Link} from 'react-router-dom'
@@ -1065,7 +1140,7 @@ export default HeaderComponent
 ```
 ---
 
-### /01-frontend/todo-app/src/components/todo/ListTodosComponent.jsx New
+#### /01-frontend/todo-app/src/components/todo/ListTodosComponent.jsx New
 
 ```
 function ListTodosComponent() {
@@ -1119,7 +1194,7 @@ export default ListTodosComponent
 ```
 ---
 
-### /01-frontend/todo-app/src/components/todo/LoginComponent.jsx New
+#### /01-frontend/todo-app/src/components/todo/LoginComponent.jsx New
 
 ```
 import { useState } from 'react'
@@ -1185,7 +1260,7 @@ export default LoginComponent
 ```
 ---
 
-### /01-frontend/todo-app/src/components/todo/LogoutComponent.jsx New
+#### /01-frontend/todo-app/src/components/todo/LogoutComponent.jsx New
 
 ```
 function LogoutComponent() {
@@ -1203,8 +1278,8 @@ export default LogoutComponent
 ```
 ---
 
-### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
+
 ```
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import LogoutComponent from './LogoutComponent'
@@ -1214,7 +1289,7 @@ import ErrorComponent from './ErrorComponent'
 import WelcomeComponent from './WelcomeComponent'
 import LoginComponent from './LoginComponent'
 ```
-### /01-frontend/todo-app/src/components/todo/WelcomeComponent.jsx New
+#### /01-frontend/todo-app/src/components/todo/WelcomeComponent.jsx New
 
 ```
 import {useParams, Link} from 'react-router-dom'
@@ -1239,10 +1314,14 @@ export default WelcomeComponent
 ```
 ---
 
-## Step16.md
+### Step 16
 
-### /01-frontend/todo-app/src/components/todo/FooterComponent.jsx Modified
-New Lines
+- Step 15 - Sharing React State with Multiple Components with Auth Context
+- Step 16 - Updating React State and Verifying Updates through Auth Context
+
+
+#### /01-frontend/todo-app/src/components/todo/FooterComponent.jsx Modified
+
 ```
 import { useContext } from "react";
 import { AuthContext } from "./security/AuthContext";
@@ -1250,8 +1329,8 @@ import { AuthContext } from "./security/AuthContext";
 const authContext = useContext(AuthContext)
 console.log(`Footer component - ${authContext.number}`);
 ```
-### /01-frontend/todo-app/src/components/todo/HeaderComponent.jsx Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/HeaderComponent.jsx Modified
+
 ```
 import { useAuth } from './security/AuthContext'
 
@@ -1261,8 +1340,8 @@ const authContext = useAuth()
 //console.log(authContext.number);
     
 ```
-### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
+
 ```
 import AuthProvider from './security/AuthContext'
 <AuthProvider>
@@ -1270,7 +1349,7 @@ import AuthProvider from './security/AuthContext'
 </AuthProvider>
 ```
 
-### /01-frontend/todo-app/src/components/todo/security/AuthContext.js New
+#### /01-frontend/todo-app/src/components/todo/security/AuthContext.js New
 
 ```js
 import { createContext, useContext, useState } from "react";
@@ -1298,10 +1377,13 @@ export default function AuthProvider({ children }) {
 ```
 ---
 
-## Step17.md
+### Step 17
 
-### /01-frontend/todo-app/src/components/todo/HeaderComponent.jsx Modified
-New Lines
+- Step 17 - Setting isAuthenticated into React State - Auth Context
+
+
+#### /01-frontend/todo-app/src/components/todo/HeaderComponent.jsx Modified
+
 ```
 function HeaderComponent() {
 
@@ -1325,8 +1407,8 @@ function HeaderComponent() {
         <Link className="nav-link" to="/login">Login</Link> }
 </li>
 ```
-### /01-frontend/todo-app/src/components/todo/LoginComponent.jsx Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/LoginComponent.jsx Modified
+
 ```
 import { useAuth } from './security/AuthContext'
 
@@ -1342,8 +1424,8 @@ function LoginComponent() {
             authContext.setAuthenticated(false)
 
 ```
-### /01-frontend/todo-app/src/components/todo/security/AuthContext.js Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/security/AuthContext.js Modified
+
 ```
 import { createContext, useContext, useState } from "react";
 
@@ -1373,10 +1455,13 @@ export default function AuthProvider({ children }) {
 ```
 ---
 
-## Step18.md
+### Step 18
 
-### /01-frontend/todo-app/src/components/todo/HeaderComponent.jsx Modified
-New Lines
+- Step 18 - Protecting Secure React Routes using Authenticated Route - 1
+
+
+#### /01-frontend/todo-app/src/components/todo/HeaderComponent.jsx Modified
+
 ```
 function HeaderComponent() {
 
@@ -1388,8 +1473,8 @@ function HeaderComponent() {
     }
 
 ```
-### /01-frontend/todo-app/src/components/todo/LoginComponent.jsx Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/LoginComponent.jsx Modified
+
 ```
 function LoginComponent() {
 
@@ -1402,8 +1487,8 @@ function LoginComponent() {
         }
 
 ```
-### /01-frontend/todo-app/src/components/todo/security/AuthContext.js Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/security/AuthContext.js Modified
+
 ```
     function login(username, password) {
         if(username==='in28minutes' && password==='dummy'){
@@ -1423,10 +1508,13 @@ New Lines
 
 ---
 
-## Step19.md
+### Step 19
 
-### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
-New Lines
+- Step 19 - Protecting Secure React Routes using Authenticated Route - 2
+
+
+#### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
+
 ```
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 import AuthProvider, { useAuth } from './security/AuthContext'
@@ -1461,10 +1549,14 @@ function AuthenticatedRoute({children}) {
 
 # Section 04
 
-## Step02.md
+## Connecting Spring Boot REST API with React Frontend - Java Full Stack Application
+
+### Step 01
+
+- Step 01 - Setting Todo REST API Project for React Full Stack Application
 
 
-### /02-rest-api/pom.xml New
+#### /02-rest-api/pom.xml New
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -1546,7 +1638,7 @@ function AuthenticatedRoute({children}) {
 ```
 ---
 
-### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/RestfulWebServicesApplication.java New
+#### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/RestfulWebServicesApplication.java New
 
 ```java
 package com.in28minutes.rest.webservices.restfulwebservices;
@@ -1568,7 +1660,7 @@ public class RestfulWebServicesApplication {
 ```
 ---
 
-### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/helloworld/HelloWorldBean.java New
+#### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/helloworld/HelloWorldBean.java New
 
 ```java
 package com.in28minutes.rest.webservices.restfulwebservices.helloworld;
@@ -1597,7 +1689,7 @@ public class HelloWorldBean {
 ```
 ---
 
-### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/helloworld/HelloWorldController.java New
+#### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/helloworld/HelloWorldController.java New
 
 ```java
 package com.in28minutes.rest.webservices.restfulwebservices.helloworld;
@@ -1627,7 +1719,7 @@ public class HelloWorldController {
 ```
 ---
 
-### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/todo/Todo.java New
+#### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/todo/Todo.java New
 
 ```java
 package com.in28minutes.rest.webservices.restfulwebservices.todo;
@@ -1707,7 +1799,7 @@ public class Todo {
 ```
 ---
 
-### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/todo/TodoService.java New
+#### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/todo/TodoService.java New
 
 ```java
 package com.in28minutes.rest.webservices.restfulwebservices.todo;
@@ -1765,14 +1857,14 @@ public class TodoService {
 ```
 ---
 
-### /02-rest-api/src/main/resources/application.properties New
+#### /02-rest-api/src/main/resources/application.properties New
 
 ```properties
 logging.level.org.springframework=info
 ```
 ---
 
-### /02-rest-api/src/test/java/com/in28minutes/rest/webservices/restfulwebservices/RestfulWebServicesApplicationTests.java New
+#### /02-rest-api/src/test/java/com/in28minutes/rest/webservices/restfulwebservices/RestfulWebServicesApplicationTests.java New
 
 ```java
 package com.in28minutes.rest.webservices.restfulwebservices;
@@ -1790,10 +1882,62 @@ class RestfulWebServicesApplicationTests {
 }
 ```
 
+### Step 02
 
-## Step03.md
+- Step 02 - Calling Spring Boot Hello World REST API from React Hello World Component
 
-### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/RestfulWebServicesApplication.java New
+
+#### /01-frontend/todo-app/package.json Modified
+
+```
+    "axios": "^1.1.3",
+```
+
+#### /01-frontend/todo-app/src/components/todo/WelcomeComponent.jsx Modified
+
+```
+import { useState } from 'react'
+import { retrieveHelloWorldBean } from './api/HelloWorldApiService'
+
+function WelcomeComponent() {
+
+    const {username } = useParams()
+
+    const [message, setMessage] = useState(null)
+
+    function callHelloWorldRestApi(){
+        console.log('called')
+        
+
+        axios.get('http://localhost:8080/hello-world')
+            .then( (response) => successfulResponse(response) )
+            .catch ( (error) => errorResponse(error) )
+            .finally ( () => console.log('cleanup') )
+
+    }
+
+    function successfulResponse(response) {
+        console.log(response)
+        setMessage(response.data)
+        //setMessage(response.data.message)
+    }
+
+    function errorResponse(error) {
+        console.log(error)
+    }
+
+    <button className="btn btn-success m-5" onClick={callHelloWorldRestApi}>
+        Call Hello World</button>
+    
+    <div className="text-info">{message}</div>
+```
+
+
+### Step 03
+
+- Step 03 - Enabling CORS Requests for Spring Boot REST API
+
+#### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/RestfulWebServicesApplication.java New
 
 ```java
 package com.in28minutes.rest.webservices.restfulwebservices;
@@ -1829,16 +1973,15 @@ public class RestfulWebServicesApplication {
 }
 ```
 
-## Step05.md
+### Step 05
 
-### /01-frontend/todo-app/package.json Modified
-New Lines
-```
-    "axios": "^1.1.3",
-```
+- Step 04 - Invoking Spring Boot Hello World Bean and Path Param REST API from React
+- Step 05 - Refactoring Spring Boot REST API Invocation Code to New Module
 
-### /01-frontend/todo-app/src/components/todo/WelcomeComponent.jsx Modified
-New Lines
+
+
+#### /01-frontend/todo-app/src/components/todo/WelcomeComponent.jsx Modified
+
 ```
 import { useState } from 'react'
 import { retrieveHelloWorldBean } from './api/HelloWorldApiService'
@@ -1881,7 +2024,7 @@ function WelcomeComponent() {
     <div className="text-info">{message}</div>
 ```
 
-### /01-frontend/todo-app/src/components/todo/api/HelloWorldApiService.js New
+#### /01-frontend/todo-app/src/components/todo/api/HelloWorldApiService.js New
 
 ```js
 import axios from 'axios'
@@ -1896,10 +2039,12 @@ export const retrieveHelloWorldBean
 ---
 
 
-## Step06.md
+### Step 06
 
-### /01-frontend/todo-app/src/components/todo/WelcomeComponent.jsx Modified
-New Lines
+- Step 06 - Following Axios Best Practices in Spring Boot REST API
+
+#### /01-frontend/todo-app/src/components/todo/WelcomeComponent.jsx Modified
+
 ```
 import { retrieveHelloWorldPathVariable } from './api/HelloWorldApiService'
               
@@ -1911,8 +2056,8 @@ function callHelloWorldRestApi(){
         .catch ( (error) => errorResponse(error) )
         .finally ( () => console.log('cleanup') )
 ```
-### /01-frontend/todo-app/src/components/todo/api/HelloWorldApiService.js Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/api/HelloWorldApiService.js Modified
+
 ```
 import axios from 'axios'
 
@@ -1936,58 +2081,14 @@ export const retrieveHelloWorldPathVariable
 
 ---
 
-## Step09.md
+### Step 09
 
-### /01-frontend/todo-app/src/components/todo/ListTodosComponent.jsx Modified
-New Lines
-```
+- Step 07 - Creating Retrieve Todos Spring Boot REST API Get Method
+- Step 08 - Displaying Todos from Spring Boot REST API in React App
+- Step 09 - Creating Retrieve Todo and Delete Todo Spring Boot REST API Methods
 
-import { useEffect, useState } from "react"
-import { retrieveAllTodosForUsername } from "./api/TodoApiService"
 
-function ListTodosComponent() {
-
-    const today = new Date()
-    
-    const targetDate = new Date(today.getFullYear()+12, today.getMonth(), today.getDay())
-
-    const [todos,setTodos] = useState([])
-    
-    useEffect ( () => refreshTodos(), [])
-
-    function refreshTodos() {
-        
-        retrieveAllTodosForUsername('in28minutes')
-        .then(response => {
-            setTodos(response.data)
-        }
-            
-        )
-        .catch(error => console.log(error))
-    
-    }
-
-    {/* <td>{todo.targetDate.toDateString()}</td> */}
-    <td>{todo.targetDate.toString()}</td>
-```
-### /01-frontend/todo-app/src/components/todo/api/TodoApiService.js New
-
-```js
-import axios from 'axios'
-
-const apiClient = axios.create(
-    {
-        baseURL: 'http://localhost:8080'
-    }
-);
-
-export const retrieveAllTodosForUsername
-    = (username) => apiClient.get(`/users/${username}/todos`)
-    //http://localhost:8080/users/in28minutes/todos
-```
----
-
-### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/todo/TodoResource.java New
+#### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/todo/TodoResource.java New
 
 ```java
 package com.in28minutes.rest.webservices.restfulwebservices.todo;
@@ -2029,12 +2130,64 @@ public class TodoResource {
 
 }
 ```
+
+#### /01-frontend/todo-app/src/components/todo/ListTodosComponent.jsx Modified
+
+```
+
+import { useEffect, useState } from "react"
+import { retrieveAllTodosForUsername } from "./api/TodoApiService"
+
+function ListTodosComponent() {
+
+    const today = new Date()
+    
+    const targetDate = new Date(today.getFullYear()+12, today.getMonth(), today.getDay())
+
+    const [todos,setTodos] = useState([])
+    
+    useEffect ( () => refreshTodos(), [])
+
+    function refreshTodos() {
+        
+        retrieveAllTodosForUsername('in28minutes')
+        .then(response => {
+            setTodos(response.data)
+        }
+            
+        )
+        .catch(error => console.log(error))
+    
+    }
+
+    {/* <td>{todo.targetDate.toDateString()}</td> */}
+    <td>{todo.targetDate.toString()}</td>
+```
+#### /01-frontend/todo-app/src/components/todo/api/TodoApiService.js New
+
+```js
+import axios from 'axios'
+
+const apiClient = axios.create(
+    {
+        baseURL: 'http://localhost:8080'
+    }
+);
+
+export const retrieveAllTodosForUsername
+    = (username) => apiClient.get(`/users/${username}/todos`)
+    //http://localhost:8080/users/in28minutes/todos
+```
 ---
 
-## Step10.md
+---
 
-### /01-frontend/todo-app/src/components/todo/ListTodosComponent.jsx Modified
-New Lines
+### Step 10
+
+- Step 10 - Adding Delete Feature to React Frontend
+
+#### /01-frontend/todo-app/src/components/todo/ListTodosComponent.jsx Modified
+
 ```
 import { retrieveAllTodosForUsernameApi, deleteTodoApi } from "./api/TodoApiService"
 
@@ -2083,8 +2236,8 @@ function ListTodosComponent() {
       <td> <button className="btn btn-warning" 
                       onClick={() => deleteTodo(todo.id)}>Delete</button> </td>
 ```
-### /01-frontend/todo-app/src/components/todo/api/TodoApiService.js Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/api/TodoApiService.js Modified
+
 ```
 export const retrieveAllTodosForUsernameApi
     = (username) => apiClient.get(`/users/${username}/todos`)
@@ -2097,10 +2250,12 @@ export const deleteTodoApi
 
 ---
 
-## Step11.md
+### Step 11
 
-### /01-frontend/todo-app/src/components/todo/ListTodosComponent.jsx Modified
-New Lines
+- Step 11 - Setting Username into React Auth Context
+
+#### /01-frontend/todo-app/src/components/todo/ListTodosComponent.jsx Modified
+
 ```
 import { useAuth } from "./security/AuthContext"
 
@@ -2119,8 +2274,8 @@ function ListTodosComponent() {
         console.log('clicked ' + id)
         deleteTodoApi(username, id)
 ```
-### /01-frontend/todo-app/src/components/todo/security/AuthContext.js Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/security/AuthContext.js Modified
+
 ```
 export default function AuthProvider({ children }) {
 
@@ -2144,10 +2299,12 @@ export default function AuthProvider({ children }) {
 ```
 ---
 
-## Step12.md
+### Step 12
 
-### /01-frontend/todo-app/src/components/todo/ListTodosComponent.jsx Modified
-New Lines
+- Step 12 - Creating Todo React Component to display Todo Page
+
+#### /01-frontend/todo-app/src/components/todo/ListTodosComponent.jsx Modified
+
 ```
 import {useNavigate} from 'react-router-dom'
 
@@ -2164,15 +2321,15 @@ function LoginComponent() {
 <td> <button className="btn btn-success" 
                 onClick={() => updateTodo(todo.id)}>Update</button> </td>
 ```
-### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/TodoApp.jsx Modified
+
 ```
 import TodoComponent from './TodoComponent'
 <Route path='/todo/:id' element={
                                 <TodoComponent /> 
   
 ```
-### /01-frontend/todo-app/src/components/todo/TodoComponent.jsx New
+#### /01-frontend/todo-app/src/components/todo/TodoComponent.jsx New
 
 ```
 import { useEffect, useState } from 'react'
@@ -2219,8 +2376,8 @@ export default function TodoComponent() {
 ```
 ---
 
-### /01-frontend/todo-app/src/components/todo/api/TodoApiService.js Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/api/TodoApiService.js Modified
+
 ```
 export const retrieveTodoApi
     = (username, id) => apiClient.get(`/users/${username}/todos/${id}`)
@@ -2228,22 +2385,23 @@ export const retrieveTodoApi
 
 ---
 
-## Step15.md
+### Step 14
 
-TODO : Should we use moment?
+- Step 13 - Adding Formik and Moment Libraries to Display Todo React Component
+- Step 14 - Adding Validation to Todo React Component using Formik
 
-### /01-frontend/todo-app/package.json Modified
-New Lines
+#### /01-frontend/todo-app/package.json Modified
+
 ```
 "formik": "^2.2.9",
 "moment": "^2.29.4",
 ```
-### /01-frontend/todo-app/src/components/todo/ListTodosComponent.jsx Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/ListTodosComponent.jsx Modified
+
 ```
   setMessage(`Delete of todos with id = ${id} successful`)
 ```
-### /01-frontend/todo-app/src/components/todo/TodoComponent.jsx Modified
+#### /01-frontend/todo-app/src/components/todo/TodoComponent.jsx Modified
 
 ```
 import { useEffect, useState } from 'react'
@@ -2348,8 +2506,13 @@ export default function TodoComponent() {
 }
 
 ```
-### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/todo/TodoResource.java Modified
-New Lines
+
+### Step 15
+
+- Step 15 - Adding Update Todo and Create Todo REST API to Spring Boot Backend API
+
+#### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/todo/TodoResource.java Modified
+
 ```
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -2373,10 +2536,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 ```
 ---
 
-## Step16.md
+### Step 16
 
-### /01-frontend/todo-app/src/components/todo/TodoComponent.jsx Modified
-New Lines
+- Step 16 - Adding Update Feature to React Frontend
+
+#### /01-frontend/todo-app/src/components/todo/TodoComponent.jsx Modified
+
 ```
 import {useParams, useNavigate} from 'react-router-dom'
 import { retrieveTodoApi, updateTodoApi } from './api/TodoApiService'
@@ -2402,18 +2567,20 @@ import { retrieveTodoApi, updateTodoApi } from './api/TodoApiService'
     }
 
 ```
-### /01-frontend/todo-app/src/components/todo/api/TodoApiService.js Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/api/TodoApiService.js Modified
+
 ```
 export const updateTodoApi
     = (username, id, todo) => apiClient.put(`/users/${username}/todos/${id}`, todo)
 ```
 ---
 
-## Step17.md
+### Step 17
 
-### /01-frontend/todo-app/src/components/todo/ListTodosComponent.jsx Modified
-New Lines
+- Step 17 - Adding Create New Todo Feature to React Frontend
+
+#### /01-frontend/todo-app/src/components/todo/ListTodosComponent.jsx Modified
+
 ```
     function addNewTodo() {
         navigate(`/todo/-1`)
@@ -2421,8 +2588,8 @@ New Lines
 
     <div className="btn btn-success m-5" onClick={addNewTodo}>Add New Todo</div>
 ```
-### /01-frontend/todo-app/src/components/todo/TodoComponent.jsx Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/TodoComponent.jsx Modified
+
 ```
 import { retrieveTodoApi, updateTodoApi, createTodoApi } from './api/TodoApiService'
 import moment from 'moment'
@@ -2476,29 +2643,20 @@ function retrieveTodos(){
 
 ```
 
-### /01-frontend/todo-app/src/components/todo/api/TodoApiService.js Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/api/TodoApiService.js Modified
+
 ```
 export const createTodoApi
     = (username,  todo) => apiClient.post(`/users/${username}/todos`, todo)
 ```
 
-## Step19.md
+### Step 18
 
-### /01-frontend/todo-app/src/components/todo/api/HelloWorldApiService.js Modified
-New Lines
-```
-//Response to preflight request doesn't pass access control check => Authorization header
-export const retrieveHelloWorldPathVariable
-    = (username) => apiClient.get(`/hello-world/path-variable/${username}`,{
-        headers: {
-            Authorization: 'Basic aW4yOG1pbnV0ZXM6ZHVtbXk='
-        }
-    })
-```
+- Step 18 - Securing Spring Boot REST API with Spring Security
 
-### /02-rest-api/pom.xml Modified
-New Lines
+
+#### /02-rest-api/pom.xml Modified
+
 ```
 <dependency>
   <groupId>org.springframework.boot</groupId>
@@ -2507,7 +2665,7 @@ New Lines
 
 ```
 
-### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/basic/BasicAuthenticationSecurityConfiguration.java New
+#### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/basic/BasicAuthenticationSecurityConfiguration.java New
 
 ```java
 package com.in28minutes.rest.webservices.restfulwebservices.basic;
@@ -2551,17 +2709,37 @@ public class BasicAuthenticationSecurityConfiguration {
 ```
 ---
 
-### /02-rest-api/src/main/resources/application.properties Modified
-New Lines
+#### /02-rest-api/src/main/resources/application.properties Modified
+
 ```
 spring.security.user.name=in28minutes
 spring.security.user.password=dummy
 ```
 
-## Step21.md
 
-### /01-frontend/todo-app/src/components/todo/api/HelloWorldApiService.js Modified
-New Lines
+### Step 19
+
+- Step 19 - Adding Authorization Header in React to Spring Boot REST API calls
+
+#### /01-frontend/todo-app/src/components/todo/api/HelloWorldApiService.js Modified
+
+```
+//Response to preflight request doesn't pass access control check => Authorization header
+export const retrieveHelloWorldPathVariable
+    = (username) => apiClient.get(`/hello-world/path-variable/${username}`,{
+        headers: {
+            Authorization: 'Basic aW4yOG1pbnV0ZXM6ZHVtbXk='
+        }
+    })
+```
+
+### Step 21
+
+- Step 20 - Configuring Spring Security to allow all Options Requests
+- Step 21 - Calling Basic Authentication Service when Logging into React App
+
+#### /01-frontend/todo-app/src/components/todo/api/HelloWorldApiService.js Modified
+
 ```
 export const executeBasicAuthenticationService
     = (token) => apiClient.get(`/basicauth`,{
@@ -2573,8 +2751,8 @@ export const executeBasicAuthenticationService
     
 ```
 
-### /01-frontend/todo-app/src/components/todo/security/AuthContext.js Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/security/AuthContext.js Modified
+
 ```
 
 import { executeBasicAuthenticationService } from "../api/HelloWorldApiService";
@@ -2603,8 +2781,8 @@ import { executeBasicAuthenticationService } from "../api/HelloWorldApiService";
 ```
 
 
-### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/basic/BasicAuthenticationSecurityConfiguration.java Modified
-New Lines
+#### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/basic/BasicAuthenticationSecurityConfiguration.java Modified
+
 ```java
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -2622,8 +2800,8 @@ New Lines
 ```
 
 
-### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/helloworld/HelloWorldController.java Modified
-New Lines
+#### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/helloworld/HelloWorldController.java Modified
+
 ```
 @RestController
 public class HelloWorldController {
@@ -2636,10 +2814,12 @@ public class HelloWorldController {
 ```
 ---
 
-## Step22.md
+### Step 22
 
-### /01-frontend/todo-app/src/components/todo/LoginComponent.jsx Modified
-New Lines
+- Step 22 - Using async and await to invoke Basic Auth API
+
+#### /01-frontend/todo-app/src/components/todo/LoginComponent.jsx Modified
+
 ```
 //async await
 async function handleSubmit() {
@@ -2650,8 +2830,8 @@ async function handleSubmit() {
     }
 }
 ```
-### /01-frontend/todo-app/src/components/todo/security/AuthContext.js Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/security/AuthContext.js Modified
+
 ```
 export default function AuthProvider({ children }) {
 
@@ -2691,10 +2871,12 @@ export default function AuthProvider({ children }) {
 ```
 ---
 
-## Step23.md
+### Step 23
 
-### /01-frontend/todo-app/src/components/todo/WelcomeComponent.jsx Modified
-New Lines
+- Step 23 - Setting Basic Auth Token into Auth Context
+
+#### /01-frontend/todo-app/src/components/todo/WelcomeComponent.jsx Modified
+
 ```
 import { useAuth } from './security/AuthContext'
 
@@ -2702,8 +2884,8 @@ const authContext = useAuth()
 
 retrieveHelloWorldPathVariable('Ranga', authContext.token)
 ```
-### /01-frontend/todo-app/src/components/todo/api/HelloWorldApiService.js Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/api/HelloWorldApiService.js Modified
+
 ```
 //Response to preflight request doesn't pass access control check => Authorization header
 export const retrieveHelloWorldPathVariable
@@ -2716,9 +2898,11 @@ export const retrieveHelloWorldPathVariable
 ```
 ---
 
-## Step24.md
+### Step 24
 
-### /01-frontend/todo-app/src/components/todo/api/ApiClient.js New
+- Step 24 - Setting up Axios Interceptor to add Authorization Header
+
+#### /01-frontend/todo-app/src/components/todo/api/ApiClient.js New
 
 ```js
 import axios from 'axios'
@@ -2731,8 +2915,8 @@ export const apiClient = axios.create(
 ```
 ---
 
-### /01-frontend/todo-app/src/components/todo/api/HelloWorldApiService.js Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/api/HelloWorldApiService.js Modified
+
 ```
 import { apiClient } from './ApiClient'
 
@@ -2749,15 +2933,15 @@ export const retrieveHelloWorldPathVariable
 ```
 ---
 
-### /01-frontend/todo-app/src/components/todo/api/TodoApiService.js Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/api/TodoApiService.js Modified
+
 ```
 import { apiClient } from './ApiClient'
 ```
 ---
 
-### /01-frontend/todo-app/src/components/todo/security/AuthContext.js Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/security/AuthContext.js Modified
+
 ```
 import { apiClient } from "../api/ApiClient";
 
@@ -2786,10 +2970,13 @@ export default function AuthProvider({ children }) {
 ```
 ---
 
-## Step25.md
+### Step 25
 
-### /02-rest-api/pom.xml Modified
-New Lines
+- Step 24A -  Debugging Problems with Basic Auth and Spring Boot
+- Step 25 - Getting Started with JWT and Spring Security
+
+#### /02-rest-api/pom.xml Modified
+
 ```
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -2802,7 +2989,7 @@ New Lines
     </dependency>
 
 ```
-### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/basic/BasicAuthenticationSecurityConfiguration.java Modified
+#### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/basic/BasicAuthenticationSecurityConfiguration.java Modified
 
 Disable Basic Authentication Configuration
 
@@ -2812,8 +2999,8 @@ Disable Basic Authentication Configuration
 
 ---
 
-### /02-rest-api/src/main/resources/application.properties Modified
-New Lines
+#### /02-rest-api/src/main/resources/application.properties Modified
+
 ```
 #spring.security.user.name=in28minutes
 #spring.security.user.password=dummy
@@ -2821,7 +3008,7 @@ New Lines
 
 ---
 
-### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/jwt/JwtAuthenticationController.java New
+#### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/jwt/JwtAuthenticationController.java New
 
 ```java
 package com.in28minutes.rest.webservices.restfulwebservices.jwt;
@@ -2868,7 +3055,7 @@ public class JwtAuthenticationController {
 ```
 ---
 
-### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/jwt/JwtSecurityConfig.java New
+#### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/jwt/JwtSecurityConfig.java New
 
 ```java
 package com.in28minutes.rest.webservices.restfulwebservices.jwt;
@@ -3013,7 +3200,7 @@ public class JwtSecurityConfig {
 ```
 ---
 
-### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/jwt/JwtTokenRequest.java New
+#### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/jwt/JwtTokenRequest.java New
 
 ```java
 package com.in28minutes.rest.webservices.restfulwebservices.jwt;
@@ -3024,7 +3211,7 @@ public record JwtTokenRequest(String username, String password) {}
 ```
 ---
 
-### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/jwt/JwtTokenResponse.java New
+#### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/jwt/JwtTokenResponse.java New
 
 ```java
 package com.in28minutes.rest.webservices.restfulwebservices.jwt;
@@ -3035,7 +3222,7 @@ public record JwtTokenResponse(String token) {}
 ```
 ---
 
-### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/jwt/JwtTokenService.java New
+#### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/jwt/JwtTokenService.java New
 
 ```java
 package com.in28minutes.rest.webservices.restfulwebservices.jwt;
@@ -3083,9 +3270,12 @@ public class JwtTokenService {
 }
 ```
 
-## Step26.md
+### Step 26
 
-### /01-frontend/todo-app/src/components/todo/api/AuthenticationApiService.js New
+- Step 26 - Integrating Spring Security JWT REST API with React Frontend
+- Step 27 - Debugging Problems with JWT Auth and Spring Boot
+
+#### /01-frontend/todo-app/src/components/todo/api/AuthenticationApiService.js New
 
 ```js
 import { apiClient } from "./ApiClient";
@@ -3105,8 +3295,8 @@ export const executeJwtAuthenticationService
 ```
 ---
 
-### /01-frontend/todo-app/src/components/todo/security/AuthContext.js Modified
-New Lines
+#### /01-frontend/todo-app/src/components/todo/security/AuthContext.js Modified
+
 ```
 import { executeJwtAuthenticationService } from "../api/AuthenticationApiService";
 
@@ -3147,3 +3337,197 @@ export default function AuthProvider({ children }) {
 
 ```
 ---
+
+# Section 05
+
+## Connecting Java Full Stack Application (Spring Boot and React) with JPA and Hibernate
+
+### Step 04
+
+- Step 01 - Full Stack React and Spring Boot with JPA and Hibernate
+- Step 02 - Full Stack React & Spring Boot with JPA & Hibernate - Getting Tables Ready
+- Step 03 - Full Stack React & Spring Boot with JPA & Hibernate - Todo CRUD operations
+- Step 04 - Full Stack React & Spring Boot with JPA & Hibernate - Add New Todo
+
+
+#### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/todo/Todo.java Modified
+
+```java
+package com.in28minutes.rest.webservices.restfulwebservices.todo;
+
+import java.time.LocalDate;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+
+@Entity
+public class Todo {
+
+    @Id
+    @GeneratedValue
+    private Integer id;
+
+    //OLD CODE
+
+}
+```
+---
+
+#### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/todo/TodoJpaResource.java New
+
+```java
+package com.in28minutes.rest.webservices.restfulwebservices.todo;
+
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.in28minutes.rest.webservices.restfulwebservices.todo.repository.TodoRepository;
+
+@RestController
+public class TodoJpaResource {
+    
+    private TodoService todoService;
+    
+    private TodoRepository todoRepository;
+    
+    public TodoJpaResource(TodoService todoService, TodoRepository todoRepository) {
+        this.todoService = todoService;
+        this.todoRepository = todoRepository;
+    }
+    
+    @GetMapping("/users/{username}/todos")
+    public List<Todo> retrieveTodos(@PathVariable String username) {
+        //return todoService.findByUsername(username);
+        return todoRepository.findByUsername(username);
+    }
+
+    @GetMapping("/users/{username}/todos/{id}")
+    public Todo retrieveTodo(@PathVariable String username,
+            @PathVariable int id) {
+        //return todoService.findById(id);
+        return todoRepository.findById(id).get();
+    }
+
+    @DeleteMapping("/users/{username}/todos/{id}")
+    public ResponseEntity<Void> deleteTodo(@PathVariable String username,
+            @PathVariable int id) {
+        //todoService.deleteById(id);
+        todoRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/users/{username}/todos/{id}")
+    public Todo updateTodo(@PathVariable String username,
+            @PathVariable int id, @RequestBody Todo todo) {
+        //todoService.updateTodo(todo);
+        todoRepository.save(todo);
+        return todo;
+    }
+
+    @PostMapping("/users/{username}/todos")
+    public Todo createTodo(@PathVariable String username,
+             @RequestBody Todo todo) {
+        todo.setUsername(username);
+        todo.setId(null);
+        return todoRepository.save(todo);
+//      Todo createdTodo = todoService.addTodo(username, todo.getDescription(), 
+//              todo.getTargetDate(),todo.isDone() );
+        
+//      return createdTodo;
+    }
+
+}
+```
+
+
+#### /02-rest-api/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/todo/repository/TodoRepository.java New
+
+```java
+package com.in28minutes.rest.webservices.restfulwebservices.todo.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.in28minutes.rest.webservices.restfulwebservices.todo.Todo;
+
+public interface TodoRepository extends JpaRepository<Todo, Integer>{
+    
+    List<Todo> findByUsername(String username);
+
+}
+```
+---
+
+#### /02-rest-api/src/main/resources/application.properties Modified
+
+```
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.jpa.defer-datasource-initialization=true
+spring.main.banner-mode=off
+logging.pattern.console= %d{MM-dd HH:mm:ss} - %logger{36} - %msg%n
+```
+#### /02-rest-api/src/main/resources/data.sql New
+
+```
+insert into todo (id, description, done, target_date,username)
+values (10001, 'Learn AWS', false, CURRENT_DATE(), 'in28minutes');
+
+insert into todo (id, description, done, target_date,username)
+values (10002, 'Get AWS Certified', false, CURRENT_DATE(), 'in28minutes');
+
+insert into todo (id, description, done, target_date,username)
+values (10003, 'Learn DevOps', false, CURRENT_DATE(), 'in28minutes');
+```
+---
+
+### Step 05
+
+- Step 05 - Full Stack React & Spring Boot with JPA & Hibernate - Connect with MySQL
+
+
+#### Launch MySQL using Docker
+
+```
+docker run --detach --env MYSQL_ROOT_PASSWORD=dummypassword --env MYSQL_USER=todos-user --env MYSQL_PASSWORD=dummytodos --env MYSQL_DATABASE=todos --name mysql --publish 3306:3306 mysql:8-oracle
+```
+
+#### /pom.xml Modified
+
+```
+<!-- Remove H2
+    <dependency>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <scope>runtime</scope>
+    </dependency> -->
+
+
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+</dependency>
+```
+
+#### /src/main/resources/application.properties Modified
+
+```
+
+#comment-h2
+#spring.datasource.url=jdbc:h2:mem:testdb
+
+spring.datasource.url=jdbc:mysql://localhost:3306/todos
+spring.datasource.username=todos-user
+spring.datasource.password=dummytodos
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+spring.jpa.hibernate.ddl-auto=update
+```
