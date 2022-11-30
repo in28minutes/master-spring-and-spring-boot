@@ -1,8 +1,15 @@
-# Section 02
+# Section 01
 
-## Step03.md
+## Getting Started with Java Spring Framework
 
-##### /learn-spring-framework/pom.xml
+### Step 03
+
+- Step 01 - Understanding the Need for Java Spring Framework
+- Step 02 - Getting Started with Java Spring Framework
+- Step 03 - Creating a New Spring Framework Project with Maven and Java
+
+
+#### /learn-spring-framework/pom.xml
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -69,7 +76,7 @@
 ```
 ---
 
-##### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/LearnSpringFrameworkApplication.java
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/LearnSpringFrameworkApplication.java
 
 ```java
 package com.in28minutes.learnspringframework;
@@ -88,14 +95,14 @@ public class LearnSpringFrameworkApplication {
 ```
 ---
 
-##### /learn-spring-framework/src/main/resources/application.properties
+#### /learn-spring-framework/src/main/resources/application.properties
 
 ```properties
 
 ```
 ---
 
-##### /learn-spring-framework/src/test/java/com/in28minutes/learnspringframework/LearnSpringFrameworkApplicationTests.java
+#### /learn-spring-framework/src/test/java/com/in28minutes/learnspringframework/LearnSpringFrameworkApplicationTests.java
 
 ```java
 package com.in28minutes.learnspringframework;
@@ -113,9 +120,11 @@ class LearnSpringFrameworkApplicationTests {
 }
 ```
 ---
-## Step04.md
+### Step 04
 
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/AppGamingBasicJava.java New
+- Step 04 - Getting Started with Java Gaming Application
+
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/AppGamingBasicJava.java New
 
 ```java
 package com.in28minutes.learnspringframework;
@@ -137,7 +146,7 @@ public class AppGamingBasicJava {
 ```
 ---
 
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/GameRunner.java New
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/GameRunner.java New
 
 ```java
 package com.in28minutes.learnspringframework.game;
@@ -163,7 +172,7 @@ public class GameRunner {
 ```
 ---
 
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/MarioGame.java New
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/MarioGame.java New
 
 ```java
 package com.in28minutes.learnspringframework.game;
@@ -191,9 +200,12 @@ public class MarioGame {
 ```
 ---
 
-## Step04.md
+### Step 05
 
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/SuperContraGame.java New
+- Step 05 - Understanding Loose Coupling and Tight Coupling
+
+
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/SuperContraGame.java New
 
 ```java
 package com.in28minutes.learnspringframework.game;
@@ -220,7 +232,7 @@ public class SuperContraGame {
 ```
 ---
 
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/AppGamingBasicJava.java Modified
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/AppGamingBasicJava.java Modified
 ```
 import com.in28minutes.learnspringframework.game.SuperContraGame;
 //var marioGame = new MarioGame();
@@ -229,7 +241,7 @@ var gameRunner = new GameRunner(superContraGame);
 ```
 ---
 
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/GameRunner.java Modified
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/GameRunner.java Modified
 
 ```
 private SuperContraGame game;
@@ -237,9 +249,12 @@ public GameRunner(SuperContraGame game) {
 ```
 
 
-## Step06.md
+### Step 06
 
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/GamingConsole.java New
+- Step 06 - Introducting Java Interface to Make App Loosely Coupled
+
+
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/GamingConsole.java New
 
 ```java
 package com.in28minutes.learnspringframework.game;
@@ -252,14 +267,14 @@ public interface GamingConsole {
 }
 ```
 ---
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/MarioGame.java Modified
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/MarioGame.java Modified
 
 ```
 public class MarioGame implements GamingConsole{
 ```
 
 ---
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/SuperContraGame.java Modified
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/SuperContraGame.java Modified
 
 ```
 public class SuperContraGame implements GamingConsole{
@@ -267,7 +282,7 @@ public class SuperContraGame implements GamingConsole{
 
 ---
 
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/AppGamingBasicJava.java Modified
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/AppGamingBasicJava.java Modified
 
 ```
 //var game = new MarioGame();
@@ -277,7 +292,7 @@ var gameRunner = new GameRunner(game);
 ```
 ---
 
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/GameRunner.java Modified
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/GameRunner.java Modified
 
 ```
 //PacmanGame
@@ -287,7 +302,7 @@ public GameRunner(GamingConsole game) {
 
 ---
 
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/PacmanGame.java New
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/PacmanGame.java New
 
 ```java
 package com.in28minutes.learnspringframework.game;
@@ -315,12 +330,16 @@ public class PacmanGame implements GamingConsole{
 ```
 ---
 
-## Step08.md
+### Step 08
 
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/LearnSpringFrameworkApplication.java Deleted
+- Step 07 - Bringing in Spring Framework to Make Java App Loosely Coupled
+- Step 08 - Your First Java Spring Bean and Launching Java Spring Configuration
 
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/AppGamingBasicJava.java RENAMED TO
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/App01GamingBasicJava.java
+
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/LearnSpringFrameworkApplication.java Deleted
+
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/AppGamingBasicJava.java RENAMED TO
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/App01GamingBasicJava.java
 
 ```java
 package com.in28minutes.learnspringframework;
@@ -349,7 +368,7 @@ public class App01GamingBasicJava {
 ```
 ---
 
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/App02HelloWorldSpring.java New
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/App02HelloWorldSpring.java New
 
 ```java
 package com.in28minutes.learnspringframework;
@@ -377,7 +396,7 @@ public class App02HelloWorldSpring {
 ```
 ---
 
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/HelloWorldConfiguration.java New
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/HelloWorldConfiguration.java New
 
 ```java
 package com.in28minutes.learnspringframework;
@@ -399,9 +418,12 @@ public class HelloWorldConfiguration {
 ```
 ---
 
-## Step09.md
+### Step 09
 
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/App02HelloWorldSpring.java Modified
+- Step 09 - Creating More Java Spring Beans in Spring Java Configuration File
+
+
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/App02HelloWorldSpring.java Modified
 
 ```
 System.out.println(context.getBean("age"));
@@ -410,7 +432,7 @@ System.out.println(context.getBean("address"));
 ```
 ---
 
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/HelloWorldConfiguration.java Modified
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/HelloWorldConfiguration.java Modified
 
 ```java
 package com.in28minutes.learnspringframework;
@@ -456,9 +478,11 @@ public class HelloWorldConfiguration {
 ```
 ---
 
-## Step10.md
+### Step 10
 
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/App02HelloWorldSpring.java Modified
+- Step 10 - Implementing Auto Wiring in Spring Framework Java Configuration File
+
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/App02HelloWorldSpring.java Modified
 
 ```
 System.out.println(context.getBean("person2MethodCall"));
@@ -468,7 +492,7 @@ System.out.println(context.getBean("address2"));
 ```
 ---
 
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/HelloWorldConfiguration.java Modified
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/HelloWorldConfiguration.java Modified
 
 ```java
 package com.in28minutes.learnspringframework;
@@ -529,9 +553,14 @@ public class HelloWorldConfiguration {
 ```
 ---
 
-## Step14.md
+### Step 14
 
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/App02HelloWorldSpring.java Modified
+- Step 11 - Questions about Spring Framework - What will we learn?
+- Step 12 - Understanding Spring IOC Container - Application Context and Bean Factory
+- Step 13 - Exploring Java Bean vs POJO vs Spring Bean
+- Step 14 - Exploring Spring Framework Bean Auto Wiring - Primary and Qualifier Annotations
+
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/App02HelloWorldSpring.java Modified
 
 ```
 import java.util.Arrays;
@@ -545,7 +574,7 @@ System.out.println(context.getBean("person5Qualifier"));
 ```
 ---
 
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/HelloWorldConfiguration.java Modified
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/HelloWorldConfiguration.java Modified
 
 ```java
 @Bean
@@ -578,16 +607,18 @@ public Address address3() {
 
 ```
 
-## Step15.md
+### Step 15
 
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/HelloWorldConfiguration.java Moved to
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/helloworld/HelloWorldConfiguration.java New
+- Step 15 - Using Spring Framework to Manage Beans for Java Gaming App
 
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/App02HelloWorldSpring.java Moved to
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/helloworld/App02HelloWorldSpring.java
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/HelloWorldConfiguration.java Moved to
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/helloworld/HelloWorldConfiguration.java New
+
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/App02HelloWorldSpring.java Moved to
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/helloworld/App02HelloWorldSpring.java
 
 ---
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/App03GamingSpringBeans.java New
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/App03GamingSpringBeans.java New
 
 ```java
 package com.in28minutes.learnspringframework;
@@ -615,7 +646,7 @@ public class App03GamingSpringBeans {
 ```
 ---
 
-### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/GamingConfiguration.java New
+#### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/GamingConfiguration.java New
 
 ```java
 package com.in28minutes.learnspringframework;
@@ -647,9 +678,13 @@ public class GamingConfiguration {
 ---
 
 
-# Section 03
+# Section 02
 
-## Step01.md
+## Using Spring Framework to Create and Manage Your Java Objects
+
+- Step 01 - Getting Spring Framework to Create and Manage Your Java Objects
+
+### Step 01
 
 Getting Started
 - Rename `learn-spring-framework` to `learn-spring-framework-01`
@@ -659,12 +694,12 @@ Getting Started
 
 ---
 
-### /learn-spring-framework-02/pom.xml New
+#### /learn-spring-framework-02/pom.xml New
 
 No change
 ---
 
-### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/GamingAppLauncherApplication.java Copied
+#### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/GamingAppLauncherApplication.java Copied
 
 @ComponentScan("com.in28minutes.learnspringframework.game")
 
@@ -698,7 +733,7 @@ public class GamingAppLauncherApplication {
 ```
 ---
 
-### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/game/GameRunner.java Copied
+#### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/game/GameRunner.java Copied
 
 Added @Component
 
@@ -712,7 +747,7 @@ public class GameRunner {
 ```
 ---
 
-### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/game/PacmanGame.java Copied
+#### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/game/PacmanGame.java Copied
 
 Added @Component
 
@@ -727,12 +762,14 @@ public class PacmanGame implements GamingConsole{
 ```
 ---
 
-### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/game/SuperContraGame.java Copied
+#### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/game/SuperContraGame.java Copied
 ---
 
-## Step02.md
+### Step 02
 
-### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/game/GameRunner.java Modified
+- Step 02 - Exploring Primary and Qualifier Annotations for Spring Components
+
+#### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/game/GameRunner.java Modified
 
 ```
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -748,7 +785,7 @@ public class GameRunner {
 
 ---
 
-### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/game/MarioGame.java Modified
+#### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/game/MarioGame.java Modified
 
 ```
 import org.springframework.context.annotation.Primary;
@@ -759,7 +796,7 @@ public class MarioGame implements GamingConsole{
 ```
 ---
 
-### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/game/SuperContraGame.java Modified
+#### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/game/SuperContraGame.java Modified
 
 ```
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -770,15 +807,18 @@ public class SuperContraGame implements GamingConsole{
 ```
 ---
 
-## Step04.md
+### Step 04
+
+- Step 03 - Primary and Qualifier - Which Spring Annotation Should You Use?
+- Step 04 - Exploring Spring Framework - Different Types of Dependency Injection
 
 ---
 
-### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/GamingAppLauncherApplication.java MOVED TO
-### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/game/GamingAppLauncherApplication.java
+#### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/GamingAppLauncherApplication.java MOVED TO
+#### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/game/GamingAppLauncherApplication.java
 ---
 
-### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/a0/SimpleSpringContextLauncherApplication.java New
+#### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/a0/SimpleSpringContextLauncherApplication.java New
 
 ```java
 package com.in28minutes.learnspringframework.examples.a0;
@@ -808,7 +848,7 @@ public class SimpleSpringContextLauncherApplication {
 ```
 ---
 
-### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/a1/DepInjectionLauncherApplication.java New
+#### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/a1/DepInjectionLauncherApplication.java New
 
 ```java
 package com.in28minutes.learnspringframework.examples.a1;
@@ -883,10 +923,15 @@ public class DepInjectionLauncherApplication {
 
 ---
 
-## Step08.md
+### Step 08
+
+- Step 05 - Java Spring Framework - Understanding Important Terminology
+- Step 06 - Java Spring Framework - Comparing @Component vs @Bean
+- Step 07 - Why do we have dependencies in Java Spring Applications?
+- Step 08 - Exercise/ Solution for Real World Java Spring Framework Example
 
 
-### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/c1/BusinessCalculationService.java New
+#### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/c1/BusinessCalculationService.java New
 
 ```java
 package com.in28minutes.learnspringframework.examples.c1;
@@ -913,7 +958,7 @@ public class BusinessCalculationService {
 ```
 ---
 
-### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/c1/DataService.java New
+#### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/c1/DataService.java New
 
 ```java
 package com.in28minutes.learnspringframework.examples.c1;
@@ -924,7 +969,7 @@ public interface DataService {
 ```
 ---
 
-### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/c1/MongoDbDataService.java New
+#### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/c1/MongoDbDataService.java New
 
 ```java
 package com.in28minutes.learnspringframework.examples.c1;
@@ -945,7 +990,7 @@ public class MongoDbDataService implements DataService {
 ```
 ---
 
-### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/c1/MySqlDataService.java New
+#### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/c1/MySqlDataService.java New
 
 ```java
 package com.in28minutes.learnspringframework.examples.c1;
@@ -964,7 +1009,7 @@ public class MySqlDataService implements DataService {
 ```
 ---
 
-### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/c1/RealWorldSpringContextLauncherApplication.java New
+#### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/c1/RealWorldSpringContextLauncherApplication.java New
 
 ```java
 package com.in28minutes.learnspringframework.examples.c1;
@@ -996,13 +1041,17 @@ public class RealWorldSpringContextLauncherApplication {
 }
 ```
 
-# Section 04
+# Section 03
 
-## Step03.md
+## Exploring Spring Framework Advanced Features
 
----
+### Step 03
 
-### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/d1/LazyInitializationLauncherApplication.java New
+- Step 01 - Exploring Lazy and Eager Initialization of Spring Framework Beans
+- Step 02 - Comparing Lazy Initialization vs Eager Initialization
+- Step 03 - Exploring Java Spring Framework Bean Scopes - Prototype and Singleton
+
+#### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/d1/LazyInitializationLauncherApplication.java New
 
 ```java
 package com.in28minutes.learnspringframework.examples.d1;
@@ -1058,7 +1107,7 @@ public class LazyInitializationLauncherApplication {
 ```
 ---
 
-### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/e1/BeanScopesLauncherApplication.java New
+#### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/e1/BeanScopesLauncherApplication.java New
 
 ```java
 package com.in28minutes.learnspringframework.examples.e1;
@@ -1114,9 +1163,14 @@ public class BeanScopesLauncherApplication {
 ```
 ---
 
-## Step07.md
+### Step 07
 
-### /learn-spring-framework-02/pom.xml Modified
+- Step 04 - Comparing Prototype vs Singleton - Spring Framework Bean Scopes
+- Step 05 - Exploring Spring Beans - PostConstruct and PreDestroy
+- Step 06 - Evolution of Jakarta EE - Comparing with J2EE and Java EE
+- Step 07 - Exploring Jakarta CDI with Spring Framework and Java
+
+#### /learn-spring-framework-02/pom.xml Modified
 
 ```
 <dependency>
@@ -1128,7 +1182,7 @@ public class BeanScopesLauncherApplication {
 
 ---
 
-### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/f1/PrePostAnnotationsContextLauncherApplication.java New
+#### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/f1/PrePostAnnotationsContextLauncherApplication.java New
 
 ```java
 package com.in28minutes.learnspringframework.examples.f1;
@@ -1195,7 +1249,7 @@ public class PrePostAnnotationsContextLauncherApplication {
 ```
 ---
 
-### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/g1/CdiContextLauncherApplication.java New
+#### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/g1/CdiContextLauncherApplication.java New
 
 ```java
 package com.in28minutes.learnspringframework.examples.g1;
@@ -1259,10 +1313,13 @@ public class CdiContextLauncherApplication {
 ```
 ---
 
-## Step10.md
+### Step 10
 
+- Step 08 - Exploring Java Spring XML Configuration
+- Step 09 - Exploring Java Annotations vs XML Configuration for Java Spring Framework
+- Step 10 - Exploring Spring Framework Stereotype Annotations - Component and more
 
-### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/c1/BusinessCalculationService.java Modified
+#### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/c1/BusinessCalculationService.java Modified
 
 ```
 import org.springframework.stereotype.Service;
@@ -1272,7 +1329,7 @@ import org.springframework.stereotype.Service;
 
 ---
 
-### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/c1/MongoDbDataService.java Modified
+#### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/c1/MongoDbDataService.java Modified
 
 ```
 import org.springframework.stereotype.Repository;
@@ -1281,7 +1338,7 @@ import org.springframework.stereotype.Repository;
 ```
 ---
 
-### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/c1/MySqlDataService.java Modified
+#### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/c1/MySqlDataService.java Modified
 
 ```
 import org.springframework.stereotype.Repository;
@@ -1291,7 +1348,7 @@ import org.springframework.stereotype.Repository;
 
 ---
 
-### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/d1/LazyInitializationLauncherApplication.java Modified
+#### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/d1/LazyInitializationLauncherApplication.java Modified
 
 ```
 @SuppressWarnings("unused")
@@ -1299,7 +1356,7 @@ private ClassA classA;
 ```
 ---
 
-### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/h1/XmlConfigurationContextLauncherApplication.java New
+#### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/h1/XmlConfigurationContextLauncherApplication.java New
 
 ```java
 package com.in28minutes.learnspringframework.examples.h1;
@@ -1332,7 +1389,7 @@ public class XmlConfigurationContextLauncherApplication {
 ```
 ---
 
-### /learn-spring-framework-02/src/main/resources/contextConfiguration.xml New
+#### /learn-spring-framework-02/src/main/resources/contextConfiguration.xml New
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
