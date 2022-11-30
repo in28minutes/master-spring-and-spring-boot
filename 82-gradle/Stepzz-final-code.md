@@ -639,7 +639,7 @@ com.in28minutes.learngradle.LearnGradleApplication
 Manifest-Version: 1.0
 Main-Class: org.springframework.boot.loader.JarLauncher
 Start-Class: com.in28minutes.learngradle.LearnGradleApplication
-Spring-Boot-Version: 3.0.0-RC1
+Spring-Boot-Version: 3.0.0
 Spring-Boot-Classes: BOOT-INF/classes/
 Spring-Boot-Lib: BOOT-INF/lib/
 Spring-Boot-Classpath-Index: BOOT-INF/classpath.idx
