@@ -298,11 +298,11 @@ By the end of the course, you will know everything you would need to become a gr
 - Step 05 - Full Stack React & Spring Boot with JPA & Hibernate - Connect with MySQL
 
 ### Exploring Unit Testing with JUnit
-01 Step 01 - What is JUnit and Unit Testing_
-01 Step 02 - Your First JUnit Project and Green Bar
-01 Step 03 - Your First Code and First Unit Test
-01 Step 04 - Exploring other assert methods
-01 Step 05 - Exploring few important JUnit annotations
+- Step 01 - What is JUnit and Unit Testing_
+- Step 02 - Your First JUnit Project and Green Bar
+- Step 03 - Your First Code and First Unit Test
+- Step 04 - Exploring other assert methods
+- Step 05 - Exploring few important JUnit annotations
 
 ### Exploring Mocking with Mockito for Spring Boot Projects
 - Step 00 - Introduction to Section - Mockito in 5 Steps
@@ -341,16 +341,50 @@ By the end of the course, you will know everything you would need to become a gr
 - Step 25 - Quick Review - Securing Spring Boot Apps with Spring Security
 
 ### Learning Spring AOP with Spring Boot
-73-spring-aop-todo
+
+- Step 01 - Getting Started with Spring AOP - An overview
+- Step 02 - What is Aspect Oriented Programming?
+- Step 03 - Creating a Spring Boot Project for Spring AOP
+- Step 04 - Setting up Spring Components for Spring AOP
+- Step 05 - Creating AOP Logging Aspect and Pointcut
+- Step 06 - Understanding AOP Terminology
+- Step 07 - Exploring @After, @AfterReturning, @AfterThrowing AOP Annotations
+- Step 08 - Exploring Around AOP annotations with a Timer class
+- Step 09 - AOP Best Practice - Creating Common Pointcut Definitions
+- Step 10 - Creating Track Time Annotation
+- Step 11 - Getting Started with Spring AOP - Thank You
+
 
 ### Learning Maven with Spring and Spring Boot
-81-maven-todo
+- Step 01 - Introduction to Maven
+- Step 02 - Creating a Spring Boot Project with Maven
+- Step 03 - Exploring Maven pom.xml for Spring Boot Project
+- Step 04 - Exploring Maven Parent Pom for Spring Boot Project
+- Step 05 - Exploring Maven Further
+- Step 06 - Exploring Maven Build Lifecycle with a Spring Boot Project
+- Step 07 - How does Maven Work?
+- Step 08 - Playing with Maven Commands
+- Step 09 - How are Spring Projects Versioned?
 
 ### Learning Gradle with Spring and Spring Boot
-82-gradle-todo
+
+- Step 01 - Getting Started with Gradle
+- Step 02 - Creating a Spring Boot Project with Gradle
+- Step 03 - Exploring Gradle Build and Settings Files
+- Step 04 - Exploring Gradle Plugins for Java and Spring Boot
+- Step 05 - Maven or Gradle - Which one to use for Spring Boot Projects?
 
 ### Learning Docker with Spring and Spring Boot
-83-docker-todo
+
+- Step 01 - Getting Started with Docker
+- Step 02 - Understanding Docker Fundamentals
+- Step 03 - Understanding How Docker Works
+- Step 04 - Understanding Docker Terminology
+- Step 05 - Creating Docker Image for a Spring Boot Project - Dockerfile
+- Step 06 - Building Spring Boot Docker Image using Multi Stage Dockerfile
+- Step 07 - Building Spring Boot Docker Image - Optimizing Dockerfile
+- Step 08 - Building Docker Image with Spring Boot Maven Plugin
+- Step 09 - Quick Review of Docker with Spring Boot
 
 
 ### Getting Started with Cloud and AWS
@@ -359,22 +393,25 @@ By the end of the course, you will know everything you would need to become a gr
 - Step  04 - Creating Your First IAM User
 - Step  05 - Understanding the Need for Regions and Zones
 - Step  06 - Exploring Regions and Availability Zones in AWS
-01 Step 01 - Getting Started with EC2 - Virtual Servers in AWS
-01 Step 02 - Demo - Creating Virtual Machines with Amazon EC2
-01 Step 02z - Demo - Setting up a Web Server in an Amazon EC2 Instance
-01 Step 03 - Quick Review of Important EC2 Concepts
-01 Step 04 - Exploring IaaS vs PaaS - Cloud Computing with AWS
-01 Step 05 - Getting Started with AWS Elastic Beanstalk
-01 Step 06 - Demo - Setting up Web Application with AWS Elastic Beanstalk
-01 Step 07 - Demo - Playing with AWS Elastic Beanstalk
-01 Step 08 - Understanding the Need for Docker and Containers
-01 Step 09 - Exploring Container Orchestration in AWS
-01 Step 10 - Demo - Setting up ECS Cluster with AWS Fargate
-01 Step 11 - Demo - Playing with Amazon ECS
-01 Step 12 - Getting Started with Serverless in AWS - AWS Lambda
-01 Step 13 - Demo - Creating Your First Lambda Function
-01 Step 14 - Demo - Playing with Lambda Functions
-01 Step 15 - Cloud Computing in AWS - Quick Review of Compute Services
+
+### Getting Started with Compute Services in AWS
+
+- Step 01 - Getting Started with EC2 - Virtual Servers in AWS
+- Step 02 - Demo - Creating Virtual Machines with Amazon EC2
+- Step 02z - Demo - Setting up a Web Server in an Amazon EC2 Instance
+- Step 03 - Quick Review of Important EC2 Concepts
+- Step 04 - Exploring IaaS vs PaaS - Cloud Computing with AWS
+- Step 05 - Getting Started with AWS Elastic Beanstalk
+- Step 06 - Demo - Setting up Web Application with AWS Elastic Beanstalk
+- Step 07 - Demo - Playing with AWS Elastic Beanstalk
+- Step 08 - Understanding the Need for Docker and Containers
+- Step 09 - Exploring Container Orchestration in AWS
+- Step 10 - Demo - Setting up ECS Cluster with AWS Fargate
+- Step 11 - Demo - Playing with Amazon ECS
+- Step 12 - Getting Started with Serverless in AWS - AWS Lambda
+- Step 13 - Demo - Creating Your First Lambda Function
+- Step 14 - Demo - Playing with Lambda Functions
+- Step 15 - Cloud Computing in AWS - Quick Review of Compute Services
 
 ### Deploying Spring Boot Applications to AWS
 - Step  01 - Deploying Hello World Spring Boot App to AWS
