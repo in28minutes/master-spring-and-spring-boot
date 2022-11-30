@@ -132,48 +132,24 @@ public class BasicAuthSecurityConfiguration {
 ```
 ---
 
-### /src/main/java/com/in28minutes/learnspringsecurity/jwt/JwtResource.java
+### /src/main/java/com/in28minutes/learnspringsecurity/jwt/JwtAuthenticationResource.java
 
 ```java
 package com.in28minutes.learnspringsecurity.jwt;
 
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class JwtResource {
-	//
+public class JwtAuthenticationResource {
 	
-	private AuthenticationManager manager;
-	
-	private JwtEncoder jwtEncoder;
-	
-	public JwtResource(AuthenticationManager manager, JwtEncoder jwtEncoder) {
-		this.manager = manager;
-		this.jwtEncoder = jwtEncoder;
-	}
-	
-	@PostMapping("/authenticate")
-	public Authentication authenticateAndCreateJwtToken(
-						@RequestBody JwtRequest request) {
-		var authenticationToken = new UsernamePasswordAuthenticationToken
-		(request.username(),request.password());
-		
-		var authentication = manager.authenticate(authenticationToken);
-		
+	@PostMapping("/authenticate") 
+	public Authentication authenticate(Authentication authentication) {
 		return authentication;
-		//return new JwtResponse("JWT Token");
 	}
 
 }
-
-record JwtRequest(String username, String password) {}
-record JwtResponse(String token) {}
 ```
 ---
 
@@ -193,10 +169,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.ProviderManager;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -226,9 +198,7 @@ public class JwtSecurityConfiguration {
 		
 		http.authorizeHttpRequests(
 						auth -> {
-							auth
-							.requestMatchers("/authenticate").permitAll()
-							.anyRequest().authenticated();
+							auth.anyRequest().authenticated();
 						});
 		
 		http.sessionManagement(
@@ -326,13 +296,6 @@ public class JwtSecurityConfiguration {
 	@Bean
 	public JwtEncoder jwtEncoder(JWKSource<SecurityContext> jwkSource) {
 		return new NimbusJwtEncoder(jwkSource);
-	}
-	
-	@Bean
-	public AuthenticationManager authenticationManager(UserDetailsService userDetailService) {
-		var provider = new DaoAuthenticationProvider();
-		provider.setUserDetailsService(userDetailService);
-		return new ProviderManager(provider);
 	}
 }
 
@@ -446,6 +409,7 @@ logging.pattern.console= %d{MM-dd HH:mm:ss} - %logger{36} - %msg%n
 #spring.security.user.name=in28minutes
 #spring.security.user.password=dummy
 
+logging.level.root=debug
 spring.datasource.url=jdbc:h2:mem:testdb
 ```
 ---

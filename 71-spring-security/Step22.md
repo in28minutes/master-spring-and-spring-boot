@@ -35,6 +35,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
@@ -45,7 +46,8 @@ import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 
-//@Configuration
+@Configuration
+@EnableMethodSecurity(jsr250Enabled = true, securedEnabled = true)
 public class BasicAuthSecurityConfiguration {
 	
 	@Bean
@@ -53,7 +55,8 @@ public class BasicAuthSecurityConfiguration {
 		
 		http.authorizeHttpRequests(
 						auth -> {
-							auth.anyRequest().authenticated();
+							auth
+							.anyRequest().authenticated();
 						});
 		
 		http.sessionManagement(
@@ -137,19 +140,51 @@ public class BasicAuthSecurityConfiguration {
 ```java
 package com.in28minutes.learnspringsecurity.jwt;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import java.time.Instant;
+import java.util.stream.Collectors;
 
-@RestController
+import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.jwt.JwtClaimsSet;
+import org.springframework.security.oauth2.jwt.JwtEncoder;
+import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
+import org.springframework.web.bind.annotation.PostMapping;
+
+//@RestController
 public class JwtAuthenticationResource {
 	
+	private JwtEncoder jwtEncoder;
+	
+	public JwtAuthenticationResource(JwtEncoder jwtEncoder) {
+		this.jwtEncoder = jwtEncoder;
+	}
+	
 	@PostMapping("/authenticate") 
-	public Authentication authenticate(Authentication authentication) {
-		return authentication;
+	public JwtRespose authenticate(Authentication authentication) {
+		return new JwtRespose(createToken(authentication));
+	}
+
+	private String createToken(Authentication authentication) {
+		var claims = JwtClaimsSet.builder()
+								.issuer("self")
+								.issuedAt(Instant.now())
+								.expiresAt(Instant.now().plusSeconds(60 * 30))
+								.subject(authentication.getName())
+								.claim("scope", createScope(authentication))
+								.build();
+		
+		return jwtEncoder.encode(JwtEncoderParameters.from(claims))
+							.getTokenValue();
+	}
+
+	private String createScope(Authentication authentication) {
+		return authentication.getAuthorities().stream()
+			.map(a -> a.getAuthority())
+			.collect(Collectors.joining(" "));			
 	}
 
 }
+
+record JwtRespose(String token) {}
 ```
 ---
 
@@ -166,7 +201,6 @@ import java.util.UUID;
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -190,7 +224,7 @@ import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
 
 
-@Configuration
+//@Configuration
 public class JwtSecurityConfiguration {
 	
 	@Bean
@@ -363,11 +397,16 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.annotation.security.RolesAllowed;
 
 @RestController
 public class TodoResource {
@@ -384,6 +423,10 @@ public class TodoResource {
 	}
 
 	@GetMapping("/users/{username}/todos")
+	@PreAuthorize("hasRole('USER') and #username == authentication.name")
+	@PostAuthorize("returnObject.username == 'in28minutes'")
+	@RolesAllowed({"ADMIN", "USER"})
+	@Secured({"ROLE_ADMIN", "ROLE_USER"})
 	public Todo retrieveTodosForSpecificUser(@PathVariable String username) {
 		return TODOS_LIST.get(0);
 	}
@@ -409,7 +452,6 @@ logging.pattern.console= %d{MM-dd HH:mm:ss} - %logger{36} - %msg%n
 #spring.security.user.name=in28minutes
 #spring.security.user.password=dummy
 
-logging.level.root=debug
 spring.datasource.url=jdbc:h2:mem:testdb
 ```
 ---

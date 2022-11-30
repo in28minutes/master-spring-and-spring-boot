@@ -132,57 +132,28 @@ public class BasicAuthSecurityConfiguration {
 ```
 ---
 
-### /src/main/java/com/in28minutes/learnspringsecurity/jwt/JwtAuthenticationResource.java
+### /src/main/java/com/in28minutes/learnspringsecurity/jwt/JwtResource.java
 
 ```java
 package com.in28minutes.learnspringsecurity.jwt;
 
-import java.time.Instant;
-import java.util.stream.Collectors;
-
-import org.springframework.security.core.Authentication;
-import org.springframework.security.oauth2.jwt.JwtClaimsSet;
-import org.springframework.security.oauth2.jwt.JwtEncoder;
-import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class JwtAuthenticationResource {
-	
-	private JwtEncoder jwtEncoder;
-	
-	public JwtAuthenticationResource(JwtEncoder jwtEncoder) {
-		this.jwtEncoder = jwtEncoder;
-	}
-	
-	@PostMapping("/authenticate") 
-	public JwtRespose authenticate(Authentication authentication) {
-		return new JwtRespose(createToken(authentication));
-	}
-
-	private String createToken(Authentication authentication) {
-		var claims = JwtClaimsSet.builder()
-								.issuer("self")
-								.issuedAt(Instant.now())
-								.expiresAt(Instant.now().plusSeconds(60 * 30))
-								.subject(authentication.getName())
-								.claim("scope", createScope(authentication))
-								.build();
-		
-		return jwtEncoder.encode(JwtEncoderParameters.from(claims))
-						.getTokenValue();
-	}
-
-	private String createScope(Authentication authentication) {
-		return authentication.getAuthorities().stream()
-			.map(a -> a.getAuthority())
-			.collect(Collectors.joining(" "));			
+public class JwtResource {
+	//
+	@PostMapping("/authenticate")
+	public JwtResponse authenticateAndCreateJwtToken(
+						@RequestBody JwtRequest request) {
+		return new JwtResponse("JWT Token");
 	}
 
 }
 
-record JwtRespose(String token) {}
+record JwtRequest(String username, String password) {}
+record JwtResponse(String token) {}
 ```
 ---
 
@@ -231,7 +202,9 @@ public class JwtSecurityConfiguration {
 		
 		http.authorizeHttpRequests(
 						auth -> {
-							auth.anyRequest().authenticated();
+							auth
+							.requestMatchers("/authenticate").permitAll()
+							.anyRequest().authenticated();
 						});
 		
 		http.sessionManagement(
@@ -442,7 +415,6 @@ logging.pattern.console= %d{MM-dd HH:mm:ss} - %logger{36} - %msg%n
 #spring.security.user.name=in28minutes
 #spring.security.user.password=dummy
 
-logging.level.root=debug
 spring.datasource.url=jdbc:h2:mem:testdb
 ```
 ---

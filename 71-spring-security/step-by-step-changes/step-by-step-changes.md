@@ -1,6 +1,6 @@
-# 71-spring-security
+# Spring Security Step By Step Changes
 
-## Step06.md
+## Step 06
 
 - Step 00 - Getting started with Spring Security
 - Step 01 - Understanding Security Fundamentals
@@ -11,7 +11,7 @@
 - Step 06 - Exploring Spring Security - Form Authentication
 
 
-##### /src/main/java/com/in28minutes/learnspringsecurity/HelloWorldResource.java
+### /src/main/java/com/in28minutes/learnspringsecurity/HelloWorldResource.java
 
 ```java
 package com.in28minutes.learnspringsecurity;
@@ -31,7 +31,7 @@ public class HelloWorldResource {
 ```
 ---
 
-##### /src/main/java/com/in28minutes/learnspringsecurity/LearnSpringSecurityApplication.java
+### /src/main/java/com/in28minutes/learnspringsecurity/LearnSpringSecurityApplication.java
 
 ```java
 package com.in28minutes.learnspringsecurity;
@@ -50,7 +50,7 @@ public class LearnSpringSecurityApplication {
 ```
 ---
 
-##### /src/main/resources/application.properties
+### /src/main/resources/application.properties
 
 ```properties
 spring.main.banner-mode=off
@@ -59,7 +59,7 @@ logging.pattern.console= %d{MM-dd HH:mm:ss} - %logger{36} - %msg%n
 ```
 ---
 
-##### /src/test/java/com/in28minutes/learnspringsecurity/LearnSpringSecurityApplicationTests.java
+### /src/test/java/com/in28minutes/learnspringsecurity/LearnSpringSecurityApplicationTests.java
 
 ```java
 package com.in28minutes.learnspringsecurity;
@@ -78,7 +78,7 @@ class LearnSpringSecurityApplicationTests {
 ```
 ---
 
-##### /build.gradle
+### /build.gradle
 ```
 plugins {
 	id 'java'
@@ -108,7 +108,7 @@ tasks.named('test') {
 }
 ```
 
-## Step07.md
+## Step 07
 
 - Step 07 - Exploring Spring Security - Basic Authentication
 
@@ -125,7 +125,7 @@ New Lines
 spring.security.user.name=in28minutes
 spring.security.user.password=dummy
 ```
-## Step08.md
+## Step 08
 
 ### /src/main/java/com/in28minutes/learnspringsecurity/HelloWorldResource.java Moved to
 ### /src/main/java/com/in28minutes/learnspringsecurity/resources/HelloWorldResource.java New
@@ -178,7 +178,7 @@ record Todo (String username, String description) {}
 ```
 ---
 
-## Step10.md
+## Step 10
 
 - Step 08 - Exploring Spring Security - Cross Site Request Forgery - CSRF
 - Step 09 - Exploring Spring Security - CSRF for REST API
@@ -249,7 +249,7 @@ public class SpringSecurityPlayResource {
 ```
 ---
 
-## Step12.md
+## Step 12
 
 - Step 11 - Exploring Spring Security - Getting Started with CORS
 - Step 12 - Exploring Spring Security - Storing User Credentials in memory
@@ -297,7 +297,7 @@ New Lines
 #spring.security.user.name=in28minutes
 #spring.security.user.password=dummy
 ```
-## Step13.md
+## Step 13
 
 - Step 13 - Exploring Spring Security - Storing User Credentials using JDBC
 
@@ -359,7 +359,7 @@ New Lines
 ```
 spring.datasource.url=jdbc:h2:mem:testdb
 ```
-## Step15.md
+## Step 15
 
 - Step 14 - Understanding Encoding vs Hashing vs Encryption
 - Step 15 - Exploring Spring Security - Storing Bcrypt Encoded Passwords
@@ -409,7 +409,7 @@ public class BasicAuthSecurityConfiguration {
 ```
 ---
 
-## Step18.md
+## Step 18
 
 - Step 16 - Getting Started with JWT Authentication
 - Step 17 - Setting up JWT Auth with Spring Security and Spring Boot - 1
@@ -430,30 +430,6 @@ Comment out Basic Auth Configuration
 //@Configuration
 ```
 
-
-### /src/main/java/com/in28minutes/learnspringsecurity/jwt/JwtResource.java New
-
-```java
-package com.in28minutes.learnspringsecurity.jwt;
-
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController
-public class JwtResource {
-	//
-	@PostMapping("/authenticate")
-	public JwtResponse authenticateAndCreateJwtToken(
-						@RequestBody JwtRequest request) {
-		return new JwtResponse("JWT Token");
-	}
-
-}
-
-record JwtRequest(String username, String password) {}
-record JwtResponse(String token) {}
-```
 ---
 
 ### /src/main/java/com/in28minutes/learnspringsecurity/jwt/JwtSecurityConfiguration.java New
@@ -607,7 +583,7 @@ public class JwtSecurityConfiguration {
 ```
 ---
 
-## Step19.md
+## Step 19
 
 - Step 19 - Setting up JWT Resource with Spring Security and Spring Boot - 1
 
@@ -632,7 +608,7 @@ public class JwtAuthenticationResource {
 ```
 ---
 
-## Step20.md
+## Step 20
 
 - Step 20 - Setting up JWT Resource with Spring Security and Spring Boot - 2
 
@@ -690,7 +666,7 @@ record JwtRespose(String token) {}
 ```
 ---
 
-## Step22.md
+## Step 22
 
 - Step 21 - Understanding Spring Security Authentication
 - Step 22 - Exploring Spring Security Authorization
