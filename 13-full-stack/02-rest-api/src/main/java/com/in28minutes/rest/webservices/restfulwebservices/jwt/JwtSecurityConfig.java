@@ -49,7 +49,7 @@ public class JwtSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .authorizeHttpRequests(auth -> auth
-                	.requestMatchers("/authenticate","/h2-console")
+                        .requestMatchers("/authenticate", "/h2-console", "/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**")
                     .permitAll()
                     .requestMatchers(HttpMethod.OPTIONS,"/**")
                     .permitAll()

@@ -55,6 +55,7 @@
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 
+		<!-- More details refer: https://springdoc.org/v2/ -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
