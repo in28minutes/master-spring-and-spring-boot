@@ -1,4 +1,6 @@
-## Step02.md
+# Section 02
+
+## Step03.md
 
 ##### /learn-spring-framework/pom.xml
 
@@ -10,7 +12,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.0-RC1</version>
+		<version>3.0.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.in28minutes</groupId>
@@ -111,7 +113,7 @@ class LearnSpringFrameworkApplicationTests {
 }
 ```
 ---
-## Step03.md
+## Step04.md
 
 ### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/AppGamingBasicJava.java New
 
@@ -235,7 +237,7 @@ public GameRunner(SuperContraGame game) {
 ```
 
 
-## Step05.md
+## Step06.md
 
 ### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/GamingConsole.java New
 
@@ -313,7 +315,7 @@ public class PacmanGame implements GamingConsole{
 ```
 ---
 
-## Step07.md
+## Step08.md
 
 ### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/LearnSpringFrameworkApplication.java Deleted
 
@@ -397,7 +399,7 @@ public class HelloWorldConfiguration {
 ```
 ---
 
-## Step08.md
+## Step09.md
 
 ### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/App02HelloWorldSpring.java Modified
 
@@ -454,7 +456,7 @@ public class HelloWorldConfiguration {
 ```
 ---
 
-## Step09.md
+## Step10.md
 
 ### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/App02HelloWorldSpring.java Modified
 
@@ -527,7 +529,7 @@ public class HelloWorldConfiguration {
 ```
 ---
 
-## Step12.md
+## Step14.md
 
 ### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/App02HelloWorldSpring.java Modified
 
@@ -576,7 +578,7 @@ public Address address3() {
 
 ```
 
-## Step13.md
+## Step15.md
 
 ### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/HelloWorldConfiguration.java Moved to
 ### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/helloworld/HelloWorldConfiguration.java New
@@ -645,7 +647,9 @@ public class GamingConfiguration {
 ---
 
 
-## Step14.md
+# Section 03
+
+## Step01.md
 
 Getting Started
 - Rename `learn-spring-framework` to `learn-spring-framework-01`
@@ -726,7 +730,7 @@ public class PacmanGame implements GamingConsole{
 ### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/game/SuperContraGame.java Copied
 ---
 
-## Step15.md
+## Step02.md
 
 ### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/game/GameRunner.java Modified
 
@@ -766,7 +770,7 @@ public class SuperContraGame implements GamingConsole{
 ```
 ---
 
-## Step16.md
+## Step04.md
 
 ---
 
@@ -879,7 +883,7 @@ public class DepInjectionLauncherApplication {
 
 ---
 
-## Step19.md
+## Step08.md
 
 
 ### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/c1/BusinessCalculationService.java New
@@ -991,9 +995,10 @@ public class RealWorldSpringContextLauncherApplication {
 	}
 }
 ```
----
 
-## Step23.md
+# Section 04
+
+## Step03.md
 
 ---
 
@@ -1109,7 +1114,7 @@ public class BeanScopesLauncherApplication {
 ```
 ---
 
-## Step26.md
+## Step07.md
 
 ### /learn-spring-framework-02/pom.xml Modified
 
@@ -1254,7 +1259,7 @@ public class CdiContextLauncherApplication {
 ```
 ---
 
-## Step99.md
+## Step10.md
 
 
 ### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/examples/c1/BusinessCalculationService.java Modified
@@ -1358,4 +1363,3 @@ public class XmlConfigurationContextLauncherApplication {
 </beans>
 ```
 ---
-
