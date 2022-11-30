@@ -1,6 +1,7 @@
 package com.in28minutes.rest.webservices.restfulwebservices.versioning;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -26,14 +27,17 @@ public class VersioningPersonController {
 		return new PersonV2(new Name("Bob", "Charlie"));
 	}
 
-	@GetMapping(path = "/person/header", headers = "X-API-VERSION=1")
-	public PersonV1 getFirstVersionOfPersonRequestHeader() {
-		return new PersonV1("Bob Charlie");
-	}
+	@GetMapping(path = "/person/header")
+	public Object getFirstVersionOfPersonRequestHeader(@RequestHeader(
+			value = "X-API-VERSION",
+			defaultValue = "1") String apiVersion
+	) {
+		if (apiVersion.equals("1")) {
+			return new PersonV1("Bob Charlie");
+		} else {
+			return new PersonV2(new Name("Bob", "Charlie"));
+		}
 
-	@GetMapping(path = "/person/header", headers = "X-API-VERSION=2")
-	public PersonV2 getSecondVersionOfPersonRequestHeader() {
-		return new PersonV2(new Name("Bob", "Charlie"));
 	}
 
 	@GetMapping(path = "/person/accept", produces = "application/vnd.company.app-v1+json")
