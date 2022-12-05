@@ -16,7 +16,6 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -29,6 +28,8 @@ import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
+import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.jwk.JWKSet;
@@ -41,16 +42,18 @@ import com.nimbusds.jose.proc.SecurityContext;
 @EnableMethodSecurity
 public class JwtSecurityConfig {
 
-	@Bean
-	public WebSecurityCustomizer webSecurityCustomizer() {
-	    return (web) -> web.debug(true);
-	}
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, HandlerMappingIntrospector introspector) throws Exception {
+        
+    	// h2-console is a servlet 
+    	// https://github.com/spring-projects/spring-security/issues/12310
+    	MvcRequestMatcher h2RequestMatcher = new MvcRequestMatcher(introspector, "/**");
+        h2RequestMatcher.setServletPath("/h2-console");
+        
         return httpSecurity
                 .authorizeHttpRequests(auth -> auth
-                	.requestMatchers("/authenticate","/h2-console")
-                    .permitAll()
+                	.requestMatchers("/authenticate").permitAll()
+                	.requestMatchers(h2RequestMatcher).permitAll()
                     .requestMatchers(HttpMethod.OPTIONS,"/**")
                     .permitAll()
                     .anyRequest()
