@@ -48,9 +48,8 @@ public class JwtSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
-                .securityMatcher("/h2-console/**")
                 .authorizeHttpRequests(auth -> auth
-                	.requestMatchers("/authenticate")
+                	.requestMatchers("/authenticate","/h2-console")
                     .permitAll()
                     .requestMatchers(HttpMethod.OPTIONS,"/**")
                     .permitAll()
