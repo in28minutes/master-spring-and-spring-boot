@@ -6,6 +6,7 @@ import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.util.UUID;
 
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -28,8 +29,6 @@ import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
-import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.jwk.JWKSet;
@@ -43,17 +42,13 @@ import com.nimbusds.jose.proc.SecurityContext;
 public class JwtSecurityConfig {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, HandlerMappingIntrospector introspector) throws Exception {
-        
-    	// h2-console is a servlet 
-    	// https://github.com/spring-projects/spring-security/issues/12310
-    	MvcRequestMatcher h2RequestMatcher = new MvcRequestMatcher(introspector, "/**");
-        h2RequestMatcher.setServletPath("/h2-console");
-        
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        // https://github.com/spring-projects/spring-security/issues/1231
+        // https://docs.spring.io/spring-boot/docs/current/reference/html/data.html#data.sql.h2-web-console.spring-security
         return httpSecurity
                 .authorizeHttpRequests(auth -> auth
                 	.requestMatchers("/authenticate").permitAll()
-                	.requestMatchers(h2RequestMatcher).permitAll()
+                	.requestMatchers(PathRequest.toH2Console()).permitAll() // h2-console is a servlet and NOT recommended for a production
                     .requestMatchers(HttpMethod.OPTIONS,"/**")
                     .permitAll()
                     .anyRequest()
@@ -65,16 +60,17 @@ public class JwtSecurityConfig {
                         OAuth2ResourceServerConfigurer::jwt)
                 .httpBasic(
                         Customizer.withDefaults())
-                .headers(header -> {header.
-                	frameOptions().sameOrigin();})
+                .headers(header -> {
+                    header.frameOptions().sameOrigin();
+                })
                 .build();
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(
-            UserDetailsService userDetailsService) {
+    public AuthenticationManager authenticationManager(UserDetailsService userDetailsService) {
         var authenticationProvider = new DaoAuthenticationProvider();
         authenticationProvider.setUserDetailsService(userDetailsService);
+
         return new ProviderManager(authenticationProvider);
     }
 
@@ -92,6 +88,7 @@ public class JwtSecurityConfig {
     @Bean
     public JWKSource<SecurityContext> jwkSource() {
         JWKSet jwkSet = new JWKSet(rsaKey());
+
         return (((jwkSelector, securityContext) 
                         -> jwkSelector.select(jwkSet)));
     }
@@ -110,7 +107,6 @@ public class JwtSecurityConfig {
     
     @Bean
     public RSAKey rsaKey() {
-        
         KeyPair keyPair = keyPair();
         
         return new RSAKey
