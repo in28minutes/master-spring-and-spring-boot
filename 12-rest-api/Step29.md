@@ -1000,6 +1000,7 @@ public class VersioningPersonController {
 logging.level.org.springframework=info
 management.endpoints.web.exposure.include=*
 spring.datasource.url=jdbc:h2:mem:testdb
+spring.h2.console.enabled=true
 spring.jpa.defer-datasource-initialization=true
 ```
 ---
