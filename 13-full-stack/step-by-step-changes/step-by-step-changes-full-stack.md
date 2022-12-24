@@ -3472,6 +3472,7 @@ public interface TodoRepository extends JpaRepository<Todo, Integer>{
 
 ```
 spring.datasource.url=jdbc:h2:mem:testdb
+spring.h2.console.enabled=true
 spring.jpa.defer-datasource-initialization=true
 spring.main.banner-mode=off
 logging.pattern.console= %d{MM-dd HH:mm:ss} - %logger{36} - %msg%n
@@ -3524,6 +3525,7 @@ docker run --detach --env MYSQL_ROOT_PASSWORD=dummypassword --env MYSQL_USER=tod
 
 #comment-h2
 #spring.datasource.url=jdbc:h2:mem:testdb
+#spring.h2.console.enabled=true
 
 spring.datasource.url=jdbc:mysql://localhost:3306/todos
 spring.datasource.username=todos-user
