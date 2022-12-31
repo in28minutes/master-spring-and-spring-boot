@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 //equals, hashcode and toString are automatically created.
 //Released in JDK 16.
 
-record Person(String name, int age) { };
+record Person(String name, int age, Address address) { };
 
 record Address(String firstLine, String city) { };
 
@@ -27,10 +27,15 @@ public class HelloWorldConfiguration {
 
     @Bean
     public Person person() {
-        return new Person("Omer", 35);
+        return new Person("Omer", 35, new Address("Abc", "Istanbul"));
     }
 
     @Bean
+    public Person person2MethodCall() {
+        return new Person(name(), age(), address());
+    }
+
+    @Bean(name = "address2")
     public Address address() {
         return new Address("Abc", "Istanbul");
     }
