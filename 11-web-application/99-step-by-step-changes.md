@@ -63,7 +63,7 @@ Step 04 - Enhancing Spring MVC Controller to provide HTML response
 ```
 	@RequestMapping("say-hello-html")
 	public String sayHelloHtml() {
-		StringBuffer sb = StringBuffer();
+		StringBuffer sb = new StringBuffer();
 		sb.append("<html>");
 		sb.append("<head>");
 		sb.append("<title> My First HTML Page - Changed</title>");
