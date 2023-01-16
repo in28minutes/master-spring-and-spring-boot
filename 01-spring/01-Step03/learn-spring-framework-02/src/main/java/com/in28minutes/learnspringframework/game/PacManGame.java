@@ -4,7 +4,6 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
-@Primary
 public class PacManGame implements GamingConsole {
 
     @Override
