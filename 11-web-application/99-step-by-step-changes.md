@@ -100,6 +100,9 @@ Checks
 	<scope>provided</scope>
 </dependency>
 
+NOTE: Those are using IntellIj IDE use the scope as `default' i.e.
+<scope>default</scope>
+
 ```
 ### /src/main/java/com/in28minutes/springboot/myfirstwebapp/hello/SayHelloController.java Modified
 
