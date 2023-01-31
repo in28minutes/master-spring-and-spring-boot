@@ -100,6 +100,9 @@ Checks
 	<scope>provided</scope>
 </dependency>
 
+NOTE: Those are using IntellIj IDE use the scope as `default' i.e.
+<scope>default</scope>
+
 ```
 ### /src/main/java/com/in28minutes/springboot/myfirstwebapp/hello/SayHelloController.java Modified
 
@@ -1305,12 +1308,12 @@ public class SpringSecurityConfiguration {
 									.roles("USER","ADMIN")
 									.build();
 		
-		return InMemoryUserDetailsManager(userDetails);
+		return new InMemoryUserDetailsManager(userDetails);
 	}
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-		return BCryptPasswordEncoder();
+		return new BCryptPasswordEncoder();
 	}
 	
 }
@@ -1407,7 +1410,7 @@ public class SpringSecurityConfiguration {
 		UserDetails userDetails1 = createNewUser("in28minutes", "dummy");
 		UserDetails userDetails2 = createNewUser("ranga", "dummydummy");
 		
-		return InMemoryUserDetailsManager(userDetails1, userDetails2);
+		return new InMemoryUserDetailsManager(userDetails1, userDetails2);
 	}
 
 	private UserDetails createNewUser(String username, String password) {
@@ -1425,7 +1428,7 @@ public class SpringSecurityConfiguration {
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-		return BCryptPasswordEncoder();
+		return new BCryptPasswordEncoder();
 	}
 	
 }
