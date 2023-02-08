@@ -23,6 +23,10 @@ class ClassB {
         System.out.println("Some Initialization logic");
         this.classA = classA;
     }
+
+    public void doSomething() {
+        System.out.println("Do Something");
+    }
 }
 
 @Configuration
@@ -33,7 +37,9 @@ public class LazyInitializationLauncherApplication {
         try (AnnotationConfigApplicationContext context =
                       new AnnotationConfigApplicationContext
                               (LazyInitializationLauncherApplication.class)) {
-                    
+            System.out.println("Initialization of context is completed.");
+
+            context.getBean(ClassB.class).doSomething();
         }
     }
 }
