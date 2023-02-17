@@ -5,5 +5,19 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"> <!-- bean definitions here -->
 
+        <bean id="name" class="java.lang.String">
+            <constructor-arg value="omer"/>
+        </bean>
+
+        <bean id="age" class="java.lang.Integer">
+            <constructor-arg value="53"/>
+        </bean>
+
+        <!-- <context:component-scan base-package="com.in28minutes.learnspringframework.game"/> -->
+
+        <bean id="game" class="com.in28minutes.learnspringframework.game.PacManGame"/>
+        <bean id="gameRunner" class="com.in28minutes.learnspringframework.game.GameRunner">
+            <constructor-arg ref="game"/>
+        </bean>
 
 </beans>
