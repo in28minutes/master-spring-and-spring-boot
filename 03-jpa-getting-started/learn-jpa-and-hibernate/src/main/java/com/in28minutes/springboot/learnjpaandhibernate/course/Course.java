@@ -1,9 +1,19 @@
 package com.in28minutes.springboot.learnjpaandhibernate.course;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Course {
 
+    @Id
     private long id;
+
+    //@Column(name="name") -> no need due to same name
     private String name;
+
+    //@Column(name="author") -> no need due to same name
     private String author;
 
     public Course() {
