@@ -10,14 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class LoginController {
 
-    private Logger logger = LoggerFactory.getLogger(getClass());
-
     @RequestMapping("login")
-    public String gotoLoginPage(@RequestParam String name, ModelMap model) {
-        model.put("name", name);
-        logger.debug("(debug)The request param is {}", name);
-        logger.info("(info)The request param is {}", name);
-        logger.warn("(warn)The request param is {}", name);
+    public String gotoLoginPage() {
         return "login";
     }
 
