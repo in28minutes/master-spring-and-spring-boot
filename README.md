@@ -1,17 +1,16 @@
 # Master Spring and Spring Boot
 
-**Spring and Spring Boot** Frameworks are the **No 1 frameworks** for building enterprise apps in the Java world. 
+**Spring and Spring Boot** Frameworks are the **No 1 frameworks** for building enterprise apps in the Java world.
 
-In this course, you will **learn Spring and Spring Boot from ZERO**. 
+In this course, you will **learn Spring and Spring Boot from ZERO**.
 
-I'm a great believer that the best way to learn is by doing and we designed this course to be **hands-on**. 
+I'm a great believer that the best way to learn is by doing and we designed this course to be **hands-on**.
 
 You will build a **web application, a REST API and full stack application** using Spring, Spring Boot, JPA, Hibernate, React, Spring Security, Maven and Gradle.
 
 You will learn to containerise applications using Docker. You will learn to deploy these applications to AWS.
 
 By the end of the course, you will know everything you would need to become a great Spring and Spring Boot Developer.
-
 
 ## Installing Tools
 
@@ -37,16 +36,17 @@ By the end of the course, you will know everything you would need to become a gr
 - Others - https://www.youtube.com/watch?v=XveQ9Gq41UM
 
 #### Troubleshooting
-- Configuring Java in Eclipse - https://www.youtube.com/watch?v=8i0r_fcE3L0
 
+- Configuring Java in Eclipse - https://www.youtube.com/watch?v=8i0r_fcE3L0
 
 ## Lectures
 
-
 ### Getting Started - Master Spring Framework and Spring Boot
+
 - Getting Started - Master Spring Framework and Spring Boot
 
 ### Getting Started with Java Spring Framework
+
 - Step 01 - Understanding the Need for Java Spring Framework
 - Step 02 - Getting Started with Java Spring Framework
 - Step 03 - Creating a New Spring Framework Project with Maven and Java
@@ -66,6 +66,7 @@ By the end of the course, you will know everything you would need to become a gr
 - Step 17 - Exploring Spring Framework With Java - Section 1 - Review
 
 ### Using Spring Framework to Create and Manage Your Java Objects
+
 - Step 01 - Getting Spring Framework to Create and Manage Your Java Objects
 - Step 02 - Exploring Primary and Qualifier Annotations for Spring Components
 - Step 03 - Primary and Qualifier - Which Spring Annotation Should You Use?
@@ -77,6 +78,7 @@ By the end of the course, you will know everything you would need to become a gr
 - Step 09 - Exploring Spring Framework With Java - Section 2 - Review
 
 ### Exploring Spring Framework Advanced Features
+
 - Step 01 - Exploring Lazy and Eager Initialization of Spring Framework Beans
 - Step 02 - Comparing Lazy Initialization vs Eager Initialization
 - Step 03 - Exploring Java Spring Framework Bean Scopes - Prototype and Singleton
@@ -92,6 +94,7 @@ By the end of the course, you will know everything you would need to become a gr
 - Step 13 - Exploring Spring Big Picture - Framework, Modules and Projects
 
 ### Getting Started with Spring Boot
+
 - Step 01 - Getting Started with Spring Boot - Goals
 - Step 02 - Understanding the World Before Spring Boot - 10000 Feet Overview
 - Step 03 - Setting up New Spring Boot Project with Spring Initializr
@@ -108,6 +111,7 @@ By the end of the course, you will know everything you would need to become a gr
 - Step 14 - Getting Started with Spring Boot - Review
 
 ### Getting Started with JPA and Hibernate with Spring and Spring Boot
+
 - Step 01 - Getting Started with JPA and Hibernate - Goals
 - Step 02 - Setting up New Spring Boot Project for JPA and Hibernate
 - Step 03 - Launching up H2 Console and Creating Course Table in H2
@@ -122,6 +126,7 @@ By the end of the course, you will know everything you would need to become a gr
 - Step 12 - Understanding difference between Hibernate and JPA
 
 ### Build Java Web Application with Spring Framework, Spring Boot and Hibernate
+
 - Step 00 - Introduction to Building Web App with Spring Boot
 - Step 01 - Creating Spring Boot Web Application with Spring Initializr
 - Step 02 - Quick overview of Spring Boot Project
@@ -168,6 +173,7 @@ By the end of the course, you will know everything you would need to become a gr
 - Step 41 - OPTIONAL - Connecting Todo App to MySQL database
 
 ### Creating a Java REST API with Spring Boot, Spring Framework and Hibernate
+
 - Step 00 - Creating a REST API with Spring Boot - An Overview
 - Step 01 - Initializing a REST API Project with Spring Boot
 - Step 02 - Creating a Hello World REST API with Spring Boot
@@ -209,6 +215,7 @@ By the end of the course, you will know everything you would need to become a gr
 - Step 37 - Enhancing Spring Security Configuration for Basic Authentication
 
 ### Building Java Full Stack Application with Spring Boot and React
+
 - Step 01 - Getting Started - Full Stack Spring Boot and React Application
 - Step 02 - Exploring What and Why of Full Stack Architectures
 - Step 03 - Understanding JavaScript and EcmaScript History
@@ -226,6 +233,7 @@ By the end of the course, you will know everything you would need to become a gr
 - Step 15 - Exploring JavaScript further
 
 ### Exploring React Components with Counter Example
+
 - Step 01 - Exploring React Components with Counter Example
 - Step 02 - Getting Started with React Application - Counter
 - Step 03 - Getting Started with React Application - Counter - 2
@@ -240,6 +248,7 @@ By the end of the course, you will know everything you would need to become a gr
 - Step 12 - Refactoring React Counter Component
 
 ### Building Java Todo Full Stack Application with Spring Boot and React
+
 - Step 01 - Getting Started with React Todo Management App
 - Step 02 - Getting Started with Login Component - Todo React App
 - Step 03 - Improving Login Component Further - Todo React App
@@ -261,6 +270,7 @@ By the end of the course, you will know everything you would need to become a gr
 - Step 19 - Protecting Secure React Routes using Authenticated Route - 2
 
 ### Connecting Spring Boot REST API with React Frontend - Java Full Stack Application
+
 - Step 01 - Setting Todo REST API Project for React Full Stack Application
 - Step 02 - Calling Spring Boot Hello World REST API from React Hello World Component
 - Step 03 - Enabling CORS Requests for Spring Boot REST API
@@ -285,12 +295,13 @@ By the end of the course, you will know everything you would need to become a gr
 - Step 22 - Using async and await to invoke Basic Auth API
 - Step 23 - Setting Basic Auth Token into Auth Context
 - Step 24 - Setting up Axios Interceptor to add Authorization Header
-- Step 24A -  Debugging Problems with Basic Auth and Spring Boot
+- Step 24A - Debugging Problems with Basic Auth and Spring Boot
 - Step 25 - Getting Started with JWT and Spring Security
 - Step 26 - Integrating Spring Security JWT REST API with React Frontend
 - Step 27 - Debugging Problems with JWT Auth and Spring Boot
 
 ### Connecting Java Full Stack Application (Spring Boot and React) with JPA and Hibernate
+
 - Step 01 - Full Stack React and Spring Boot with JPA and Hibernate
 - Step 02 - Full Stack React & Spring Boot with JPA & Hibernate - Getting Tables Ready
 - Step 03 - Full Stack React & Spring Boot with JPA & Hibernate - Todo CRUD operations
@@ -298,13 +309,15 @@ By the end of the course, you will know everything you would need to become a gr
 - Step 05 - Full Stack React & Spring Boot with JPA & Hibernate - Connect with MySQL
 
 ### Exploring Unit Testing with JUnit
-- Step 01 - What is JUnit and Unit Testing_
+
+- Step 01 - What is JUnit and Unit Testing\_
 - Step 02 - Your First JUnit Project and Green Bar
 - Step 03 - Your First Code and First Unit Test
 - Step 04 - Exploring other assert methods
 - Step 05 - Exploring few important JUnit annotations
 
 ### Exploring Mocking with Mockito for Spring Boot Projects
+
 - Step 00 - Introduction to Section - Mockito in 5 Steps
 - Step 01 - Setting up a Spring Boot Project
 - Step 02 - Understanding problems with Stubs
@@ -313,6 +326,7 @@ By the end of the course, you will know everything you would need to become a gr
 - Step 05 - Exploring Mocks further by Mocking List interface
 
 ### Securing Spring Boot Applications with Spring Security
+
 - Step 00 - Getting started with Spring Security
 - Step 01 - Understanding Security Fundamentals
 - Step 02 - Understanding Security Principles
@@ -354,8 +368,8 @@ By the end of the course, you will know everything you would need to become a gr
 - Step 10 - Creating Track Time Annotation
 - Step 11 - Getting Started with Spring AOP - Thank You
 
-
 ### Learning Maven with Spring and Spring Boot
+
 - Step 01 - Introduction to Maven
 - Step 02 - Creating a Spring Boot Project with Maven
 - Step 03 - Exploring Maven pom.xml for Spring Boot Project
@@ -386,13 +400,13 @@ By the end of the course, you will know everything you would need to become a gr
 - Step 08 - Building Docker Image with Spring Boot Maven Plugin
 - Step 09 - Quick Review of Docker with Spring Boot
 
-
 ### Getting Started with Cloud and AWS
-- Step  02 - Introduction to Cloud and AWS - Advantages
-- Step  03 - Creating Your AWS Account
-- Step  04 - Creating Your First IAM User
-- Step  05 - Understanding the Need for Regions and Zones
-- Step  06 - Exploring Regions and Availability Zones in AWS
+
+- Step 02 - Introduction to Cloud and AWS - Advantages
+- Step 03 - Creating Your AWS Account
+- Step 04 - Creating Your First IAM User
+- Step 05 - Understanding the Need for Regions and Zones
+- Step 06 - Exploring Regions and Availability Zones in AWS
 
 ### Getting Started with Compute Services in AWS
 
@@ -414,16 +428,18 @@ By the end of the course, you will know everything you would need to become a gr
 - Step 15 - Cloud Computing in AWS - Quick Review of Compute Services
 
 ### Deploying Spring Boot Applications to AWS
-- Step  01 - Deploying Hello World Spring Boot App to AWS
-- Step  02 - Exploring AWS Elastic Beanstalk - Your First Spring Boot App in AWS
-- Step  03 - Running Spring Boot REST API with MySQL Database as Docker Container
-- Step  04 - Deploying Spring Boot REST API with MySQL to AWS Elastic Beanstalk and RDS
-- Step  05 - Exploring AWS Elastic Beanstalk and Amazon RDS - Spring Boot REST API
-- Step  06 - Exploring Spring Boot and React Full Stack App
-- Step  07 - Deploying Full Stack Spring Boot REST API to AWS Elastic Beanstalk
-- Step  08 - Deploying Full Stack React App to Amazon S3
+
+- Step 01 - Deploying Hello World Spring Boot App to AWS
+- Step 02 - Exploring AWS Elastic Beanstalk - Your First Spring Boot App in AWS
+- Step 03 - Running Spring Boot REST API with MySQL Database as Docker Container
+- Step 04 - Deploying Spring Boot REST API with MySQL to AWS Elastic Beanstalk and RDS
+- Step 05 - Exploring AWS Elastic Beanstalk and Amazon RDS - Spring Boot REST API
+- Step 06 - Exploring Spring Boot and React Full Stack App
+- Step 07 - Deploying Full Stack Spring Boot REST API to AWS Elastic Beanstalk
+- Step 08 - Deploying Full Stack React App to Amazon S3
 
 ### Introduction to Functional Programming with Java
+
 - Step 00 - Introduction to Functional Programming - Overview
 - Step 01 - Getting Started with Functional Programming with Java
 - Step 02 - Writing Your First Java Functional Program
@@ -434,6 +450,6 @@ By the end of the course, you will know everything you would need to become a gr
 - Step 07 - Understanding Optional class in Java
 - Step 08 - Quick Review of Functional Programming Basics
 
-
 ### Congratulations - Master Spring Framework and Spring Boot
+
 - Congratulations - Master Spring Framework and Spring Boot
