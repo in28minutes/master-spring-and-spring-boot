@@ -2,7 +2,7 @@
 
 **Spring and Spring Boot** Frameworks are the **No 1 frameworks** for building enterprise apps in the Java world.
 
-In this course, you will **learn Spring and Spring Boot from ZERO**.
+In this course, you will **learn Spring and Spring Boot from ZERO to HERO**.
 
 I'm a great believer that the best way to learn is by doing and we designed this course to be **hands-on**.
 
