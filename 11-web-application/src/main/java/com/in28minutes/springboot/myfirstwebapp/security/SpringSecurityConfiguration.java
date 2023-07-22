@@ -7,6 +7,8 @@ import java.util.function.Function;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -61,8 +63,11 @@ public class SpringSecurityConfiguration {
 				auth -> auth.anyRequest().authenticated());
 		http.formLogin(withDefaults());
 		
-		http.csrf().disable();
-		http.headers().frameOptions().disable();
+		http.csrf(csrf -> csrf.disable());
+		// OR
+		// http.csrf(AbstractHttpConfigurer::disable);
+
+		http.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable)); // Starting from SB 3.1.x
 		
 		return http.build();
 	}

@@ -58,9 +58,9 @@ public class BasicAuthSecurityConfiguration {
 						);
 		
 		//http.formLogin();
-		http.httpBasic();
+		http.httpBasic(withDefaults());
 		
-		http.csrf().disable();
+		http.csrf(csrf -> csrf.disable());
 		
 		return http.build();
 	}

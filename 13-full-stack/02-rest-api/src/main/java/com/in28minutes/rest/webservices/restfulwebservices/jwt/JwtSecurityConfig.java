@@ -1,5 +1,7 @@
 package com.in28minutes.rest.webservices.restfulwebservices.jwt;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.interfaces.RSAPrivateKey;
@@ -14,10 +16,10 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
@@ -38,7 +40,6 @@ import com.nimbusds.jose.proc.SecurityContext;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity
 public class JwtSecurityConfig {
 
     @Bean
@@ -56,13 +57,14 @@ public class JwtSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.
                 	sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .oauth2ResourceServer(
-                        OAuth2ResourceServerConfigurer::jwt)
+                //.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt) // Deprecated in SB 3.1.x
+                .oauth2ResourceServer((oauth2) -> oauth2.jwt(withDefaults())) // Starting from SB 3.1.x using Lambda DSL
                 .httpBasic(
                         Customizer.withDefaults())
-                .headers(header -> {
-                    header.frameOptions().sameOrigin();
-                })
+//                .headers(header -> { // Deprecated in SB 3.1.x
+//                    header.frameOptions().sameOrigin();
+//                })
+                .headers(header -> header.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)) // Starting from SB 3.1.x using Lambda DSL
                 .build();
     }
 

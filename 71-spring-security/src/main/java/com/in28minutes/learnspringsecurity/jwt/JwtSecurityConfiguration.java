@@ -10,6 +10,7 @@ import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -30,6 +31,8 @@ import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 
 //@Configuration
 public class JwtSecurityConfiguration {
@@ -48,13 +51,13 @@ public class JwtSecurityConfiguration {
 									SessionCreationPolicy.STATELESS)
 						);
 		
-		http.httpBasic();
+		http.httpBasic(withDefaults());
+
+		http.csrf(csrf -> csrf.disable());
+
+		http.headers(headers -> headers.frameOptions(frameOptionsConfig-> frameOptionsConfig.disable()));
 		
-		http.csrf().disable();
-		
-		http.headers().frameOptions().sameOrigin();
-		
-		http.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
+		http.oauth2ResourceServer((oauth2) -> oauth2.jwt(withDefaults()));
 		
 		
 		return http.build();

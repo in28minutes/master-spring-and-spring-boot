@@ -19,10 +19,16 @@ docker run --detach --env MYSQL_ROOT_PASSWORD=dummypassword --env MYSQL_USER=tod
 		<scope>runtime</scope>
 	</dependency> -->
 
-
-<dependency>
+// Deprecated in SB 3.1.x
+<!--<dependency>
 	<groupId>mysql</groupId>
 	<artifactId>mysql-connector-java</artifactId>
+</dependency> -->
+
+// Use the below Mysql Dependency Starting from SB 3.1.x
+<dependency>
+	<groupId>com.mysql</groupId>
+	<artifactId>mysql-connector-j</artifactId>
 </dependency>
 ```
 
