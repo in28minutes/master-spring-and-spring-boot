@@ -63,11 +63,11 @@ public class BasicAuthSecurityConfiguration {
 						);
 		
 		//http.formLogin();
-		http.httpBasic();
+		http.httpBasic(withDefaults());
 		
-		http.csrf().disable();
+		http.csrf(csrf -> csrf.disable());
 		
-		http.headers().frameOptions().sameOrigin();
+		http.headers(headers -> headers.frameOptions(frameOptionsConfig-> frameOptionsConfig.disable()));
 		
 		return http.build();
 	}

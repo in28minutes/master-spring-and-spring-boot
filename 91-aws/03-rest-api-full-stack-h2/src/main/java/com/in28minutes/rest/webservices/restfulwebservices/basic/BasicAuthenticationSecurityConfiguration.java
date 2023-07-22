@@ -32,7 +32,7 @@ public class BasicAuthenticationSecurityConfiguration {
 					.sessionManagement(
 						session -> session.sessionCreationPolicy
 						(SessionCreationPolicy.STATELESS))
-					.csrf().disable()
+					.csrf(csrf -> csrf.disable())
 					.build();
 	}
 

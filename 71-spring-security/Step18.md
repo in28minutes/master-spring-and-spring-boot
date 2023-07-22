@@ -63,11 +63,11 @@ public class BasicAuthSecurityConfiguration {
 						);
 		
 		//http.formLogin();
-		http.httpBasic();
+		http.httpBasic(withDefaults());
 		
-		http.csrf().disable();
+		http.csrf(csrf -> csrf.disable());
 		
-		http.headers().frameOptions().sameOrigin();
+		http.headers(headers -> headers.frameOptions(frameOptionsConfig-> frameOptionsConfig.disable()));
 		
 		return http.build();
 	}
@@ -213,13 +213,13 @@ public class JwtSecurityConfiguration {
 									SessionCreationPolicy.STATELESS)
 						);
 		
-		http.httpBasic();
+		http.httpBasic(withDefaults());
 		
-		http.csrf().disable();
+		http.csrf(csrf -> csrf.disable());
 		
-		http.headers().frameOptions().sameOrigin();
+		http.headers(headers -> headers.frameOptions(frameOptionsConfig-> frameOptionsConfig.disable()));
 		
-		http.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
+		http.oauth2ResourceServer((oauth2) -> oauth2.jwt(withDefaults()));
 		
 		
 		return http.build();
