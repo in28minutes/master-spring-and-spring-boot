@@ -3513,10 +3513,19 @@ docker run --detach --env MYSQL_ROOT_PASSWORD=dummypassword --env MYSQL_USER=tod
     </dependency> -->
 
 
+<!-- Use this for Spring Boot 3.1 and higher -->
 <dependency>
-    <groupId>mysql</groupId>
-    <artifactId>mysql-connector-java</artifactId>
-</dependency>
+    <groupId>com.mysql</groupId>
+    <artifactId>mysql-connector-j</artifactId>
+</dependency> 
+
+<!-- Use this if you are using Spring Boot 3.0 or lower
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+    </dependency> 
+-->
+
 ```
 
 #### /src/main/resources/application.properties Modified
