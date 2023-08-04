@@ -8,6 +8,7 @@ Here's a history lesson - https://github.com/spring-projects/spring-security/iss
 
 #### Changes
 
+```java
 // http.csrf(AbstractHttpConfigurer::disable);
 http.csrf(csrf -> csrf.disable());
 
@@ -19,7 +20,7 @@ http.httpBasic(withDefaults());
 
 //.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt) 
 .oauth2ResourceServer((oauth2) -> oauth2.jwt(withDefaults()))
-
+```
 
 ### Connecting to MySQL
 
