@@ -40,6 +40,10 @@ By the end of the course, you will know everything you would need to become a gr
 - Configuring Java in Eclipse - https://www.youtube.com/watch?v=8i0r_fcE3L0
 
 
+
+
+
+
 ## Lectures
 
 
