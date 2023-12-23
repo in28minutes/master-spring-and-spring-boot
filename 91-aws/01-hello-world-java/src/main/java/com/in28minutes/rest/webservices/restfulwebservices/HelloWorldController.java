@@ -8,6 +8,9 @@ public class HelloWorldController {
 
 	@GetMapping(path = "/")
 	public String helloWorld() {
-		return "{\"message\":\"Hello World Java v1\"}";
+		// Implemented using String Templates
+		return """
+                { message: Hello World Java v1 }
+               """;
 	}
 }

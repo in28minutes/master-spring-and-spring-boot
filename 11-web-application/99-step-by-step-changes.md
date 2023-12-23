@@ -587,14 +587,14 @@ Step 17 - Adding JSTL to Spring Boot Project and Showing Todos in a Table
 </dependency>
 
 <dependency>
-	<groupId>org.eclipse.jetty</groupId>
-	<artifactId>glassfish-jstl</artifactId>
+	<groupId>org.glassfish.web</groupId>
+	<artifactId>jakarta.servlet.jsp.jstl</artifactId>
 </dependency>
 ```
 
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/listTodos.jsp
 ```
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
 	<body>
 		<div>
@@ -661,7 +661,7 @@ Snippets
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/listTodos.jsp
 
 ```
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
 <html>
 	<head>
@@ -782,7 +782,7 @@ public class TodoService {
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/todo.jsp
 
 ```
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
 <html>
 	<head>
@@ -1111,7 +1111,7 @@ Step 28 - Adding a Navigation Bar and Implementing JSP Fragments
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/common/header.jspf
 
 ```
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 

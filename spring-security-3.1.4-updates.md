@@ -1,3 +1,4 @@
+# _NOTE: SPRING BOOT 3.2.X BELOW CHANGES ARE NOT APPLICABLE_
 ## Spring Security Changes for Spring Boot 3.1.4 version
 
 ## Below are the comprehensive list of changes

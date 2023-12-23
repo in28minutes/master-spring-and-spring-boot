@@ -1311,7 +1311,7 @@ import '@testing-library/jest-dom';
 	<name>restful-web-services</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>21</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
