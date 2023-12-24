@@ -15,7 +15,7 @@ Current Directory : /Users/rangakaranam/Ranga/git/00.courses/spring-boot-master-
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.1.1</version>
+		<version>3.2.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.in28minutes.springboot</groupId>
@@ -67,8 +67,8 @@ Current Directory : /Users/rangakaranam/Ranga/git/00.courses/spring-boot-master-
 		</dependency>
 		
 		<dependency>
-			<groupId>org.eclipse.jetty</groupId>
-			<artifactId>glassfish-jstl</artifactId>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>jakarta.servlet.jsp.jstl</artifactId>
 		</dependency>
 		
 		<dependency>
@@ -579,7 +579,7 @@ public class TodoService {
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/common/header.jspf
 
 ```
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 

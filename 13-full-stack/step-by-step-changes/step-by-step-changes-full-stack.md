@@ -1566,7 +1566,7 @@ function AuthenticatedRoute({children}) {
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.1</version>
+        <version>3.2.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.in28minutes.rest.webservices</groupId>
@@ -1575,7 +1575,7 @@ function AuthenticatedRoute({children}) {
     <name>restful-web-services</name>
     <description>Demo project for Spring Boot</description>
     <properties>
-        <java.version>17</java.version>
+        <java.version>21</java.version>
     </properties>
     <dependencies>
         <dependency>

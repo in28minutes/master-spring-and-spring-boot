@@ -41,8 +41,8 @@ Current Directory : /Ranga/001.Notes/00.CoursePreparations/2022-06-Spring-Boot-U
 		</dependency>
 
 		<dependency>
-			<groupId>org.eclipse.jetty</groupId>
-			<artifactId>glassfish-jstl</artifactId>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>jakarta.servlet.jsp.jstl</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>

@@ -54,8 +54,8 @@ Current Directory : /Ranga/001.Notes/00.CoursePreparations/2022-06-Spring-Boot-U
 		</dependency>
 
 		<dependency>
-			<groupId>org.eclipse.jetty</groupId>
-			<artifactId>glassfish-jstl</artifactId>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>jakarta.servlet.jsp.jstl</artifactId>
 		</dependency>
 
 		<dependency>
@@ -589,7 +589,7 @@ public class TodoService {
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/common/header.jspf
 
 ```
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <html>

@@ -82,13 +82,13 @@ class LearnSpringSecurityApplicationTests {
 ```
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.1.1'
+	id 'org.springframework.boot' version '3.2.0'
 	id 'io.spring.dependency-management' version '1.1.0'
 }
 
 group = 'com.in28minutes'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+sourceCompatibility = '21'
 
 repositories {
 	mavenCentral()
@@ -494,7 +494,7 @@ public class JwtSecurityConfiguration {
 		
 		http.headers(headers -> headers.frameOptions(frameOptionsConfig-> frameOptionsConfig.disable()));
 		
-		http.oauth2ResourceServer((oauth2) -> oauth2.jwt(withDefaults()));
+		http.oauth2ResourceServer(oauth2 -> oauth2.jwt(withDefaults()));
 		
 		
 		return http.build();

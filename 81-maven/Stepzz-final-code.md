@@ -15,7 +15,7 @@ Current Directory : /Users/ranga/Ranga/git/00.courses/master-spring-and-spring-b
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.1.1</version>
+		<version>3.2.1</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
@@ -27,7 +27,7 @@ Current Directory : /Users/ranga/Ranga/git/00.courses/master-spring-and-spring-b
 	<name>learn-maven</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>21</java.version>
 	</properties>
 	<dependencies>
 

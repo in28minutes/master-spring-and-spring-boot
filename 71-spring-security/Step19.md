@@ -213,7 +213,7 @@ public class JwtSecurityConfiguration {
 		
 		http.headers(headers -> headers.frameOptions(frameOptionsConfig-> frameOptionsConfig.disable()));
 		
-		http.oauth2ResourceServer((oauth2) -> oauth2.jwt(withDefaults()));
+		http.oauth2ResourceServer(oauth2 -> oauth2.jwt(withDefaults()));
 		
 		
 		return http.build();

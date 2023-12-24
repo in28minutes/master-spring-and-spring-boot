@@ -58,7 +58,7 @@ public class JwtSecurityConfig {
                 .sessionManagement(session -> session.
                 	sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 //.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt) // Deprecated in SB 3.1.x
-                .oauth2ResourceServer((oauth2) -> oauth2.jwt(withDefaults())) // Starting from SB 3.1.x using Lambda DSL
+                .oauth2ResourceServer(oauth2 -> oauth2.jwt(withDefaults())) // Starting from SB 3.1.x using Lambda DSL
                 .httpBasic(
                         Customizer.withDefaults())
 //                .headers(header -> { // Deprecated in SB 3.1.x
