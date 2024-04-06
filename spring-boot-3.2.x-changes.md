@@ -1,6 +1,6 @@
-## Spring Boot 3.2.x Changes
+## Course Update: Spring Boot 3.2.x JSTL Change
 
-Using JSPs in web applications need a few changes (details below)
+3 Important Changes
 - Change 01: Use `jakarta.servlet.jsp.jstl` instead of `glassfish-jstl`
 - Change 02: Use `jakarta.tags.core` instead of `http://java.sun.com/jsp/jstl/core` as taglib
 - Change 03: Run `mvn clean install` to update libraries
