@@ -34,7 +34,7 @@ public class TodoResource {
 	@PostAuthorize("returnObject.username == 'in28minutes'")
 	@RolesAllowed({"ADMIN", "USER"})
 	@Secured({"ROLE_ADMIN", "ROLE_USER"})
-	public Todo retrieveTodosForSpecificUser(@PathVariable String username) {
+	public Todo retrieveTodosForSpecificUser(@PathVariable("username") String username) {
 		return TODOS_LIST.get(0);
 	}
 
