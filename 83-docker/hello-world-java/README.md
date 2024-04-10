@@ -15,7 +15,7 @@ ENTRYPOINT ["java","-jar","/app.jar"]
 
 ## Dockerfile - 2 - Build Jar File - Multi Stage
 ```
-FROM jelastic/maven:3.9.5-openjdk-21 AS build
+FROM maven:3.9.6-amazoncorretto-21-al2023 AS build
 WORKDIR /home/app
 COPY . /home/app
 RUN mvn -f /home/app/pom.xml clean package
@@ -30,7 +30,7 @@ ENTRYPOINT [ "sh", "-c", "java -jar /app.jar" ]
 ## Dockerfile - 3 - Caching
 
 ```
-FROM jelastic/maven:3.9.5-openjdk-21 AS build
+FROM maven:3.9.6-amazoncorretto-21-al2023 AS build
 WORKDIR /home/app
 
 COPY ./pom.xml /home/app/pom.xml
