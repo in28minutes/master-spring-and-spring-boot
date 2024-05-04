@@ -1,0 +1,22 @@
+try(var context = new AnnotationConfigApplicationContext(ConfigurationClass.class))) {
+
+}
+
+dependency injection - identify beans, their dependencies and wire them together (provides IOC or Inversion of Control)
+inversion of control - let the framework create the objects
+ioc container/context - manages the lifecycle of beans and dependencies
+
+@Configuration
+@Bean - any object that is managed by spring framework, usually on configuration classes
+@Primary
+@Qualifier("qualifierName")
+@Component - when added to class, instance of class will be managed by spring framework
+@ComponentScan("packageToScan") - tell spring where to find component classes
+autowiring - process of wiring in dependencies for a spring bean
+@Autowired - annotation used to tell spring if a dependency is to be autowired
+context.getBeanDefinitionNames - list name of beans that are managed by spring
+
+@bean vs @component annotation
+component instantiating beans for own application code
+bean for custom business logic, instantiating beans for 3rd party libraries
+
