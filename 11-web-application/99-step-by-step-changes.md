@@ -477,7 +477,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class TodoService {
 	
-	private static List<Todo> todos = ArrayList<>();
+	private static List<Todo> todos = new ArrayList<>();
 	
 	static {
 		todos.add(new Todo(1, "in28minutes","Learn AWS", 
