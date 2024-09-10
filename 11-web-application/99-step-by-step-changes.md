@@ -362,10 +362,23 @@ public class LoginController {
 			
 			return "welcome";
 		}
-		
+		model.put("errorMessage","Invalid Credentials!, Please try again!");
 		return "login";
 	}
 }
+```
+### /src/main/resources/META-INF/resources/WEB-INF/jsp/login.jsp Modified
+
+```
+		<title>Login Page</title>
+		Welcome to the login page!
+		<pre>${errorMessage}</pre>
+		<form method="post">
+			Name: <input type="text" name="name">
+			Password: <input type="password" name="password">
+			<input type="submit">
+		</form>
+		 
 ```
 ---
 
