@@ -543,6 +543,20 @@ public class TodoController {
 }
 ```
 
+### Creating listTodos.jsp /src/main/resources/META-INF/resources/WEB-INF/jsp/listTodos.jsp
+```
+<html>
+	<body>
+		<div>
+			<h1>Welcome to your Todos</h1>
+			<div>Your Todos: ${todos}</div>
+
+		</div>
+		
+	</body>
+</html>
+```
+
 ### /src/main/java/com/in28minutes/springboot/myfirstwebapp/todo/TodoService.java
 
 ```java
