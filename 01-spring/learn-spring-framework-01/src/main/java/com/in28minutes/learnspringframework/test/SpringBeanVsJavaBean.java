@@ -43,23 +43,17 @@ class JavaBean implements Serializable  { //EJB
 	public void setNumber(int number) {
 		this.number = number;
 	}
-	
-	
-	
-	
-	
+
 }
 
 
 public class SpringBeanVsJavaBean {
-	
 
 	public static void main(String[] args) {
 		
 		Pojo pojo = new Pojo();
 		
 		System.out.println(pojo);
-		
 
 	}
 
