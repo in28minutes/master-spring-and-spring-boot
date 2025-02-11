@@ -1,9 +1,5 @@
-[tabs]
-======
-Java::
-+
-[source,java,role="primary"]
-----
+=== Java
+```java
 package com.in28minutes.rest.webservices.restfulwebservices;
 
 import org.springframework.boot.SpringApplication;
@@ -17,12 +13,10 @@ public class RestfulWebServicesApplication {
     }
 
 }
-----
+```
+=== Kotlin
 
-Kotlin::
-+
-[source,kotlin,role="secondary"]
-----
+```kotlin
 package com.in28minutes.rest.webservices.restfulwebservices
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -34,7 +28,4 @@ class Application
 fun main(args: Array<String>) {
     runApplication<Application>(*args)
 }
-----
-======
-
-
+```
