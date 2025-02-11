@@ -1,4 +1,4 @@
-=== "Java"
+Java
 ```java
 package com.in28minutes.rest.webservices.restfulwebservices;
 
@@ -14,7 +14,7 @@ public class RestfulWebServicesApplication {
 
 }
 ```
-=== "Kotlin"
+Kotlin
 
 ```kotlin
 package com.in28minutes.rest.webservices.restfulwebservices
