@@ -288,6 +288,276 @@ To import a pre-existing Spring Boot project developed in Kotlin into IDE,
 
 </project>
 ```
+## Key Aspects to Comprehend from the Kotlin `pom.xml`
+
+- Within the properties section, include the `<kotlin.version>1.9.25</kotlin.version>` entry.
+- **Dependencies**
+  - Three Kotlin-specific libraries are essential for the configuration of a Spring Boot web application and are set up by default:
+      - `jackson-module-kotlin`, which facilitates the serialization and deserialization of Kotlin classes and data classes. This library automatically supports single-constructor classes, while also accommodating those with secondary constructors or static factory methods.
+      - `kotlin-reflect`, which provides reflection capabilities for Kotlin
+      - `kotlin-stdlib`, which serves as the standard library for Kotlin
+      - `kotlin-test-junit5` which serves as the standard testing library for Kotlin
+- **Plugins**
+```xml
+<build>
+    <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
+    <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+        <plugin>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-maven-plugin</artifactId>
+            <configuration>
+                <args>
+                    <arg>-Xjsr305=strict</arg>
+                </args>
+                <compilerPlugins>
+                    <plugin>spring</plugin>
+                    <plugin>jpa</plugin>
+                    <plugin>all-open</plugin>
+                </compilerPlugins>
+                <pluginOptions>
+                    <option>all-open:annotation=jakarta.persistence.Entity</option>
+                    <option>all-open:annotation=jakarta.persistence.MappedSuperclass</option>
+                    <option>all-open:annotation=jakarta.persistence.Embeddable</option>
+                </pluginOptions>
+            </configuration>
+            <dependencies>
+                <dependency>
+                    <groupId>org.jetbrains.kotlin</groupId>
+                    <artifactId>kotlin-maven-allopen</artifactId>
+                    <version>${kotlin.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.jetbrains.kotlin</groupId>
+                    <artifactId>kotlin-maven-noarg</artifactId>
+                    <version>${kotlin.version}</version>
+                </dependency>
+            </dependencies>
+        </plugin>
+    </plugins>
+</build>
+```
+## Maven `<build>` Configuration for Kotlin + Spring Boot
+This configuration sets up a **Spring Boot** application using **Kotlin** and **Maven**.
+## **1. Source and Test Source Directories**
+```xml
+<sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
+<testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
+```
+
+- Defines Kotlin source directories for compilation.
+- Default Maven setup is for Java (src/main/java), so this explicitly configures it for Kotlin.
+
+## 2. Plugins Section
+
+Maven plugins extend the functionality of the build process.
+
+### Spring Boot Maven Plugin
+```xml
+<plugin>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-maven-plugin</artifactId>
+</plugin>
+```
+- Enables **Spring Boot application packaging**.
+- Supports `spring-boot:run` for running the app.
+- Helps generate fat JARs with embedded dependencies.
+
+### Kotlin Maven Plugin
+
+```xml
+<plugin>
+    <groupId>org.jetbrains.kotlin</groupId>
+    <artifactId>kotlin-maven-plugin</artifactId>
+    <configuration>
+```
+- This plugin compiles Kotlin code in a Maven project.
+### Compiler Arguments
+```xml
+<args>
+    <arg>-Xjsr305=strict</arg>
+</args>
+```
+- `-Xjsr305=strict`: Enforces strict nullability checks for Java interop.
+- Prevents `NullPointerException` by enforcing null safety.
+### Compiler Plugins
+```xml
+<compilerPlugins>
+    <plugin>spring</plugin>
+    <plugin>jpa</plugin>
+    <plugin>all-open</plugin>
+</compilerPlugins>
+```
+- `spring` → Makes Kotlin classes open for Spring proxies.
+- `jpa` → Prevents Hibernate issues with final Kotlin classes.
+- `all-open` → Allows inheritance for specific annotations.
+### Plugin Options (All-Open Plugin)
+
+```xml
+<pluginOptions>
+    <option>all-open:annotation=jakarta.persistence.Entity</option>
+    <option>all-open:annotation=jakarta.persistence.MappedSuperclass</option>
+    <option>all-open:annotation=jakarta.persistence.Embeddable</option>
+</pluginOptions>
+```
+- Ensures that classes annotated with:
+    - `@Entity`
+    - `@MappedSuperclass`
+    - `@Embeddable`
+- Are `not final`, so Spring and Hibernate can proxy them.
+
+## 3. Kotlin Plugin Dependencies
+Maven dependencies required for Kotlin-specific functionality.
+
+###  Kotlin All-Open Plugin
+```xml
+<dependency>
+    <groupId>org.jetbrains.kotlin</groupId>
+    <artifactId>kotlin-maven-allopen</artifactId>
+    <version>${kotlin.version}</version>
+</dependency>
+```
+- Enables all-open to make specific Kotlin classes non-final.
+
+### Kotlin No-Arg Plugin
+```xml
+<dependency>
+    <groupId>org.jetbrains.kotlin</groupId>
+    <artifactId>kotlin-maven-noarg</artifactId>
+    <version>${kotlin.version}</version>
+</dependency>
+```
+- Allows Kotlin classes to have no-arg constructors.
+- Required for JPA entities and Hibernate compatibility.
+
+## HellWorldBean
+
+**Java**
+```java
+package com.in28minutes.rest.webservices.restfulwebservices.helloworld;
+
+public class HelloWorldBean {
+
+	private String message;
+
+	public HelloWorldBean(String message) {
+		this.message = message;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	@Override
+	public String toString() {
+		return "HelloWorldBean [message=" + message + "]";
+	}
+}
+```
+### `src/main/kotlin/com/in28minutes/rest/webservices/restfulwebservices/helloworld/HelloWorldBean.kt`
+
+**Kotlin**
+```kotlin
+package com.in28minutes.rest.webservices.restfulwebservices.helloworld
+
+data class HelloWorldBean(var message: String)
+```
+- Defines a `data class` named `HelloWorldBean`.
+- It has a single property `message: String` that is mutable (`var`).
+- Being a data class, it automatically generates:
+  - `toString()`
+  - `equals()`
+  - `hashCode()`
+  - `copy()`
+- Ideal for simple data-holding objects.
+
+### Alternative: Using a Regular Class
+
+```kotlin
+class HelloWorldBean(var message: String) {
+    override fun toString(): String {
+        return "HelloWorldBean [message=$message]"
+    }
+}
+```
+- Defines a regular class with a `var message: String` property.
+- Manually overrides `toString()` for custom output.
+- Lacks built-in features of a `data class`.
+
+## HellWorldController
+**Java**
+```java
+package com.in28minutes.rest.webservices.restfulwebservices.helloworld;
+
+import java.util.Locale;
+
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HelloWorldController {
+	
+	private MessageSource messageSource;
+	
+	public HelloWorldController(MessageSource messageSource) {
+		this.messageSource = messageSource;
+	}
+	
+	@GetMapping(path = "/hello-world")
+	public String helloWorld() {
+		return "Hello World"; 
+	}
+	
+	@GetMapping(path = "/hello-world-bean")
+	public HelloWorldBean helloWorldBean() {
+		return new HelloWorldBean("Hello World"); 
+	}
+	
+	// Path Parameters
+	// /users/{id}/todos/{id}  => /users/2/todos/200
+	// /hello-world/path-variable/{name}
+	// /hello-world/path-variable/Ranga
+
+	@GetMapping(path = "/hello-world/path-variable/{name}")
+	public HelloWorldBean helloWorldPathVariable(@PathVariable String name) {
+		return new HelloWorldBean(String.format("Hello World, %s", name)); 
+	}
+
+	@GetMapping(path = "/hello-world-internationalized")
+	public String helloWorldInternationalized() {
+		Locale locale = LocaleContextHolder.getLocale();
+		return messageSource.getMessage("good.morning.message", null, "Default Message", locale );
+		
+		//return "Hello World V2"; 
+		
+		//1:
+		//2:
+//		- Example: `en` - English (Good Morning)
+//		- Example: `nl` - Dutch (Goedemorgen)
+//		- Example: `fr` - French (Bonjour)
+//		- Example: `de` - Deutsch (Guten Morgen)
+
+	}
+
+	
+}
+```
+**Kotlin**
+### `src/main/kotlin/com/in28minutes/rest/webservices/restfulwebservices/helloworld/HelloWorldController.kt`
+```kotlin
+
+```
 
 **Java**
 ```java
