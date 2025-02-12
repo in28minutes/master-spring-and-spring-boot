@@ -32,7 +32,6 @@ class UserDaoService {
         users.removeIf(predicate)
     }
 
-
     companion object {
         // JPA/Hibernate > Database
         // UserDaoService > Static List
