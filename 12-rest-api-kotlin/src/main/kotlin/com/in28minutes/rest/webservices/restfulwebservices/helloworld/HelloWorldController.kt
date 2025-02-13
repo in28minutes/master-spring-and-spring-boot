@@ -1,3 +1,42 @@
+/**
+ * REST Controller for handling "Hello World" endpoints using Kotlin and Spring Boot.
+ *
+ * ## Features:
+ * - **RESTful API**: Implements simple greeting endpoints using `@RestController`.
+ * - **Internationalization (i18n)**: Uses `MessageSource` to return localized messages.
+ * - **Path Variables**: Demonstrates handling dynamic values in URL paths.
+ * - **Kotlin Concepts and Syntax Used**:
+ *   - **Primary Constructor Injection**:
+ *     ```kotlin
+ *     class HelloWorldController(private val messageSource: MessageSource)
+ *     ```
+ *   - **String Interpolation**:
+ *     ```kotlin
+ *     return "Hello, $name"
+ *     ```
+ *   - **Nullable Type Handling**:
+ *     ```kotlin
+ *     fun helloWorldPathVariable(@PathVariable name: String?): HelloWorldBean
+ *     ```
+ *   - **Type Inference**:
+ *     ```kotlin
+ *     fun helloWorld() = "Hello World" // No explicit return type needed
+ *     ```
+ *   - **Data Class Usage**:
+ *     ```kotlin
+ *     data class HelloWorldBean(var message: String)
+ *     ```
+ *
+ * ## Endpoints:
+ * - `GET /hello-world` → Returns a simple "Hello World" string.
+ * - `GET /hello-world-bean` → Returns a `HelloWorldBean` object.
+ * - `GET /hello-world/path-variable/{name}` → Returns a personalized message.
+ * - `GET /hello-world-internationalized` → Returns a localized greeting message.
+ *
+ * @constructor Initializes the controller with a `MessageSource` for internationalization.
+ * @param messageSource The message source for retrieving localized messages.
+ */
+
 package com.in28minutes.rest.webservices.restfulwebservices.helloworld
 
 import org.springframework.context.MessageSource
