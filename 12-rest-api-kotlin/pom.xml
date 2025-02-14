@@ -16,6 +16,7 @@
 
 	<properties>
 		<java.version>21</java.version>
+		<!-- Kotlin version used in the project -->
 		<kotlin.version>1.9.25</kotlin.version>
 	</properties>
 
@@ -44,14 +45,17 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<!-- Jackson Module for Kotlin to handle JSON serialization/deserialization -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.module</groupId>
 			<artifactId>jackson-module-kotlin</artifactId>
 		</dependency>
+		<!-- Kotlin Reflection API for runtime introspection -->
 		<dependency>
 			<groupId>org.jetbrains.kotlin</groupId>
 			<artifactId>kotlin-reflect</artifactId>
 		</dependency>
+		<!-- Kotlin Standard Library for core language features -->
 		<dependency>
 			<groupId>org.jetbrains.kotlin</groupId>
 			<artifactId>kotlin-stdlib</artifactId>
@@ -89,6 +93,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- Kotlin Test JUnit5 for unit testing in Kotlin -->
 		<dependency>
 			<groupId>org.jetbrains.kotlin</groupId>
 			<artifactId>kotlin-test-junit5</artifactId>
@@ -109,18 +114,32 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<!-- Kotlin Maven Plugin for compiling Kotlin code -->
 			<plugin>
 				<groupId>org.jetbrains.kotlin</groupId>
 				<artifactId>kotlin-maven-plugin</artifactId>
 				<configuration>
+					<!--
+						Enables strict nullability checks for Java's JSR-305 annotations.
+						- Treats @Nonnull as non-nullable and @Nullable as nullable.
+						- Helps prevent unexpected NullPointerExceptions when interacting with Java code.
+					-->
 					<args>
 						<arg>-Xjsr305=strict</arg>
 					</args>
 					<compilerPlugins>
+						<!-- Enables Spring framework-specific optimizations -->
 						<plugin>spring</plugin>
+						<!-- Enables JPA entity enhancements -->
 						<plugin>jpa</plugin>
+						<!-- Keeps Kotlin classes open for proxying (e.g., JPA entities) -->
 						<plugin>all-open</plugin>
 					</compilerPlugins>
+					<!--
+						The all-open compiler plugin makes specific annotations open by default.
+						In Kotlin, classes are final by default, but JPA entities require open classes.
+						These options ensure that annotated classes remain extendable for frameworks like Hibernate.
+					-->
 					<pluginOptions>
 						<option>all-open:annotation=jakarta.persistence.Entity</option>
 						<option>all-open:annotation=jakarta.persistence.MappedSuperclass</option>
@@ -128,11 +147,13 @@
 					</pluginOptions>
 				</configuration>
 				<dependencies>
+					<!-- Kotlin All-Open Plugin: Keeps annotated classes open for frameworks like Spring and JPA -->
 					<dependency>
 						<groupId>org.jetbrains.kotlin</groupId>
 						<artifactId>kotlin-maven-allopen</artifactId>
 						<version>${kotlin.version}</version>
 					</dependency>
+					<!-- Kotlin No-Arg Plugin: Generates no-arg constructors for JPA entities -->
 					<dependency>
 						<groupId>org.jetbrains.kotlin</groupId>
 						<artifactId>kotlin-maven-noarg</artifactId>
