@@ -3,6 +3,10 @@ package com.in28minutes.rest.webservices.restfulwebservices.versioning
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
+/**
+ * - `@get:GetMapping` is used as a **property-based mapping**.
+ * In Kotlin, instead of defining a function (fun), we can use properties (val).
+ */
 @RestController
 class VersioningPersonController {
 

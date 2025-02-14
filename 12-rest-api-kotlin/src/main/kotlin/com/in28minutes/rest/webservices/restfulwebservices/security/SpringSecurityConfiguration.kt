@@ -5,6 +5,12 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class SpringSecurityConfiguration {
 
+    /**
+     * Declares a function using `fun` keyword.
+     *
+     * @param http A parameter of type [HttpSecurity].
+     * @return A value of type [SecurityFilterChain].
+     */
 //	@Bean
 //	fun filterChain(http: HttpSecurity): SecurityFilterChain {
 //

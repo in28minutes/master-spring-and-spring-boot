@@ -10,6 +10,13 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 import java.util.*
 
+/**
+ * Declares a class using the `class` keyword.
+ * - `fun` declares a function.
+ * @property userRepository Declares a read-only property (`val`) for user repository.
+ * @property postRepository Declares a read-only property (`val`) for post repository.
+ * The constructor parameters are automatically assigned to properties using `private val`.
+ */
 @RestController
 class UserJpaResource(
     private val userRepository: UserRepository,
@@ -26,7 +33,7 @@ class UserJpaResource(
     //WebMvcLinkBuilder
     @GetMapping("/jpa/users/{id}")
     fun retrieveUser(@PathVariable id: Int): EntityModel<User> {
-        val user: Optional<User> = userRepository.findById(id)
+        val user: Optional<User> = userRepository.findById(id) // val is immutable (cannot be reassigned).
 
         if (user.isEmpty) throw UserNotFoundException("id:$id")
 
