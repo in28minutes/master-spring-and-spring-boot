@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Quarkus does not provide `org.springframework.context.i18n.LocaleContextHolder`, as that is specific to Spring.
  * Hence, we have manually created `LocaleService` and `MessageService`
  * 1. Using `Locale` in CDI Beans
- * 2.Manually Load Properties for i18n from MessageService
+ * 2. Manually Load Properties for i18n from MessageService
  */
 @RestController
 public class HelloWorldController {
