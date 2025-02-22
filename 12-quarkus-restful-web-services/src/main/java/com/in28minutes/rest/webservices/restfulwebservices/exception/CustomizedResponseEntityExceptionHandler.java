@@ -11,6 +11,7 @@ import com.in28minutes.rest.webservices.restfulwebservices.user.UserNotFoundExce
  * 1. Use <code>@Provider</code> instead of <code>@ControllerAdvice</code> <br/>
  * 2. Implement <code>ExceptionMapper<T></code> for each exception type <br/>
  * 3. Use <code>Response</code> instead of <code>ResponseEntity</code> <br/>
+ * <a href="https://quarkus.io/guides/validation#rest-end-point-validation">ExceptionMapper</a>
  */
 @Provider
 public class CustomizedResponseEntityExceptionHandler implements ExceptionMapper<Exception> {

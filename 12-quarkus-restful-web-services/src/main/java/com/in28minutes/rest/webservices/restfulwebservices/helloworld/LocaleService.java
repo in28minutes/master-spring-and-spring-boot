@@ -14,6 +14,8 @@ import java.util.Locale;
  * This class is marked as {@code @RequestScoped}, meaning a new instance
  * will be created for each HTTP request.
  * </p>
+ * @RequestScoped is equivalent to {@code @Scope(WebApplicationContext.SCOPE_REQUEST)} in Spring
+ * <a href="https://quarkus.io/guides/cdi#bean-scope-available">RequestScoped</a>
  */
 @RequestScoped
 public class LocaleService {

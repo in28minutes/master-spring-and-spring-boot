@@ -17,8 +17,8 @@ import com.in28minutes.rest.webservices.restfulwebservices.jpa.UserRepository;
  * Replaced ResponseEntity with Quarkus-native Response.<br/>
  * Replaced findAll() with listAll() for Panache repository.<br/>
  * Used persist(user) instead of save(user) for Panache.<br/>
- * Swagger URL: <a href="http://localhost:8081/q/swagger-ui/">Quarkus Swagger</a><br/>
- * Dev UI: <a href="http://localhost:8081/q/dev-ui/endpoints">Quarkus Dev UI</a>
+ * Swagger URL: <a href="http://localhost:8080/q/swagger-ui/">Quarkus Swagger</a><br/>
+ * Dev UI: <a href="http://localhost:8080/q/dev-ui/endpoints">Quarkus Dev UI</a>
  */
 @Path("/jpa/users")  // Use @Path for Routing instead of @RestController and @RequestMapping.
 @Produces(MediaType.APPLICATION_JSON)

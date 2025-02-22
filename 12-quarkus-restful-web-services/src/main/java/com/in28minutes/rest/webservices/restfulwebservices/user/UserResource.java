@@ -14,8 +14,8 @@ import jakarta.validation.Valid;
 /**
  * Replaced Spring annotations (@RestController, @GetMapping, etc.) with Jakarta RESTful Web Services (JAX-RS) annotations (@Path, @GET, etc.).<br/><br/>
  * Replaced ResponseEntity with Quarkus-native Response.<br/>
- * Swagger URL: <a href="http://localhost:8081/q/swagger-ui/">Quarkus Swagger</a><br/>
- * Dev UI: <a href="http://localhost:8081/q/dev-ui/endpoints">Quarkus Dev UI</a>
+ * Swagger URL: <a href="http://localhost:8080/q/swagger-ui/">Quarkus Swagger</a><br/>
+ * Dev UI: <a href="http://localhost:8080/q/dev-ui/endpoints">Quarkus Dev UI</a>
  */
 @Path("/users")  // Base path for this resource
 @Produces(MediaType.APPLICATION_JSON)

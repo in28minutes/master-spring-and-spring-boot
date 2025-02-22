@@ -11,8 +11,10 @@ import java.util.ResourceBundle;
  *
  * <p>
  * This class is marked as {@code @ApplicationScoped}, meaning a single
- * instance of it will be shared across the entire application.
+ * instance of it will be shared across the entire application, which is equivalent to {@code @Component} in Spring
  * </p>
+ * <a href="https://jakarta.ee/specifications/cdi/3.0/apidocs/?jakarta/enterprise/context/ApplicationScoped.html">Jakarta ApplicationScoped</a><br/>
+ * <a href="https://quarkus.io/guides/cdi#bean-scope-available">ApplicationScoped</a>
  */
 @ApplicationScoped
 public class MessageService {
