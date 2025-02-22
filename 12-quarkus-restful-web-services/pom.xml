@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.in28minutes.rest.webservices</groupId>
+    <artifactId>quarkus-restful-web-services</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <properties>
+        <!-- Compiler Plugin Version:- Specifies the version of the Maven Compiler Plugin used for Java compilation.-->
+        <compiler-plugin.version>3.13.0</compiler-plugin.version>
+
+        <!--
+            Java Compiler Release:
+            - Sets the Java version to be used for compilation (Java 21 in this case).
+            - Ensures compatibility with Java 21 features and APIs.
+        -->
+        <maven.compiler.release>21</maven.compiler.release>
+
+        <!--
+        Project Encoding:
+        - Sets the character encoding for the source code and reporting output.
+        - Ensures correct handling of special characters in the source files.
+        -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!--
+        Quarkus BOM (Bill of Materials):
+        - Specifies the Quarkus BOM artifact and version.
+        - Manages dependency versions to ensure compatibility.
+        -->
+        <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
+        <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
+        <quarkus.platform.version>3.18.3</quarkus.platform.version>
+
+        <!--
+        Skip Integration Tests:
+        - Controls whether integration tests should be skipped (`true` means they won't run).
+        - Can be overridden using `-DskipITs=false` in the Maven command.
+        -->
+        <skipITs>true</skipITs>
+
+        <!--
+        Surefire Plugin Version:
+        - Defines the version of the Maven Surefire Plugin used for running unit tests.
+        - Ensures compatibility with the latest Java version and test framework.
+        -->
+        <surefire-plugin.version>3.5.2</surefire-plugin.version>
+    </properties>
+
+    <dependencyManagement>
+        <!-- Manages the Quarkus platform dependencies, ensuring compatibility between various Quarkus extensions by importing a BOM (Bill of Materials).-->
+        <dependencies>
+            <dependency>
+                <groupId>${quarkus.platform.group-id}</groupId>
+                <artifactId>${quarkus.platform.artifact-id}</artifactId>
+                <version>${quarkus.platform.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!-- Provides an embedded H2 database for lightweight in-memory storage. -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-jdbc-h2</artifactId>
+        </dependency>
+        <!-- Enables Hibernate Validator for bean validation in Quarkus. -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-hibernate-validator</artifactId>
+        </dependency>
+        <!-- Integrates SmallRye OpenAPI to generate OpenAPI documentation for REST APIs. -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-smallrye-openapi</artifactId>
+        </dependency>
+        <!-- Provides compatibility with Spring Security in Quarkus applications. -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-spring-security</artifactId>
+        </dependency>
+        <!-- Implements Elytron security using a properties file for authentication and authorization. -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-elytron-security-properties-file</artifactId>
+        </dependency>
+        <!-- Enables support for Hypertext Application Language (HAL) for RESTful API responses. -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-hal</artifactId>
+        </dependency>
+        <!-- Provides Spring Web compatibility to allow the use of Spring MVC annotations in Quarkus. -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-spring-web</artifactId>
+        </dependency>
+        <!-- Enables Spring Data JPA support in Quarkus applications. -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-spring-data-jpa</artifactId>
+        </dependency>
+        <!-- Provides JDBC driver support for MySQL databases. -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-jdbc-mysql</artifactId>
+        </dependency>
+        <!-- Enables the ArC dependency injection framework, a lightweight alternative to CDI. -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-arc</artifactId>
+        </dependency>
+        <!-- Enables Jackson-based JSON serialization and deserialization for RESTful services. -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-rest-jackson</artifactId>
+        </dependency>
+        <!-- Provides JUnit 5 support for testing Quarkus applications. -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-junit5</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- Enables REST-assured for testing REST APIs in a fluent Java API style. -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!--
+            Quarkus Maven Plugin:
+            - Provides support for building Quarkus applications.
+            - Generates necessary configurations and resources.
+            - Supports native image generation using GraalVM.
+            -->
+            <plugin>
+                <groupId>${quarkus.platform.group-id}</groupId>
+                <artifactId>quarkus-maven-plugin</artifactId>
+                <version>${quarkus.platform.version}</version>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build</goal> <!-- Builds the Quarkus application -->
+                            <goal>generate-code</goal> <!-- Generates source code if needed -->
+                            <goal>generate-code-tests</goal> <!-- Generates test-related code -->
+                            <goal>native-image-agent</goal> <!-- Assists in native image generation -->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!--
+            Maven Compiler Plugin:
+            - Compiles Java source code.
+            - Uses the specified Java version (configured via properties).
+            - Enables the inclusion of parameter names for better reflection support.
+            -->
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${compiler-plugin.version}</version>
+                <configuration>
+                    <parameters>true</parameters>
+                </configuration>
+            </plugin>
+
+            <!--
+            Maven Surefire Plugin:
+            - Executes unit tests during the `test` phase.
+            - Configures system properties for logging and Maven home.
+            -->
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${surefire-plugin.version}</version>
+                <configuration>
+                    <systemPropertyVariables>
+                        <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
+                        <maven.home>${maven.home}</maven.home>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+
+            <!--
+            Maven Failsafe Plugin:
+            - Runs integration tests during the `integration-test` phase.
+            - Uses `verify` to validate integration test results.
+            - Configures properties for native image execution and logging.
+            -->
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${surefire-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal> <!-- Runs integration tests -->
+                            <goal>verify</goal> <!-- Verifies integration test results -->
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <systemPropertyVariables>
+                        <native.image.path>${project.build.directory}/${project.build.finalName}-runner</native.image.path>
+                        <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
+                        <maven.home>${maven.home}</maven.home>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <!--
+        Native Profile:
+        - Activates when `-Dnative` is used in the Maven command.
+        - Enables native image compilation using Quarkus.
+        - Ensures that integration tests are executed (`skipITs` set to `false`).
+        -->
+        <profile>
+            <id>native</id>
+            <activation>
+                <property>
+                    <name>native</name>
+                </property>
+            </activation>
+            <properties>
+                <skipITs>false</skipITs>
+                <quarkus.native.enabled>true</quarkus.native.enabled>
+            </properties>
+        </profile>
+    </profiles>
+
+</project>
