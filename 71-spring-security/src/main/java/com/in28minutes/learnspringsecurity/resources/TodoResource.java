@@ -18,7 +18,7 @@ import jakarta.annotation.security.RolesAllowed;
 @RestController
 public class TodoResource {
 	
-	private Logger logger = LoggerFactory.getLogger(getClass());
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	private static final List<Todo> TODOS_LIST = 
 			List.of(new Todo("in28minutes", "Learn AWS"),
@@ -35,7 +35,7 @@ public class TodoResource {
 	@RolesAllowed({"ADMIN", "USER"})
 	@Secured({"ROLE_ADMIN", "ROLE_USER"})
 	public Todo retrieveTodosForSpecificUser(@PathVariable("username") String username) {
-		return TODOS_LIST.get(0);
+		return TODOS_LIST.getFirst();
 	}
 
 	@PostMapping("/users/{username}/todos")
