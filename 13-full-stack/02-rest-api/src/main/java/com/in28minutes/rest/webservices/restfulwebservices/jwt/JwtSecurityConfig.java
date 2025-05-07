@@ -56,6 +56,9 @@ public class JwtSecurityConfig {
     @Value("${jwt.key}")
     private String jwtKey;
 
+    /**
+     * Core interface and with InMemoryUserDetailsManager implementation which returns user-specific data.
+     */
     @Bean
     public UserDetailsService userDetailsService() {
         return new InMemoryUserDetailsManager(
@@ -65,8 +68,13 @@ public class JwtSecurityConfig {
                         .build());
     }
 
+    /**
+     * The configuration establishes a Servlet Filter referred to as the <code>springSecurityFilterChain</code>, which manages all security aspects of your application,
+     * including the protection of application URLs, validation of submitted usernames and passwords, and redirection to the login form, among other functions.
+     * For more details: <a href="https://docs.spring.io/spring-security/reference/servlet/architecture.html#servlet-securityfilterchain">SecurityFilterChain</a>
+     */
     @Bean
-    public SecurityFilterChain configure(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable);
         http.authorizeHttpRequests(auth ->
                 auth.requestMatchers("/authenticate").permitAll()
@@ -83,6 +91,18 @@ public class JwtSecurityConfig {
         return http.build();
     }
 
+    /**
+     * Creates a {@link JwtEncoder} bean using the {@link NimbusJwtEncoder} implementation.
+     * <p>
+     * This encoder is used to generate signed JWT tokens using a symmetric key.
+     * The secret key is wrapped with {@link ImmutableSecret} to make it compatible with Nimbus.
+     *
+     * @return a configured {@link JwtEncoder} bean for encoding JWTs
+     *
+     * @see org.springframework.security.oauth2.jwt.JwtEncoder
+     * @see org.springframework.security.oauth2.jwt.NimbusJwtEncoder
+     * @see com.nimbusds.jose.jwk.source.ImmutableSecret
+     */
     @Bean
     JwtEncoder jwtEncoder() {
         return new NimbusJwtEncoder(new ImmutableSecret<>(jwtKey.getBytes()));
@@ -91,6 +111,7 @@ public class JwtSecurityConfig {
     /**
      * The Spring Authorization Server mandates the use of RSA-256 signatures for its JWTs, and you must be quite specific if you desire an alternative.
      * This is the reason why the JwtTokenService employs the MacAlgorithm.HS512 for encoding, and subsequently utilizes the same algorithm in the JwtDecoder.
+     * Uses a JwtDecoder bean to validate signatures and decode tokens
      */
     @Bean
     public JwtDecoder jwtDecoder() {

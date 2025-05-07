@@ -16,37 +16,52 @@ import org.springframework.web.bind.annotation.RestController;
 
 //@RestController
 public class JwtAuthenticationResource {
-	
-	private JwtEncoder jwtEncoder;
-	
-	public JwtAuthenticationResource(JwtEncoder jwtEncoder) {
-		this.jwtEncoder = jwtEncoder;
-	}
-	
-	@PostMapping("/authenticate") 
-	public JwtResponse authenticate(Authentication authentication) {
-		return new JwtResponse(createToken(authentication));
-	}
 
-	private String createToken(Authentication authentication) {
-		var now = Instant.now();
-		String scope = authentication.getAuthorities().stream()
-				.map(GrantedAuthority::getAuthority)
-				.filter(authority -> !authority.startsWith("ROLE"))
-				.collect(Collectors.joining(" "));
-		var claims = JwtClaimsSet.builder()
-				.issuer("self")
-				.issuedAt(now)
-				.expiresAt(now.plus(1, ChronoUnit.HOURS))
-				.subject(authentication.getName())
-				.claim("scope", scope)
-				.build();
-		var encoderParameters = JwtEncoderParameters.from(JwsHeader.with(MacAlgorithm.HS512).build(), claims);
+    private JwtEncoder jwtEncoder;
 
-		return this.jwtEncoder.encode(encoderParameters).getTokenValue();
-	}
+    public JwtAuthenticationResource(JwtEncoder jwtEncoder) {
+        this.jwtEncoder = jwtEncoder;
+    }
 
-	// Asymmetric Approach
+    @PostMapping("/authenticate")
+    public JwtResponse authenticate(Authentication authentication) {
+        return new JwtResponse(createToken(authentication));
+    }
+
+    /**
+     * Generates a signed JWT token for the authenticated user.
+     * <p>
+     * The token includes standard claims such as issuer, issued time, expiration time,
+     * subject (username), and a custom "scope" claim which contains the user's authorities
+     * excluding roles that start with "ROLE".
+     * The token is signed using the HS512 MAC algorithm.
+     *
+     * @param authentication the {@link Authentication} object containing user details and authorities
+     * @return a signed JWT token as a {@link String}
+     * @see org.springframework.security.core.Authentication
+     * @see org.springframework.security.oauth2.jwt.JwtEncoder
+     * @see org.springframework.security.oauth2.jwt.JwtClaimsSet
+     * @see org.springframework.security.oauth2.jwt.JwtEncoderParameters
+     */
+    private String createToken(Authentication authentication) {
+        var now = Instant.now();
+        String scope = authentication.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .filter(authority -> !authority.startsWith("ROLE"))
+                .collect(Collectors.joining(" "));
+        var claims = JwtClaimsSet.builder()
+                .issuer("self")
+                .issuedAt(now)
+                .expiresAt(now.plus(1, ChronoUnit.HOURS))
+                .subject(authentication.getName())
+                .claim("scope", scope)
+                .build();
+        var encoderParameters = JwtEncoderParameters.from(JwsHeader.with(MacAlgorithm.HS512).build(), claims);
+
+        return this.jwtEncoder.encode(encoderParameters).getTokenValue();
+    }
+
+    // Asymmetric Approach
 //	private String createToken(Authentication authentication) {
 //		var claims = JwtClaimsSet.builder()
 //								.issuer("self")
@@ -68,4 +83,5 @@ public class JwtAuthenticationResource {
 
 }
 
-record JwtResponse(String token) {}
+record JwtResponse(String token) {
+}

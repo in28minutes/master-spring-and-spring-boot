@@ -15,13 +15,28 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class JwtTokenService {
-    
+
     private final JwtEncoder jwtEncoder;
 
     public JwtTokenService(JwtEncoder jwtEncoder) {
         this.jwtEncoder = jwtEncoder;
     }
 
+    /**
+     * Generates a signed JWT token for the authenticated user.
+     * <p>
+     * The token includes standard claims such as issuer, issued time, expiration time,
+     * subject (username), and a custom "scope" claim which contains the user's authorities
+     * excluding roles that start with "ROLE".
+     * The token is signed using the HS512 MAC algorithm.
+     *
+     * @param authentication the {@link Authentication} object containing user details and authorities
+     * @return a signed JWT token as a {@link String}
+     * @see org.springframework.security.core.Authentication
+     * @see org.springframework.security.oauth2.jwt.JwtEncoder
+     * @see org.springframework.security.oauth2.jwt.JwtClaimsSet
+     * @see org.springframework.security.oauth2.jwt.JwtEncoderParameters
+     */
     public String generateToken(Authentication authentication) {
         var now = Instant.now();
         String scope = authentication.getAuthorities().stream()
