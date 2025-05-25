@@ -28,11 +28,8 @@ public class BasicAuthSecurityConfiguration {
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		
-		http.authorizeHttpRequests(
-						auth -> {
-							auth
-							.anyRequest().authenticated();
-						});
+		http.authorizeHttpRequests(auth -> auth
+                        .anyRequest().authenticated());
 		
 		http.sessionManagement(
 						session -> 
@@ -43,13 +40,9 @@ public class BasicAuthSecurityConfiguration {
 		//http.formLogin();
 		http.httpBasic(withDefaults());
 
-		http.csrf(csrf -> csrf.disable());
+		http.csrf(AbstractHttpConfigurer::disable);
 
-		//http.csrf(AbstractHttpConfigurer::disable);
-
-		http.headers(headers -> headers.frameOptions(frameOptionsConfig-> frameOptionsConfig.disable()));
-
-		// http.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
+		http.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
 		
 		return http.build();
 	}
