@@ -149,7 +149,7 @@ public class JwtSecurityConfig {
         // https://github.com/spring-projects/spring-security/issues/12310
         return httpSecurity
                 .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/authenticate").permitAll()
+                    .requestMatchers("/authenticate").permitAll() //this line return compile error :   reason: varargs mismatch; java.lang.String cannot be converted to org.springframework.security.web.util.matcher.RequestMatcher
                     .requestMatchers(PathRequest.toH2Console()).permitAll() // h2-console is a servlet and NOT recommended for a production
                     .requestMatchers(HttpMethod.OPTIONS,"/**")
                     .permitAll()
