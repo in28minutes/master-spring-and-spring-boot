@@ -1085,7 +1085,7 @@ Step 27 - Adding Target Date Field to Todo Page
 <dependency>
 	<groupId>org.webjars</groupId>
 	<artifactId>bootstrap-datepicker</artifactId>
-	<version>1.9.0</version>
+	<version>1.10.0</version>
 </dependency>
 ```
 
