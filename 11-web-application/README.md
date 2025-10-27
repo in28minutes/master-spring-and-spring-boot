@@ -4,7 +4,7 @@ Developing your first Spring Boot Web Application is fun.
 
 ### Navigation - HTML + Bootstrap
 
-```
+```xml
 <nav class="navbar navbar-expand-md navbar-light bg-light mb-3 p-1">
 	<a class="navbar-brand m-1" href="https://courses.in28minutes.com">in28Minutes</a>
 	<div class="collapse navbar-collapse">
@@ -61,7 +61,7 @@ https://dev.mysql.com/doc/mysql-shell/8.0/en/mysql-shell-install.html
 
 ## Spring Security
 
-```
+```java
 @Configuration
 public class SecurityConfiguration {
     @Bean

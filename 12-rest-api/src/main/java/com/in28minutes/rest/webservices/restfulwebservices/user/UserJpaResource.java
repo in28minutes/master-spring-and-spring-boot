@@ -7,6 +7,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
+import org.jspecify.annotations.NonNull;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
@@ -47,13 +48,13 @@ public class UserJpaResource {
 	//WebMvcLinkBuilder
 	
 	@GetMapping("/jpa/users/{id}")
-	public EntityModel<User> retrieveUser(@PathVariable int id) {
+	public EntityModel<@NonNull User> retrieveUser(@PathVariable int id) {
 		Optional<User> user = userRepository.findById(id);
 		
 		if(user.isEmpty())
 			throw new UserNotFoundException("id:"+id);
 		
-		EntityModel<User> entityModel = EntityModel.of(user.get());
+		EntityModel<@NonNull User> entityModel = EntityModel.of(user.get());
 		
 		WebMvcLinkBuilder link =  linkTo(methodOn(this.getClass()).retrieveAllUsers());
 		entityModel.add(link.withRel("all-users"));
@@ -79,7 +80,7 @@ public class UserJpaResource {
 	}
 
 	@PostMapping("/jpa/users")
-	public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
+	public ResponseEntity<@NonNull User> createUser(@Valid @RequestBody User user) {
 		
 		User savedUser = userRepository.save(user);
 
@@ -93,7 +94,7 @@ public class UserJpaResource {
 
 
 	@PostMapping("/jpa/users/{id}/posts")
-	public ResponseEntity<Object> createPostForUser(@PathVariable int id, @Valid @RequestBody Post post) {
+	public ResponseEntity<@NonNull Object> createPostForUser(@PathVariable int id, @Valid @RequestBody Post post) {
 		Optional<User> user = userRepository.findById(id);
 		
 		if(user.isEmpty())

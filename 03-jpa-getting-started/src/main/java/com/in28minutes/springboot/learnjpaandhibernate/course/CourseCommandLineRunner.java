@@ -25,10 +25,10 @@ public class CourseCommandLineRunner implements CommandLineRunner{
 		repository.save(new Course(2, "Learn Azure Jpa!", "in28minutes"));
 		repository.save(new Course(3, "Learn DevOps Jpa!", "in28minutes"));
 		
-		repository.deleteById(1l);
+		repository.deleteById(1L);
 		
-		System.out.println(repository.findById(2l));
-		System.out.println(repository.findById(3l));
+		System.out.println(repository.findById(2L));
+		System.out.println(repository.findById(3L));
 		
 		System.out.println(repository.findAll());
 		System.out.println(repository.count());

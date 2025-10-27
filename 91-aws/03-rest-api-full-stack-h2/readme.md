@@ -114,7 +114,7 @@ Hello World
 
 - GET - http://localhost:5000/users/in28minutes/todos
 
-```
+```json
 [
   {
     "id": 10001,
@@ -144,7 +144,7 @@ Hello World
 
 - GET - http://localhost:5000/users/in28minutes/todos/10001
 
-```
+```json
 {
   "id": 10001,
   "username": "in28minutes",
@@ -158,7 +158,7 @@ Hello World
 
 - POST to http://localhost:5000/users/in28minutes/todos with BODY of Request given below
 
-```
+```json
 {
   "username": "in28minutes",
   "description": "Learn to Drive a Car",
@@ -171,7 +171,7 @@ Hello World
 
 - http://localhost:5000/users/in28minutes/todos/10001 with BODY of Request given below
 
-```
+```json
 {
   "id": 10001,
   "username": "in28minutes",
@@ -201,6 +201,14 @@ Hibernate: alter table user add constraint UK_sb8bbouer5wak8vyiiy4pf2bx unique (
 
 
 ## H2 Console
+
+```xml
+ <!-- From Spring Boot 4, the h2-console dependency is available as a Spring Boot starter dependency, and right now it is available only in Maven Central-->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-h2console</artifactId>
+</dependency>
+```
 
 - http://localhost:5000/h2-console
 - Use `jdbc:h2:mem:testdb` as JDBC URL 

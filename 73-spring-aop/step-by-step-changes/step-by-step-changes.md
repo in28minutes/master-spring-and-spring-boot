@@ -24,9 +24,9 @@ import com.in28minutes.learnspringaop.aopexample.business.BusinessService1;
 @SpringBootApplication
 public class LearnSpringAopApplication implements CommandLineRunner{
 	
-	private Logger logger = LoggerFactory.getLogger(getClass());
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
-	private BusinessService1 businessService1;
+	private final BusinessService1 businessService1;
 	
 	public LearnSpringAopApplication(BusinessService1 businessService1) {
 		this.businessService1 = businessService1;
@@ -58,7 +58,7 @@ import com.in28minutes.learnspringaop.aopexample.data.DataService1;
 @Service
 public class BusinessService1 {
 	
-	private DataService1 dataService1;
+	private final DataService1 dataService1;
 	
 	public BusinessService1(DataService1 dataService1) {
 		this.dataService1 = dataService1;
@@ -137,7 +137,7 @@ import org.springframework.context.annotation.Configuration;
 @Aspect
 public class LoggingAspect {
 	
-	private Logger logger = LoggerFactory.getLogger(getClass());
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
 	//Pointcut - When?
 	// execution(* PACKAGE.*.*(..))
@@ -173,11 +173,11 @@ import com.in28minutes.learnspringaop.aopexample.business.BusinessService2;
 @SpringBootApplication
 public class LearnSpringAopApplication implements CommandLineRunner{
 	
-	private Logger logger = LoggerFactory.getLogger(getClass());
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
-	private BusinessService1 businessService1;
+	private final BusinessService1 businessService1;
 	
-	private BusinessService2 businessService2;
+	private final BusinessService2 businessService2;
 	
 	public LearnSpringAopApplication(BusinessService1 businessService1,
 			BusinessService2 businessService2) {
@@ -217,7 +217,7 @@ import org.springframework.context.annotation.Configuration;
 @Aspect
 public class LoggingAspect {
 	
-	private Logger logger = LoggerFactory.getLogger(getClass());
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
 	//Pointcut - When?
 	// execution(* PACKAGE.*.*(..))
@@ -272,7 +272,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class PerformanceTrackingAspect {
 
-	private Logger logger = LoggerFactory.getLogger(getClass());
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@Around("execution(* com.in28minutes.learnspringaop.aopexample.*.*.*(..))")
 	public Object findExecutionTime(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
@@ -317,7 +317,7 @@ import com.in28minutes.learnspringaop.aopexample.data.DataService2;
 @Service
 public class BusinessService2 {
 	
-	private DataService2 dataService2;
+	private final DataService2 dataService2;
 	
 	public BusinessService2(DataService2 dataService2) {
 		this.dataService2 = dataService2;
@@ -404,18 +404,17 @@ public class CommonPointcutConfig {
 ### /src/main/java/com/in28minutes/learnspringaop/aopexample/aspects/LoggingAspect.java Modified
 New Lines
 ```
-	@Before("com.in28minutes.learnspringaop.aopexample.aspects.CommonPointcutConfig.allPackageConfigUsingBean()")//WHEN
-	@After("com.in28minutes.learnspringaop.aopexample.aspects.CommonPointcutConfig.businessPackageConfig()")
-	pointcut = "com.in28minutes.learnspringaop.aopexample.aspects.CommonPointcutConfig.businessAndDataPackageConfig()",
-	pointcut = "com.in28minutes.learnspringaop.aopexample.aspects.CommonPointcutConfig.dataPackageConfig()",
+@Before("com.in28minutes.learnspringaop.aopexample.aspects.CommonPointcutConfig.allPackageConfigUsingBean()")//WHEN
+@After("com.in28minutes.learnspringaop.aopexample.aspects.CommonPointcutConfig.businessPackageConfig()")
+pointcut = "com.in28minutes.learnspringaop.aopexample.aspects.CommonPointcutConfig.businessAndDataPackageConfig()",
+pointcut = "com.in28minutes.learnspringaop.aopexample.aspects.CommonPointcutConfig.dataPackageConfig()",
 ```
 
 ### /src/main/java/com/in28minutes/learnspringaop/aopexample/aspects/PerformanceTrackingAspect.java Modified
 New Lines
 ```
-	@Around("com.in28minutes.learnspringaop.aopexample.aspects.CommonPointcutConfig.businessAndDataPackageConfig()")
+@Around("com.in28minutes.learnspringaop.aopexample.aspects.CommonPointcutConfig.businessAndDataPackageConfig()")
 ```
-
 
 ## Step 11
 

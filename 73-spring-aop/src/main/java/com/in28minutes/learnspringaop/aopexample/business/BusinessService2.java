@@ -9,7 +9,7 @@ import com.in28minutes.learnspringaop.aopexample.data.DataService2;
 @Service
 public class BusinessService2 {
 	
-	private DataService2 dataService2;
+	private final DataService2 dataService2;
 	
 	public BusinessService2(DataService2 dataService2) {
 		this.dataService2 = dataService2;

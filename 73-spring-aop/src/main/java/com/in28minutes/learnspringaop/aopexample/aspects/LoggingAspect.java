@@ -20,8 +20,7 @@ public class LoggingAspect {
 	// execution(* PACKAGE.*.*(..))
 	@Before("com.in28minutes.learnspringaop.aopexample.aspects.CommonPointcutConfig.allPackageConfigUsingBean()")//WHEN
 	public void logMethodCallBeforeExecution(JoinPoint joinPoint) {
-		logger.info("Before Aspect - {} is called with arguments: {}"
-				,  joinPoint, joinPoint.getArgs());//WHAT
+        logger.info("Before Aspect - {} is called with arguments: {}", joinPoint, joinPoint.getArgs());//WHAT
 	}
 
 	@After("com.in28minutes.learnspringaop.aopexample.aspects.CommonPointcutConfig.businessPackageConfig()")
@@ -34,8 +33,7 @@ public class LoggingAspect {
 	throwing = "exception"
 	)
 	public void logMethodCallAfterException(JoinPoint joinPoint, Exception exception) {
-		logger.info("AfterThrowing Aspect - {} has thrown an exception {}"
-				,  joinPoint, exception);
+        logger.info("AfterThrowing Aspect - has thrown an exception {}", joinPoint, exception);
 	}
 
 	@AfterReturning(
@@ -44,8 +42,7 @@ public class LoggingAspect {
 	)
 	public void logMethodCallAfterSuccessfulExecution(JoinPoint joinPoint, 
 			Object resultValue) {
-		logger.info("AfterReturning Aspect - {} has returned {}"
-				,  joinPoint, resultValue);
+        logger.info("AfterReturning Aspect - {} has returned {}", joinPoint, resultValue);
 	}
 
 

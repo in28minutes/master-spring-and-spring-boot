@@ -19,8 +19,8 @@ public class HelloWorldResource {
 	
 	@GetMapping("/")
 	public String helloWorld(Authentication authentication) {
-		System.out.println(authentication);
-		System.out.println(authentication.getPrincipal());
+        IO.println(authentication);
+        IO.println(authentication.getPrincipal());
 		return "Hello World";
 	}
 
@@ -52,7 +52,7 @@ public class LearnOauthApplication {
 ```java
 package com.in28minutes.learnoauth;
 
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
+import org.springframework.boot.security.autoconfigure.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;

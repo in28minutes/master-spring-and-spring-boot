@@ -82,28 +82,33 @@ class LearnSpringSecurityApplicationTests {
 ```
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.2.0'
+	id 'org.springframework.boot' version '4.0.0-M3'
 	id 'io.spring.dependency-management' version '1.1.0'
 }
 
 group = 'com.in28minutes'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '21'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(25)
+	}
+}
 
 repositories {
 	mavenCentral()
-	maven { url 'https://repo.spring.io/milestone' }
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
 	implementation 'org.springframework.boot:spring-boot-devtools'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
-tasks.named('test') {
+tasks.named('test', Test) {
 	useJUnitPlatform()
 }
 ```
@@ -150,7 +155,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TodoResource {
 	
-	private Logger logger = LoggerFactory.getLogger(getClass());
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	private static final List<Todo> TODOS_LIST = 
 			List.of(new Todo("in28minutes", "Learn AWS"),
@@ -203,9 +208,7 @@ public class BasicAuthSecurityConfiguration {
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		
 		http.authorizeHttpRequests(
-						auth -> {
-							auth.anyRequest().authenticated();
-						});
+						auth -> auth.anyRequest().authenticated());
 		
 		http.sessionManagement(
 						session -> 
@@ -402,9 +405,6 @@ public class BasicAuthSecurityConfiguration {
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
-
-	
 }
 ```
 ---

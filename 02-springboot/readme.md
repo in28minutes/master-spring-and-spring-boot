@@ -20,7 +20,12 @@ Current Directory : /Users/ranga/Ranga/git/00.courses/getting-started-for-beginn
 -->
 
 ## Complete Code Example
+### Changes for Spring Boot 4.0.x
 
+- Changed `spring-boot-starter-parent` version from `3.5.0` to `4.0.0-M3`
+- Changed `java.version` from `17` to `25`
+- Changed `spring-boot-starter-webmvc` to `spring-boot-starter-webmvc`
+- Removed `<repositories>` and `<pluginRepositories>` tags are no longer need
 
 ### /notes.txt
 
@@ -55,7 +60,7 @@ off
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.0</version>
+		<version>4.0.0-M3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.in28minutes.springboot</groupId>
@@ -64,13 +69,13 @@ off
 	<name>learn-spring-boot</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>21</java.version>
+		<java.version>25</java.version>
 	</properties>
 	<dependencies>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter-webmvc</artifactId>
 		</dependency>
 
 		<dependency>
@@ -101,26 +106,7 @@ off
 			</plugin>
 		</plugins>
 	</build>
-	<repositories>
-		<repository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
-			<url>https://repo.spring.io/milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
-			<url>https://repo.spring.io/milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
+	
 
 </project>
 ```
@@ -195,6 +181,8 @@ public class CourseController {
 
 ### /src/main/java/com/in28minutes/springboot/learnspringboot/CurrencyConfigurationController.java
 
+- `@Autowired` is optional for a single-constructor class, and using `constructor injection` is always recommended as a best practice.
+
 ```java
 package com.in28minutes.springboot.learnspringboot;
 
@@ -205,8 +193,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CurrencyConfigurationController {
 	
-	@Autowired
-	private CurrencyServiceConfiguration configuration;
+	// @Autowired
+    // Constructor Dependency Injection
+    private final CurrencyServiceConfiguration configuration;
+
+    public CurrencyConfigurationController(CurrencyServiceConfiguration configuration) {
+        this.configuration = configuration;
+    }
 	
 	@RequestMapping("/currency-configuration")
 	public CurrencyServiceConfiguration retrieveAllCourses() {

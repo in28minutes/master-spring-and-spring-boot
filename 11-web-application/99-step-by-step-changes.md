@@ -60,21 +60,21 @@ Step 04 - Enhancing Spring MVC Controller to provide HTML response
 ### /src/main/java/com/in28minutes/springboot/myfirstwebapp/hello/SayHelloController.java Modified
 
 
-```
-	@RequestMapping("say-hello-html")
-	public String sayHelloHtml() {
-		StringBuffer sb = new StringBuffer();
-		sb.append("<html>");
-		sb.append("<head>");
-		sb.append("<title> My First HTML Page - Changed</title>");
-		sb.append("</head>");
-		sb.append("<body>");
-		sb.append("My first html page with body - Changed");
-		sb.append("</body>");
-		sb.append("</html>");
-		
-		return sb.toString();
-	}
+```java
+@RequestMapping("say-hello-html")
+public String sayHelloHtml() {
+    StringBuffer sb = new StringBuffer();
+    sb.append("<html>");
+    sb.append("<head>");
+    sb.append("<title> My First HTML Page - Changed</title>");
+    sb.append("</head>");
+    sb.append("<body>");
+    sb.append("My first html page with body - Changed");
+    sb.append("</body>");
+    sb.append("</html>");
+    
+    return sb.toString();
+}
 ```
 ---
 
@@ -93,37 +93,37 @@ Checks
 
 ### /pom.xml Modified
 
-```
+```xml
 <dependency>
 	<groupId>org.apache.tomcat.embed</groupId>
 	<artifactId>tomcat-embed-jasper</artifactId>
 	<scope>provided</scope>
 </dependency>
-
+```
 NOTE: Those are using IntellIj IDE use the scope as `default' i.e.
 <scope>default</scope>
 
-```
+
 ### /src/main/java/com/in28minutes/springboot/myfirstwebapp/hello/SayHelloController.java Modified
 
-```
-	//
-	// "say-hello-jsp" => sayHello.jsp 
-	// /src/main/resources/META-INF/resources/WEB-INF/jsp/sayHello.jsp
-	// /src/main/resources/META-INF/resources/WEB-INF/jsp/welcome.jsp
-	// /src/main/resources/META-INF/resources/WEB-INF/jsp/login.jsp
-	// /src/main/resources/META-INF/resources/WEB-INF/jsp/todos.jsp
-	@RequestMapping("say-hello-jsp")
-	public String sayHelloJsp() {
-		return "sayHello";
-	}
+```java
+//
+// "say-hello-jsp" => sayHello.jsp 
+// /src/main/resources/META-INF/resources/WEB-INF/jsp/sayHello.jsp
+// /src/main/resources/META-INF/resources/WEB-INF/jsp/welcome.jsp
+// /src/main/resources/META-INF/resources/WEB-INF/jsp/login.jsp
+// /src/main/resources/META-INF/resources/WEB-INF/jsp/todos.jsp
+@RequestMapping("say-hello-jsp")
+public String sayHelloJsp() {
+    return "sayHello";
+}
 ```
 
 ---
 
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/sayHello.jsp
 
-```
+```html
 <html>
 	<head>
 		<title> My first HTML Page - JSP</title>
@@ -137,7 +137,7 @@ NOTE: Those are using IntellIj IDE use the scope as `default' i.e.
 
 ### /src/main/resources/application.properties Modified
 
-```
+```properties
 #sayHello.jsp
 #/WEB-INF/jsp/sayHello.jsp
 spring.mvc.view.prefix=/WEB-INF/jsp/
@@ -172,7 +172,7 @@ public class LoginController {
 
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/login.jsp
 
-```
+```html
 <html>
 	<head>
 		<title> Login Page</title>
@@ -220,14 +220,14 @@ public class LoginController {
 
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/login.jsp Modified
 
-```
-		Welcome to the login page ${name}! 
+```html
+Welcome to the login page ${name}! 
 ```
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/sayHello.jsp Modified
 
-```
-		<h1>Heading 1</h1>
-		<h2>Heading 2</h2>
+```html
+<h1>Heading 1</h1>
+<h2>Heading 2</h2>
 		
 ```
 
@@ -243,9 +243,9 @@ Step 11 - Creating a Login Form
 
 ### /src/main/java/com/in28minutes/springboot/myfirstwebapp/login/LoginController.java Modified
 
-```
-	//login
-	public String gotoLoginPage() {
+```java
+//login
+public String gotoLoginPage() { }
 ```
 
 ```java
@@ -267,19 +267,19 @@ public class LoginController {
 
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/login.jsp Modified
 
-```
-		<title>Login Page</title>
-		Welcome to the login page!
-		<form method="post">
-			Name: <input type="text" name="name">
-			Password: <input type="password" name="password">
-			<input type="submit">
-		</form>
+```html
+<title>Login Page</title>
+Welcome to the login page!
+<form method="post">
+    Name: <input type="text" name="name">
+    Password: <input type="password" name="password">
+    <input type="submit">
+</form>
 		 
 ```
 ### /src/main/resources/application.properties Modified
 
-```
+```properties
 # /WEB-INF/jsp/login.jsp => View Resolver
 logging.level.org.springframework=info
 logging.level.com.in28minutes.springboot.myfirstwebapp=info
@@ -369,22 +369,22 @@ public class LoginController {
 ```
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/login.jsp Modified
 
-```
-		<title>Login Page</title>
-		Welcome to the login page!
-		<pre>${errorMessage}</pre>
-		<form method="post">
-			Name: <input type="text" name="name">
-			Password: <input type="password" name="password">
-			<input type="submit">
-		</form>
+```html
+<title>Login Page</title>
+Welcome to the login page!
+<pre>${errorMessage}</pre>
+<form method="post">
+    Name: <input type="text" name="name">
+    Password: <input type="password" name="password">
+    <input type="submit">
+</form>
 		 
 ```
 ---
 
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/welcome.jsp
 
-```
+```html
 <html>
 	<head>
 		<title>Welcome Page</title>
@@ -544,7 +544,7 @@ public class TodoController {
 ```
 
 ### Creating listTodos.jsp /src/main/resources/META-INF/resources/WEB-INF/jsp/listTodos.jsp
-```
+```html
 <html>
 	<body>
 		<div>
@@ -587,10 +587,10 @@ Step 16 - Understanding Session vs Model vs Request - @SessionAttributes
 
 ### /src/main/java/com/in28minutes/springboot/myfirstwebapp/login/LoginController.java Modified
 
-```
+```java
 @Controller
 @SessionAttributes("name")
-public class LoginController {
+public class LoginController { }
 ```
 
 ### /src/main/java/com/in28minutes/springboot/myfirstwebapp/todo/TodoController.java
@@ -598,7 +598,7 @@ public class LoginController {
 ```java
 @Controller
 @SessionAttributes("name")
-public class TodoController {
+public class TodoController { }
 ```
 
 ## Step17
@@ -607,7 +607,7 @@ Step 17 - Adding JSTL to Spring Boot Project and Showing Todos in a Table
 
 ### /pom.xml Modified
 
-```
+```xml
 <dependency>
 	<groupId>jakarta.servlet.jsp.jstl</groupId>
 	<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
@@ -620,7 +620,7 @@ Step 17 - Adding JSTL to Spring Boot Project and Showing Todos in a Table
 ```
 
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/listTodos.jsp
-```
+```html
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
 	<body>
@@ -654,7 +654,6 @@ Step 17 - Adding JSTL to Spring Boot Project and Showing Todos in a Table
 ```
 ---
 
-
 ## Step18
 Step 18 - Adding Bootstrap CSS framework to Spring Boot Project using webjars
 
@@ -662,7 +661,7 @@ Step 18 - Adding Bootstrap CSS framework to Spring Boot Project using webjars
 Step 19 - Formatting JSP pages with Bootstrap CSS framework
 
 Snippets
-```
+```html
 <link href="webjars/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet" >
 <script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
 <script src="webjars/jquery/3.6.0/jquery.min.js"></script>
@@ -670,7 +669,7 @@ Snippets
 
 ### /pom.xml Modified
 
-```
+```xml
 <dependency>
 	<groupId>org.webjars</groupId>
 	<artifactId>bootstrap</artifactId>
@@ -687,7 +686,7 @@ Snippets
 
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/listTodos.jsp
 
-```
+```html
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
 <html>
@@ -730,25 +729,24 @@ Snippets
 
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/login.jsp Modified
 
-```
-	
-		<div class="container">
-			<h1>Login</h1>
-			<pre>${errorMessage}</pre>
-			<form method="post">
-				Name: <input type="text" name="name">
-				Password: <input type="password" name="password">
-				<input type="submit">
-			</form>
-		</div>
+```html
+<div class="container">
+    <h1>Login</h1>
+    <pre>${errorMessage}</pre>
+    <form method="post">
+        Name: <input type="text" name="name">
+        Password: <input type="password" name="password">
+        <input type="submit">
+    </form>
+</div>
 ```
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/welcome.jsp Modified
 
-```
-		<div class="container">
-			<h1>Welcome ${name}</h1>
-			<a href="list-todos">Manage</a> your todos
-		</div>
+```html
+<div class="container">
+    <h1>Welcome ${name}</h1>
+    <a href="list-todos">Manage</a> your todos
+</div>
 ```
 ## Step21
 - Step 20 - Lets Add a New Todo - Create a new View
@@ -756,7 +754,7 @@ Snippets
 
 ### /src/main/java/com/in28minutes/springboot/myfirstwebapp/todo/TodoController.java Modified
 
-```
+```java
 import java.time.LocalDate;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -803,12 +801,12 @@ public class TodoService {
 
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/listTodos.jsp Modified
 
-```
-			<a href="add-todo" class="btn btn-success">Add Todo</a>
+```html
+<a href="add-todo" class="btn btn-success">Add Todo</a>
 ```
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/todo.jsp
 
-```
+```html
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
 <html>
@@ -839,7 +837,7 @@ Step 22 - Adding Validations using Spring Boot Starter Validation
 
 ### /pom.xml Modified
 
-```
+```xml
 <dependency>
 	<groupId>org.springframework.boot</groupId>
 	<artifactId>spring-boot-starter-validation</artifactId>
@@ -890,14 +888,14 @@ public class TodoController {
 
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/todo.jsp Modified
 
-```
+```html
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-			<form:form method="post" modelAttribute="todo">
-				Description: <form:input type="text" path="description" 
-								required="required"/>
-				<form:input type="hidden" path="id"/>
-				<form:input type="hidden" path="done"/>
-			</form:form>
+<form:form method="post" modelAttribute="todo">
+    Description: <form:input type="text" path="description" 
+                    required="required"/>
+    <form:input type="hidden" path="id"/>
+    <form:input type="hidden" path="done"/>
+</form:form>
 ```
 
 ## Step23
@@ -912,7 +910,7 @@ Step 25 - Implementing Update Todo - 1 - Show Update Todo Page
 
 ### /src/main/java/com/in28minutes/springboot/myfirstwebapp/todo/Todo.java Modified
 
-```
+```java
 import jakarta.validation.constraints.Size;
 	
 @Size(min=10, message="Enter atleast 10 characters")
@@ -922,7 +920,7 @@ private String description;
 
 ### /src/main/java/com/in28minutes/springboot/myfirstwebapp/todo/TodoController.java Modified
 
-```
+```java
 import jakarta.validation.Valid;
 
 	//GET, POST
@@ -981,8 +979,7 @@ import org.springframework.stereotype.Service;
 public class TodoService {
 
 	//OLD_CODE
-	
-	
+    
 	public void deleteById(int id) {
 		//todo.getId() == id
 		// todo -> todo.getId() == id
@@ -1001,7 +998,7 @@ public class TodoService {
 
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/listTodos.jsp Modified
 
-```
+```html
 <th></th>
 <th></th>
 							
@@ -1010,7 +1007,7 @@ public class TodoService {
 ```
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/todo.jsp Modified
 
-```
+```html
 Description:<form:input type="text" path="description" 
 			<form:errors path="description" cssClass="text-warning"/>
 ```
@@ -1021,7 +1018,7 @@ Step 26 - Implementing Update Todo - 1 - Save changes to Todo
 
 ### /src/main/java/com/in28minutes/springboot/myfirstwebapp/todo/TodoController.java Modified
 Changes
-```
+```java
 @RequestMapping(value="update-todo", method = RequestMethod.GET)
 
 @RequestMapping(value="update-todo", method = RequestMethod.POST)
@@ -1081,7 +1078,7 @@ Step 27 - Adding Target Date Field to Todo Page
 
 ### /pom.xml Modified
 
-```
+```xml
 <dependency>
 	<groupId>org.webjars</groupId>
 	<artifactId>bootstrap-datepicker</artifactId>
@@ -1091,7 +1088,7 @@ Step 27 - Adding Target Date Field to Todo Page
 
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/todo.jsp Modified
 
-```
+```html
 <link href="webjars/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css" rel="stylesheet" >
 
 <fieldset class="mb-3">				
@@ -1116,7 +1113,7 @@ Step 27 - Adding Target Date Field to Todo Page
 ```
 ### /src/main/resources/application.properties Modified
 
-```
+```properties
 spring.mvc.format.date=yyyy-MM-dd
 ```
 
@@ -1125,7 +1122,7 @@ Step 28 - Adding a Navigation Bar and Implementing JSP Fragments
 
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/common/footer.jspf
 
-```
+```html
 <script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
 		<script src="webjars/jquery/3.6.0/jquery.min.js"></script>
 		<script src="webjars/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
@@ -1137,7 +1134,7 @@ Step 28 - Adding a Navigation Bar and Implementing JSP Fragments
 
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/common/header.jspf
 
-```
+```html
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
@@ -1155,7 +1152,7 @@ Step 28 - Adding a Navigation Bar and Implementing JSP Fragments
 
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/common/navigation.jspf
 
-```
+```html
 <nav class="navbar navbar-expand-md navbar-light bg-light mb-3 p-1">
 	<a class="navbar-brand m-1" href="https://courses.in28minutes.com">in28minutes</a>
 	<div class="collapse navbar-collapse">
@@ -1173,7 +1170,7 @@ Step 28 - Adding a Navigation Bar and Implementing JSP Fragments
 
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/listTodos.jsp Modified
 
-```
+```html
 <%@ include file="common/header.jspf" %>
 <%@ include file="common/navigation.jspf" %>	
 <div class="container">
@@ -1206,7 +1203,7 @@ Step 28 - Adding a Navigation Bar and Implementing JSP Fragments
 ```
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/todo.jsp Modified
 
-```
+```html
 <%@ include file="common/header.jspf" %>
 <%@ include file="common/navigation.jspf" %>	
 <div class="container">
@@ -1240,7 +1237,7 @@ Step 28 - Adding a Navigation Bar and Implementing JSP Fragments
 ```
 ### /src/main/resources/META-INF/resources/WEB-INF/jsp/welcome.jsp Modified
 
-```
+```html
 <%@ include file="common/header.jspf" %>
 <%@ include file="common/navigation.jspf" %>	
 <div class="container">
@@ -1286,7 +1283,7 @@ public class WelcomeController {
 Step 30 - Setting up Spring Security with Spring Boot Starter Security
 ### /pom.xml Modified
 
-```
+```xml
 <dependency>
 	<groupId>org.springframework.boot</groupId>
 	<artifactId>spring-boot-starter-security</artifactId>
@@ -1383,10 +1380,9 @@ public class WelcomeController {
 
 ### /src/main/java/com/in28minutes/springboot/myfirstwebapp/todo/TodoController.java Modified
 
-```
+```java
 private String getLoggedInUsername(ModelMap model) {
-	Authentication authentication = 
-			SecurityContextHolder.getContext().getAuthentication();
+	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 	return authentication.getName();
 
 }
@@ -1395,12 +1391,11 @@ private String getLoggedInUsername(ModelMap model) {
 
 ### /src/main/java/com/in28minutes/springboot/myfirstwebapp/todo/TodoService.java Modified
 
-```
-	public List<Todo> findByUsername(String username){
-		Predicate<? super Todo> predicate = 
-				todo -> todo.getUsername().equalsIgnoreCase(username);
-		return todos.stream().filter(predicate).toList();
-	}
+```java
+public List<Todo> findByUsername(String username){
+    Predicate<? super Todo> predicate = todo -> todo.getUsername().equalsIgnoreCase(username);
+    return todos.stream().filter(predicate).toList();
+}
 ```
 
 ---
@@ -1441,8 +1436,7 @@ public class SpringSecurityConfiguration {
 	}
 
 	private UserDetails createNewUser(String username, String password) {
-		Function<String, String> passwordEncoder
-		= input -> passwordEncoder().encode(input);
+		Function<String, String> passwordEncoder = input -> passwordEncoder().encode(input);
 
 		UserDetails userDetails = User.builder()
 									.passwordEncoder(passwordEncoder)
@@ -1468,7 +1462,7 @@ Step 34 - Adding Spring Boot Starter Data JPA and Getting H2 database ready
 
 ### /pom.xml Modified
 
-```
+```xml
 <dependency>
 	<groupId>org.springframework.boot</groupId>
 	<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -1485,14 +1479,13 @@ Step 34 - Adding Spring Boot Starter Data JPA and Getting H2 database ready
 
 ### /src/main/resources/application.properties Modified
 
-```
+```properties
 spring.datasource.url=jdbc:h2:mem:testdb
 ```
 
 ## Step35
 
 Step 35 - Configuring Spring Security to Get H2-console Working
-
 
 
 ### /src/main/java/com/in28minutes/springboot/myfirstwebapp/security/SpringSecurityConfiguration.java Modified
@@ -1544,7 +1537,7 @@ Step 36 - Making Todo an Entity and Population Todo Data into H2
 
 ### /src/main/java/com/in28minutes/springboot/myfirstwebapp/todo/Todo.java Modified
 
-```
+```java
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -1554,23 +1547,23 @@ import jakarta.persistence.Id;
 @Entity
 public class Todo {
 
-	@Id
-	@GeneratedValue
-	private int id;
+    @Id
+    @GeneratedValue
+    private int id;
 
-
+}
 ```
 
 ---
 
 ### /src/main/resources/application.properties Modified
 
-```
+```properties
 spring.jpa.defer-datasource-initialization=true
 ```
 ### /src/main/resources/data.sql
 
-```
+```sql
 insert into todo (ID, USERNAME, DESCRIPTION, TARGET_DATE, DONE)
 values(10001,'in28minutes', 'Get AWS Certified', CURRENT_DATE(), false);
 
@@ -1594,9 +1587,9 @@ Step 38 - Connecting All Todo App Features to H2 Database
 
 ### /src/main/java/com/in28minutes/springboot/myfirstwebapp/todo/Todo.java Modified
 
-```
-	public Todo() {
-	}		
+```java
+public Todo() {
+}		
 ```
 
 ---
@@ -1704,8 +1697,7 @@ public class TodoControllerJpa {
 	}
 
 	private String getLoggedInUsername(ModelMap model) {
-		Authentication authentication = 
-				SecurityContextHolder.getContext().getAuthentication();
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		return authentication.getName();
 	}
 
@@ -1759,7 +1751,7 @@ docker run --detach --env MYSQL_ROOT_PASSWORD=dummypassword --env MYSQL_USER=tod
 
 ### /pom.xml Modified
 
-```
+```xml
 <!-- Use this for Spring Boot 3.1 and higher -->
 <dependency>
 	<groupId>com.mysql</groupId>
@@ -1777,7 +1769,7 @@ docker run --detach --env MYSQL_ROOT_PASSWORD=dummypassword --env MYSQL_USER=tod
 
 ### /src/main/resources/application.properties Modified
 
-```
+```properties
 #spring.datasource.url=jdbc:h2:mem:testdb
 spring.datasource.url=jdbc:mysql://localhost:3306/todos
 spring.datasource.username=todos-user

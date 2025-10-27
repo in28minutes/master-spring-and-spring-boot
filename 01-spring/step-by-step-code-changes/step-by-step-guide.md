@@ -24,6 +24,12 @@
 
 # Section 01
 
+### Changes for Spring Boot 4.0.x
+
+- Change `spring-boot-starter-parent` version from `3.5.0` to `4.0.0-M3`
+- Change `java.version` to `25`
+- Remove `<repositories>` and `<pluginRepositories>` tags no longer need
+
 ## Getting Started with Java Spring Framework
 
 ### Step 03
@@ -31,7 +37,6 @@
 - Step 01 - Understanding the Need for Java Spring Framework
 - Step 02 - Getting Started with Java Spring Framework
 - Step 03 - Creating a New Spring Framework Project with Maven and Java
-
 
 #### /learn-spring-framework/pom.xml
 
@@ -43,7 +48,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.0</version>
+		<version>4.0.0-M3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.in28minutes</groupId>
@@ -52,7 +57,7 @@
 	<name>learn-spring-framework</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>21</java.version>
+		<java.version>25</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -75,26 +80,7 @@
 			</plugin>
 		</plugins>
 	</build>
-	<repositories>
-		<repository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
-			<url>https://repo.spring.io/milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
-			<url>https://repo.spring.io/milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
+	
 
 </project>
 ```
@@ -275,7 +261,7 @@ public GameRunner(SuperContraGame game) {
 
 ### Step 06
 
-- Step 06 - Introducting Java Interface to Make App Loosely Coupled
+- Step 06 - Introducing Java Interface to Make App Loosely Coupled
 
 
 #### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/game/GamingConsole.java New
@@ -508,7 +494,7 @@ public class HelloWorldConfiguration {
 
 #### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/App02HelloWorldSpring.java Modified
 
-```
+```java
 System.out.println(context.getBean("person2MethodCall"));
 System.out.println(context.getBean("person3Parameters"));
 System.out.println(context.getBean("address2"));
@@ -586,7 +572,7 @@ public class HelloWorldConfiguration {
 
 #### /learn-spring-framework/src/main/java/com/in28minutes/learnspringframework/App02HelloWorldSpring.java Modified
 
-```
+```java
 import java.util.Arrays;
 		
 System.out.println(context.getBean(Person.class));
@@ -781,7 +767,7 @@ package com.in28minutes.learnspringframework.game;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PacmanGame implements GamingConsole{
+public class PacmanGame implements GamingConsole{ }
 
 ```
 ---
@@ -795,7 +781,7 @@ public class PacmanGame implements GamingConsole{
 
 #### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/game/GameRunner.java Modified
 
-```
+```java
 import org.springframework.beans.factory.annotation.Qualifier;
 
 @Component
@@ -811,7 +797,7 @@ public class GameRunner {
 
 #### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/game/MarioGame.java Modified
 
-```
+```java
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 @Component
@@ -822,7 +808,7 @@ public class MarioGame implements GamingConsole{
 
 #### /learn-spring-framework-02/src/main/java/com/in28minutes/learnspringframework/game/SuperContraGame.java Modified
 
-```
+```java
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 @Component
@@ -1196,7 +1182,7 @@ public class BeanScopesLauncherApplication {
 
 #### /learn-spring-framework-02/pom.xml Modified
 
-```
+```xml
 <dependency>
 	<groupId>jakarta.inject</groupId>
 	<artifactId>jakarta.inject-api</artifactId>

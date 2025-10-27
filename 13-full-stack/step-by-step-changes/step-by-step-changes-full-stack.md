@@ -52,7 +52,7 @@ export default App;
 
 #### /01-frontend/todo-app/src/components/learning-examples/FirstComponent.jsx
 
-```
+```javascript
 export default function FirstComponent() {
     return (
       <div className="FirstComponent">First Component</div>
@@ -1566,7 +1566,7 @@ function AuthenticatedRoute({children}) {
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.0</version>
+        <version>4.0.0-M3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.in28minutes.rest.webservices</groupId>
@@ -1575,7 +1575,7 @@ function AuthenticatedRoute({children}) {
     <name>restful-web-services</name>
     <description>Demo project for Spring Boot</description>
     <properties>
-        <java.version>21</java.version>
+        <java.version>25</java.version>
     </properties>
     <dependencies>
         <dependency>
@@ -1584,7 +1584,7 @@ function AuthenticatedRoute({children}) {
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-webmvc</artifactId>
         </dependency>
 
         <dependency>

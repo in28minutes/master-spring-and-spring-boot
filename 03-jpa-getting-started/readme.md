@@ -19,8 +19,21 @@ Current Directory : /Users/ranga/Ranga/git/00.courses/getting-started-for-beginn
 -->
 
 ## Complete Code Example
+### Changes for Spring Boot 4.0.x
 
+- Changed `spring-boot-starter-parent` version from `3.5.0` to `4.0.0-M3`
+- Changed `java.version` from `17` to `25`
+- Changed `spring-boot-starter-webmvc` to `spring-boot-starter-webmvc`
+- Removed `<repositories>` and `<pluginRepositories>` tags are no longer need
+- Added one starting from Spring Boot 4, the h2console dependency is available as a Spring Boot starter dependency, and it is available in Maven Central!
 
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-h2console</artifactId>
+     <version>4.0.0-M3</version> // add version tag; if you're not creating a Spring Boot application, otherwise it is optional
+</dependency>
+```
 ### /notes.txt
 
 ```
@@ -44,7 +57,7 @@ delete from course where id=1
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.0</version>
+		<version>4.0.0-M3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.in28minutes.springboot</groupId>
@@ -53,7 +66,7 @@ delete from course where id=1
 	<name>learn-jpa-and-hibernate</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>21</java.version>
+		<java.version>25</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -66,7 +79,7 @@ delete from course where id=1
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter-webmvc</artifactId>
 		</dependency>
 
 		<dependency>
@@ -74,6 +87,11 @@ delete from course where id=1
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+        <!-- From Spring Boot 4, the h2-console dependency is available as a Spring Boot starter dependency, and right now it is available only in Maven Central-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-h2console</artifactId>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -89,26 +107,7 @@ delete from course where id=1
 			</plugin>
 		</plugins>
 	</build>
-	<repositories>
-		<repository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
-			<url>https://repo.spring.io/milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
-			<url>https://repo.spring.io/milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
+	
 
 </project>
 ```
@@ -313,7 +312,7 @@ public class CourseJdbcRepository {
 ---
 
 ### /src/main/java/com/in28minutes/springboot/learnjpaandhibernate/course/jpa/CourseJpaRepository.java
-
+Note: In Spring Boot 4, we can also use with `@Autowired` annotation in place of `@PersistenceContext`, For more details: https://www.youtube.com/watch?v=m5aLkYBvOho&t=88s
 ```java
 package com.in28minutes.springboot.learnjpaandhibernate.course.jpa;
 
@@ -380,7 +379,7 @@ spring.jpa.show-sql=true
 
 ### /src/main/resources/schema.sql
 
-```
+```sql
 create table course 
 (
 	id bigint not null,
