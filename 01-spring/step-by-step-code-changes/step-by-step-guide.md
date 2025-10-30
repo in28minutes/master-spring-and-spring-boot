@@ -466,11 +466,11 @@ import org.springframework.context.annotation.Configuration;
 //Released in JDK 16.
 
 record Person(String name, int age) {
-};
+}
 
 //Address - firstLine & city
 record Address(String firstLine, String city) {
-};
+}
 
 @Configuration
 public class HelloWorldConfiguration {
@@ -530,11 +530,11 @@ import org.springframework.context.annotation.Configuration;
 //Released in JDK 16.
 
 record Person(String name, int age, Address address) {
-};
+}
 
 //Address - firstLine & city
 record Address(String firstLine, String city) {
-};
+}
 
 @Configuration
 public class HelloWorldConfiguration {
@@ -1218,7 +1218,7 @@ public class BeanScopesLauncherApplication {
 
 #### /learn-spring-framework-02/pom.xml Modified
 
-```
+```xml
 <dependency>
 	<groupId>jakarta.inject</groupId>
 	<artifactId>jakarta.inject-api</artifactId>
