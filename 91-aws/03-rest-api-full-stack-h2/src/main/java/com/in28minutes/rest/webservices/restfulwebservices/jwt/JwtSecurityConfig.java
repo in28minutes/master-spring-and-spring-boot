@@ -79,8 +79,11 @@ public class JwtSecurityConfig {
     @Bean
     public AuthenticationManager authenticationManager(
             UserDetailsService userDetailsService) {
-        var authenticationProvider = new DaoAuthenticationProvider();
-        authenticationProvider.setUserDetailsService(userDetailsService);
+        // var authenticationProvider = new DaoAuthenticationProvider();// For Spring Boot 3.x.x
+        // authenticationProvider.setUserDetailsService(userDetailsService); // For Spring Boot 3.x.x
+
+        var authenticationProvider = new DaoAuthenticationProvider(userDetailsService);// For Spring Boot 4.x.x
+
         return new ProviderManager(authenticationProvider);
     }
 

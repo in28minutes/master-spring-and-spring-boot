@@ -18,8 +18,11 @@ select * from user_details;
 select * from post;
 \quit
 ```
+> [!NOTE]
 
-
+MappingJacksonValue will be eliminated in an upcoming release of the Spring Framework. For further information:
+- https://spring.io/blog/2025/10/07/introducing-jackson-3-support-in-spring#goodbye-mappingjacksonvalue
+- https://github.com/danvega/donut-shop/blob/master/README.md
 
 ## Hello World Resource
 

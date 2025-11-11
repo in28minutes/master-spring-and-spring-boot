@@ -120,3 +120,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 *.iml
+91-aws/.idea/vcs.xml
+91-aws/.idea/misc.xml
+91-aws/.idea/aws.xml
+91-aws/.idea/modules.xml
