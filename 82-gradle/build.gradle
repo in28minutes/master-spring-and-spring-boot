@@ -18,9 +18,12 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
+	// implementation 'org.springframework.boot:spring-boot-starter-web' // Before Spring Boot 4
+    implementation 'org.springframework.boot:spring-boot-starter-webmvc' // From Spring Boot 4
 	implementation 'org.springframework:spring-core'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	// testImplementation 'org.springframework.boot:spring-boot-starter-test' // Before Spring Boot 4
+    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test' // From Spring Boot 4
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 tasks.named('test') {

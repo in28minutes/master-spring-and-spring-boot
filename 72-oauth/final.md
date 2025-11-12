@@ -48,11 +48,11 @@ public class LearnOauthApplication {
 ---
 
 ### /src/main/java/com/in28minutes/learnoauth/OauthSecurityConfiguration.java
-
+Reference Link: https://docs.spring.io/spring-boot/4.0/api/java/org/springframework/boot/security/autoconfigure/SecurityProperties.html
 ```java
 package com.in28minutes.learnoauth;
 
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
+//import org.springframework.boot.autoconfigure.security.SecurityProperties; // Before Spring Boot
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -64,7 +64,8 @@ import org.springframework.security.web.SecurityFilterChain;
 public class OauthSecurityConfiguration {
 
 	@Bean
-	@Order(SecurityProperties.BASIC_AUTH_ORDER)
+    //@Order(SecurityProperties.BASIC_AUTH_ORDER) // Before Spring Boot 4
+    @Order(1) // Spring Boot 4
 	SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests().anyRequest().authenticated();
 		//http.formLogin();
