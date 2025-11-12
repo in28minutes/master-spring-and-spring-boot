@@ -1,6 +1,6 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.5.0'
+	id 'org.springframework.boot' version '4.0.0-RC2'
 	id 'io.spring.dependency-management' version '1.1.7'
 }
 
@@ -9,7 +9,7 @@ version = '0.0.1-SNAPSHOT'
 
 java {
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
+		languageVersion = JavaLanguageVersion.of(25)
 	}
 }
 
@@ -20,13 +20,22 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-devtools'
+	// implementation 'org.springframework.boot:spring-boot-starter-web' // Before Spring Boot 4
+    implementation 'org.springframework.boot:spring-boot-starter-webmvc' // Spring Boot 4
+	// implementation 'org.springframework.boot:spring-boot-devtools' // Before Spring Boot 4
+    developmentOnly 'org.springframework.boot:spring-boot-devtools' // Spring Boot 4
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+	// implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server' // Before Spring Boot 4
+    implementation 'org.springframework.boot:spring-boot-starter-security-oauth2-resource-server' // Spring Boot 4
 	implementation 'com.h2database:h2'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-jdbc-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-security-oauth2-resource-server-test'
+    // testImplementation 'org.springframework.security:spring-security-test' // Before Spring Boot 4
+    implementation 'org.springframework.boot:spring-boot-starter-webmvc' // Spring Boot 4
+    testImplementation 'org.springframework.boot:spring-boot-starter-security-test'
+    // testImplementation 'org.springframework.boot:spring-boot-starter-test' // Before Spring Boot 4
+	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test' // Spring Boot 4
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 tasks.named('test') {

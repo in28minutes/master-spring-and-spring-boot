@@ -1,6 +1,6 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.5.0'
+	id 'org.springframework.boot' version '4.0.0-RC2'
 	id 'io.spring.dependency-management' version '1.1.7'
 }
 
@@ -9,20 +9,24 @@ version = '0.0.1-SNAPSHOT'
 
 java {
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
+		languageVersion = JavaLanguageVersion.of(25)
 	}
 }
 
 repositories {
 	mavenCentral()
-	maven { url 'https://repo.spring.io/milestone' }
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
+	// implementation 'org.springframework.boot:spring-boot-starter-oauth2-client' // Before Spring Boot 4
+    implementation 'org.springframework.boot:spring-boot-starter-security-oauth2-client' // From Spring Boot 4
+    // implementation 'org.springframework.boot:spring-boot-starter-web' // Before Spring Boot 4
+    implementation 'org.springframework.boot:spring-boot-starter-webmvc' // From Spring Boot 4
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // testImplementation 'org.springframework.boot:spring-boot-starter-test' // Before Spring Boot 4
+    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test' // Spring Boot 4
+    testImplementation 'org.springframework.boot:spring-boot-starter-security-oauth2-client-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 tasks.named('test') {
