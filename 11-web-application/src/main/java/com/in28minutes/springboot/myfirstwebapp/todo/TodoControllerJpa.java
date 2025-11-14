@@ -24,7 +24,7 @@ public class TodoControllerJpa {
 		this.todoRepository = todoRepository;
 	}
 
-	private TodoRepository todoRepository;
+	private final TodoRepository todoRepository;
 			
 	@RequestMapping("list-todos")
 	public String listAllTodos(ModelMap model) {

@@ -23,7 +23,7 @@ public class TodoController {
 		this.todoService = todoService;
 	}
 
-	private TodoService todoService;
+	private final TodoService todoService;
 		
 	
 	@RequestMapping("list-todos")
