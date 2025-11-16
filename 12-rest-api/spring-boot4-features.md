@@ -203,3 +203,6 @@ public class VersioningPersonControllerV2 {
 
 ## References
 - API Versioning: https://spring.io/blog/2025/09/16/api-versioning-in-spring
+- https://www.danvega.dev/blog/spring-boot-4-api-versioning
+
+_Happy Learning @in28minutes_
