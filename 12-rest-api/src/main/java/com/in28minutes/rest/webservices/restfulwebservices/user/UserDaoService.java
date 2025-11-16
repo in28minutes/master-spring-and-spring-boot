@@ -12,7 +12,7 @@ public class UserDaoService {
 	// JPA/Hibernate > Database
 	// UserDaoService > Static List
 	
-	private static final List<User> users = new ArrayList<>();
+	private static List<User> users = new ArrayList<>();
 	
 	private static int usersCount = 0;
 	

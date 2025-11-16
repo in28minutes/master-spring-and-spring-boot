@@ -26,9 +26,9 @@ import jakarta.validation.Valid;
 @RestController
 public class UserJpaResource {
 
-	private final UserRepository userRepository;
+	private UserRepository userRepository;
 	
-	private final PostRepository postRepository;
+	private PostRepository postRepository;
 
 	public UserJpaResource(UserRepository userRepository, PostRepository postRepository) {
 		this.userRepository = userRepository;
