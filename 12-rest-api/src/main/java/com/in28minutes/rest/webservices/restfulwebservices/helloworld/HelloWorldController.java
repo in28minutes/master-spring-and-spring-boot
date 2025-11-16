@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloWorldController {
 	
-	private MessageSource messageSource;
+	private final MessageSource messageSource;
 	
 	public HelloWorldController(MessageSource messageSource) {
 		this.messageSource = messageSource;

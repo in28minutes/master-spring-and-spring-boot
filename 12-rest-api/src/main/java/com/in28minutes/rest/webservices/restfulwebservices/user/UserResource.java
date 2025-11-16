@@ -21,7 +21,7 @@ import jakarta.validation.Valid;
 @RestController
 public class UserResource {
 
-	private UserDaoService service;
+	private final UserDaoService service;
 
 	public UserResource(UserDaoService service) {
 		this.service = service;
