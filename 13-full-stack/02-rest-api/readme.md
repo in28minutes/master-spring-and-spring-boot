@@ -31,6 +31,16 @@ docker run --detach --env MYSQL_ROOT_PASSWORD=dummypassword --env MYSQL_USER=tod
 	<artifactId>mysql-connector-j</artifactId>
 </dependency>
 ```
+### pom.xml - New
+
+- To view the H2 console in the web browser, you need to manually add the following dependency to the `pom.xml` file.
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-h2console</artifactId>
+</dependency>
+```
 
 ### /src/main/resources/application.properties Modified
 

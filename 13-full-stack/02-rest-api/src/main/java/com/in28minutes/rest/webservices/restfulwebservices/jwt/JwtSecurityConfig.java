@@ -8,7 +8,8 @@ import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.util.UUID;
 
-import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
+// import org.springframework.boot.autoconfigure.security.servlet.PathRequest; // Before Spring Boot 4
+import org.springframework.boot.security.autoconfigure.web.servlet.PathRequest; // From Spring Boot 4
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -70,8 +71,12 @@ public class JwtSecurityConfig {
 
     @Bean
     public AuthenticationManager authenticationManager(UserDetailsService userDetailsService) {
-        var authenticationProvider = new DaoAuthenticationProvider();
-        authenticationProvider.setUserDetailsService(userDetailsService);
+        // Before Spring Boot 4
+        // var authenticationProvider = new DaoAuthenticationProvider();
+        // authenticationProvider.setUserDetailsService(userDetailsService);
+
+        // After Spring Boot 4
+        var authenticationProvider = new DaoAuthenticationProvider(userDetailsService);
 
         return new ProviderManager(authenticationProvider);
     }

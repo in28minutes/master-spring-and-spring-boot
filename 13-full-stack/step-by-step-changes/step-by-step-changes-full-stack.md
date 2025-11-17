@@ -1566,7 +1566,7 @@ function AuthenticatedRoute({children}) {
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.0</version>
+        <version>4.0.0-RC2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.in28minutes.rest.webservices</groupId>
@@ -1575,7 +1575,7 @@ function AuthenticatedRoute({children}) {
     <name>restful-web-services</name>
     <description>Demo project for Spring Boot</description>
     <properties>
-        <java.version>21</java.version>
+        <java.version>25</java.version>
     </properties>
     <dependencies>
         <dependency>
@@ -1584,7 +1584,7 @@ function AuthenticatedRoute({children}) {
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-webmvc</artifactId>
         </dependency>
 
         <dependency>
@@ -1600,7 +1600,22 @@ function AuthenticatedRoute({children}) {
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
+            <artifactId>spring-boot-starter-data-jpa-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security-oauth2-resource-server-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webmvc-test</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -1613,27 +1628,7 @@ function AuthenticatedRoute({children}) {
             </plugin>
         </plugins>
     </build>
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
-
+    
 </project>
 ```
 ---
@@ -2795,7 +2790,8 @@ import { executeBasicAuthenticationService } from "../api/HelloWorldApiService";
               auth
               .antMatchers(HttpMethod.OPTIONS, "/**").permitAll() //NEW
               .anyRequest().authenticated()
-            )
+            );
+   }
 
 ```
 
@@ -3134,8 +3130,12 @@ public class JwtSecurityConfig {
     @Bean
     public AuthenticationManager authenticationManager(
             UserDetailsService userDetailsService) {
-        var authenticationProvider = new DaoAuthenticationProvider();
-        authenticationProvider.setUserDetailsService(userDetailsService);
+        // Before Spring Boot 4
+        // var authenticationProvider = new DaoAuthenticationProvider();
+        // authenticationProvider.setUserDetailsService(userDetailsService);
+        // return new ProviderManager(authenticationProvider);
+        // After Spring Boot 4
+        var authenticationProvider = new DaoAuthenticationProvider(userDetailsService);
         return new ProviderManager(authenticationProvider);
     }
 
@@ -3470,9 +3470,9 @@ public interface TodoRepository extends JpaRepository<Todo, Integer>{
 
 #### /02-rest-api/src/main/resources/application.properties Modified
 
-```
+```properties
 spring.datasource.url=jdbc:h2:mem:testdb
-spring.h2.console.enabled=true
+# spring.h2.console.enabled=true # Before Spring Boot 4
 spring.jpa.defer-datasource-initialization=true
 spring.main.banner-mode=off
 logging.pattern.console= %d{MM-dd HH:mm:ss} - %logger{36} - %msg%n
