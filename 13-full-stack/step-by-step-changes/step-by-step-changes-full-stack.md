@@ -3470,7 +3470,7 @@ public interface TodoRepository extends JpaRepository<Todo, Integer>{
 
 #### /02-rest-api/src/main/resources/application.properties Modified
 
-```
+```properties
 spring.datasource.url=jdbc:h2:mem:testdb
 # spring.h2.console.enabled=true # Before Spring Boot 4
 spring.jpa.defer-datasource-initialization=true
