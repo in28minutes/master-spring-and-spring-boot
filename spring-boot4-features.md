@@ -419,6 +419,10 @@ Create `src/main/resources/logback-spring.xml`:
 Create a component to initialize the appender:
 
 ```java
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender;
+import org.springframework.beans.factory.InitializingBean;
+
 @Component
 class InstallOpenTelemetryAppender implements InitializingBean {
     
