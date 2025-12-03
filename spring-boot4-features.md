@@ -464,6 +464,16 @@ This ensures:
 Create a Servlet filter to include trace ID in response headers:
 
 ```java
+import io.micrometer.tracing.Tracer;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.jspecify.annotations.Nullable;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import java.io.IOException;
 @Component
 public class TraceIdFilter implements Filter {
     
