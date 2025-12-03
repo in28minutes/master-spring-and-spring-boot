@@ -285,6 +285,16 @@ management:
 Create a configuration class to use OpenTelemetry semantic conventions:
 
 ```java
+import io.micrometer.core.instrument.Tags;
+import io.micrometer.core.instrument.binder.jvm.ClassLoaderMetrics;
+import io.micrometer.core.instrument.binder.jvm.JvmMemoryMetrics;
+import io.micrometer.core.instrument.binder.jvm.JvmThreadMetrics;
+import io.micrometer.core.instrument.binder.jvm.convention.otel.OpenTelemetryJvmClassLoadingMeterConventions;
+import io.micrometer.core.instrument.binder.jvm.convention.otel.OpenTelemetryJvmCpuMeterConventions;
+import io.micrometer.core.instrument.binder.jvm.convention.otel.OpenTelemetryJvmMemoryMeterConventions;
+import io.micrometer.core.instrument.binder.jvm.convention.otel.OpenTelemetryJvmThreadMeterConventions;
+import io.micrometer.core.instrument.binder.system.ProcessorMetrics;
+
 @Configuration(proxyBeanMethods = false)
 public class OpenTelemetryConfiguration {
     
