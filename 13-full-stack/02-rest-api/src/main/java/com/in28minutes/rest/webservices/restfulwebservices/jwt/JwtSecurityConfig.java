@@ -29,6 +29,8 @@ import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+// import org.springframework.boot.autoconfigure.security.servlet.PathRequest; // Before Spring Boot 4
+import org.springframework.boot.security.autoconfigure.web.servlet.PathRequest; // From Spring Boot 4
 import org.springframework.security.web.SecurityFilterChain;
 
 import com.nimbusds.jose.JOSEException;
@@ -49,6 +51,7 @@ public class JwtSecurityConfig {
                 .cors(withDefaults())
                 .authorizeHttpRequests(auth -> auth
                 	.requestMatchers("/authenticate").permitAll()
+                	.requestMatchers(PathRequest.toH2Console()).permitAll() // h2-console is a servlet and NOT recommended for a production
                     .requestMatchers(HttpMethod.OPTIONS,"/**")
                     .permitAll()
                     .anyRequest()
