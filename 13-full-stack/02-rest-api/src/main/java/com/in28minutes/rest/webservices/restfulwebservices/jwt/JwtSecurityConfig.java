@@ -8,8 +8,6 @@ import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.util.UUID;
 
-// import org.springframework.boot.autoconfigure.security.servlet.PathRequest; // Before Spring Boot 4
-import org.springframework.boot.security.autoconfigure.web.servlet.PathRequest; // From Spring Boot 4
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -31,6 +29,8 @@ import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+// import org.springframework.boot.autoconfigure.security.servlet.PathRequest; // Before Spring Boot 4
+import org.springframework.boot.security.autoconfigure.web.servlet.PathRequest; // From Spring Boot 4
 import org.springframework.security.web.SecurityFilterChain;
 
 import com.nimbusds.jose.JOSEException;
@@ -48,6 +48,7 @@ public class JwtSecurityConfig {
         // https://github.com/spring-projects/spring-security/issues/1231
         // https://docs.spring.io/spring-boot/docs/current/reference/html/data.html#data.sql.h2-web-console.spring-security
         return httpSecurity
+                .cors(withDefaults())
                 .authorizeHttpRequests(auth -> auth
                 	.requestMatchers("/authenticate").permitAll()
                 	.requestMatchers(PathRequest.toH2Console()).permitAll() // h2-console is a servlet and NOT recommended for a production

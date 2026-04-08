@@ -28,6 +28,9 @@
       "react-app/jest"
     ]
   },
+  "overrides": {
+    "flatted": "3.4.1"
+  },
   "browserslist": {
     "production": [
       ">0.2%",
