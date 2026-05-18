@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Simple Maven build for the 51-junit module.
+
+    The original project is Eclipse-only (there is no pom.xml), so the tests
+    cannot be run from the command line. I added this file so we can just do:
+
+        mvn test
+
+    The course uses src/ and test/ folders (not Maven's default src/main/java
+    and src/test/java), so I point sourceDirectory and testSourceDirectory at
+    those folders below instead of moving the files around.
+
+    JUnit version copied from the official starter pom:
+    https://github.com/junit-team/junit-examples/tree/r6.0.3/junit-jupiter-starter-maven
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.in28minutes</groupId>
+    <artifactId>junit-introduction-in-5-steps</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+    <name>JUnit Introduction in 5 Steps</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- JUnit 6 needs Java 17 or higher. -->
+        <maven.compiler.release>17</maven.compiler.release>
+        <junit.version>6.0.3</junit.version>
+        <surefire.version>3.5.4</surefire.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- JUnit BOM keeps all JUnit artifacts on the same version. -->
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!-- This aggregator pulls in junit-jupiter-api, junit-jupiter-params and junit-jupiter-engine. -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <!-- Use the course's src/ and test/ folders instead of Maven defaults. -->
+        <sourceDirectory>src</sourceDirectory>
+        <testSourceDirectory>test</testSourceDirectory>
+
+        <plugins>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${surefire.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
