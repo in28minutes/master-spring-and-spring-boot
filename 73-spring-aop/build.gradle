@@ -1,15 +1,11 @@
 plugins {
-	id 'org.springframework.boot' version '4.0.0'
+	id 'org.springframework.boot' version '4.0.6'
 	id 'io.spring.dependency-management' version '1.1.7'
 	id 'java'
 }
 
 group = 'com.in28minutes'
 version = '0.0.1-SNAPSHOT'
-
-ext {
-    aopVersion = '4.0.0-M2'
-}
 
 java {
 	toolchain {
@@ -24,7 +20,7 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
-    implementation "org.springframework.boot:spring-boot-starter-aop:${aopVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-aspectj"
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
