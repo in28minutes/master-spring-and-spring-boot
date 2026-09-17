@@ -19,7 +19,7 @@ By the end of the course, you will know everything you would need to become a gr
 
 - Use **latest version** of Java
 - Use **latest version** of "Eclipse IDE for Enterprise Java Developers"
-- Remember: Spring Boot 3+ works only with Java 17+
+- Remember: Spring Boot 4.x.x works only with Java 17+
 
 ### Installing Java
 
