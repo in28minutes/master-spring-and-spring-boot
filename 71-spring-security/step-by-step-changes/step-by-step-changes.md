@@ -92,7 +92,6 @@ sourceCompatibility = '21'
 
 repositories {
 	mavenCentral()
-	maven { url 'https://repo.spring.io/milestone' }
 }
 
 dependencies {

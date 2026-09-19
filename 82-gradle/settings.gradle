@@ -1,7 +1,6 @@
 pluginManagement {
 	repositories {
-		maven { url 'https://repo.spring.io/milestone' }
-		gradlePluginPortal()
+			gradlePluginPortal()
 	}
 }
 rootProject.name = 'learn-gradle'
