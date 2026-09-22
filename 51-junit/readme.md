@@ -170,3 +170,30 @@ class MyMathTest {
 }
 ```
 ---
+
+## Useful References
+
+### JUnit (official)
+- JUnit User Guide : https://docs.junit.org/current/user-guide/
+- JUnit Javadoc : https://docs.junit.org/current/api/
+- `Assertions` API : https://docs.junit.org/current/api/org.junit.jupiter.api/org/junit/jupiter/api/Assertions.html
+- `Assumptions` API : https://docs.junit.org/current/api/org.junit.jupiter.api/org/junit/jupiter/api/Assumptions.html
+- Parameterized tests : https://docs.junit.org/current/user-guide/#writing-tests-parameterized-tests
+- Parameterized classes : https://docs.junit.org/current/user-guide/#writing-tests-parameterized-classes
+- Release notes : https://docs.junit.org/current/release-notes/
+- Maven starter pom : https://github.com/junit-team/junit-examples/tree/r6.0.3/junit-jupiter-starter-maven
+- Source on GitHub : https://github.com/junit-team/junit
+
+### Build tools
+- Maven Surefire : https://maven.apache.org/surefire/maven-surefire-plugin/
+- Surefire + JUnit 5 : https://maven.apache.org/surefire/maven-surefire-plugin/examples/junit-platform.html
+- Gradle + JUnit 5 : https://docs.gradle.org/current/userguide/java_testing.html#using_junit5
+
+### Spring Boot testing
+- Testing in Spring Boot : https://docs.spring.io/spring-boot/reference/testing/index.html
+- `@SpringBootTest` : https://docs.spring.io/spring-boot/api/java/org/springframework/boot/test/context/SpringBootTest.html
+- Slice tests : https://docs.spring.io/spring-boot/reference/testing/spring-boot-applications.html#testing.spring-boot-applications.autoconfigured-tests
+- Testcontainers + Spring Boot : https://java.testcontainers.org/modules/spring_boot/
+
+
+---
