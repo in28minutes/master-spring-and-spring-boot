@@ -19,10 +19,16 @@ public class SomeBusinessImpl {
 		return greatestValue;
 	}
 
+	//Step 06 - a void call to verify, and an argument to capture
+	public void storeTheGreatestFromAllData() {
+		dataService.storeGreatest(findTheGreatestFromAllData());
+	}
+
 }
 
 interface DataService {
 	int[] retrieveAllData();
-	
-	
+
+	void storeGreatest(int greatestValue);
+
 }
