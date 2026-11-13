@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>4.1.1</version>
+		<version>4.1.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.in28minutes.rest.webservices</groupId>
@@ -59,7 +59,7 @@
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-			<version>2.8.14</version>
+			<version>3.2.0</version>
 		</dependency>
 
         Starting from Spring Boot 4.0.x the below dependency not required add explicitly it comes with `spring-boot-starter-webmvc` with transitive dependency
